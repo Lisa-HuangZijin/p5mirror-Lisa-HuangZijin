@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+/* Full-page container to center the image */
+/* body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ */
+/* Optional styling for the image */
+/* img {
+  max-width: 100%;
+  height: auto;
+}
+ */
+
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

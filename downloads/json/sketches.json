@@ -1,0 +1,1848 @@
+[
+  {
+    "_id": "zSFx_e8ZD",
+    "name": "2024-01-11 pound-genuary11",
+    "updatedAt": "2024-03-08T10:59:11.911Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "65a08c5258fd017af2a166d4",
+          "65a08c5258fd017af2a166d3",
+          "65a08c5258fd017af2a166d5"
+        ],
+        "fileType": "folder",
+        "_id": "65a08c5258fd017af2a166d6",
+        "createdAt": "2024-03-08T10:59:11.911Z",
+        "updatedAt": "2024-03-08T10:59:11.911Z",
+        "id": "65a08c5258fd017af2a166d6"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/zSFx_e8ZD\n// 2024-01-11 #genuary11\n// https://openprocessing.org/sketch/2142252\n// random grid of shapes - rects and triangles\n// mouse press to start/stop rotation\n// shift + mouse press for new grid\n\nlet my = {};\n\nfunction setup() {\n\tmy.shapes = []\n    // https://github.com/processing/p5.js/blob/v1.9.0/src/core/environment.js#L732\n    // my.width = window.innerWidth\n\t// my.width = windowWidth\n\t// my.height = windowHeight\n\tmy.width = 400\n\tmy.height = 800\n\tmy.step = 50\n\tmy.len = 20\n\tmy.left = (-my.width + my.step) * 0.5\n\tmy.right = my.width * 0.5\n\tmy.top = (-my.height + my.step) * 0.5;\n\tmy.bottom = my.height * 0.5\n\tmy.rotate = 0;\n\tmy.scale = 0;\n\tcreateCanvas(my.width, my.height, WEBGL);\n\tbackground(0)\n\tinit_shapes()\n\t// createDiv('press mouse for new grid')\n}\n\nfunction draw() {\n\tbackground(50);\n\tortho()\n\tambientLight(255); // Set the ambient light intensity to 255 (white light)\n\tnoStroke()\n\tmy.shapes.forEach(shape => {\n\t\tshape.show()\n\t})\n}\n\nfunction mousePressed() {\n\t// my.rotate = !my.rotate\n\tconsole.log('mousePressed my.rotate=' + my.rotate)\n\tif (keyIsDown(SHIFT)) {\n\t\tinit_shapes()\n\t} else {\n\t\tmy.shapes.forEach(shape => {\n\t\t\tshape.rotate = !shape.rotate\n\t\t})\n\t}\n}\n\nfunction init_shapes() {\n\tmy.shapes = [];\n\tfor (let x = my.left; x < my.right; x += my.step) {\n\t\tfor (let y = my.top; y <= my.bottom; y += my.step) {\n\t\t\tmy.shapes.push(new Shape(random(1000), x, y))\n\t\t}\n\t} {\n\t\tlet shape = random(my.shapes)\n\t\tshape.isTriangle = 1\n\t} {\n\t\tlet shape = random(my.shapes)\n\t\tshape.isHidden = 1\n\t}\n\n\tconsole.log('init_shapes n shapes ' + my.shapes.length)\n}\n\nclass Shape {\n\tconstructor(rid, x, y) {\n\t\t// console.log('shape rid x y', rid, x, y)\n\t\tthis.rid = rid\n\t\tthis.x = x\n\t\tthis.y = y\n\t\t// this.isTriangle = random() > 0.99\n\t\t// this.offset = random() > 0.3\n\t\tthis.offset = 0\n\t\tthis.offsetX = random([-my.len, -20, 0, 20, 30])\n\t\tthis.offsetY = random([-30, -20, 0, 20, 30])\n\t\tthis.scale = my.scale;\n\t\tthis.scaleX = random([-1.5, -1.2, -1, 0.8, 1, 1.2, 1.5])\n\t\tthis.scaleY = random([-1.4, -1.2, -1, 0.8, 1, 1.2, 1.4])\n\t\tthis.ry = random([1, 2])\n\t\tthis.rz = random([0, PI])\n\t\tthis.clr = random_color()\n\t\tthis.rotate = my.rotate;\n\t\tthis.angleZ = 0;\n\t\t// this.angleZ = this.rid;\n\t}\n\tshow() {\n\t\tif (this.isHidden) return;\n\t\tpush()\n\t\ttranslate(this.x, this.y)\n\t\tif (this.offset) translate(this.offsetX, this.offsetY)\n\t\tif (this.scale) scale(this.scaleX, this.scaleY)\n\t\tif (this.rotate) this.angleZ += 0.01;\n\t\trotateZ(this.angleZ);\n\t\t// rotateZ((this.rid + this.frameCount) * 0.01);\n\t\tfill(color(this.clr))\n\t\tbeginShape();\n\t\tvertex(-my.len, -my.len, 0);\n\t\tvertex(my.len, -my.len, 0);\n\t\tvertex(my.len, my.len, 0);\n\t\tif (!this.isTriangle) vertex(-my.len, my.len, 0);\n\t\tendShape(CLOSE);\n\t\tpop()\n\t}\n}\n\nfunction random_color() {\n\t// return random(\"3772ff-df2935-fdca40\".split(\"-\").map(a => \"#\" + a));\n\treturn random(\"ff0000-00ff00-ffff00\".split(\"-\").map(a => \"#\" + a));\n}\n\n// https://openprocessing.org/sketch/2142138\n\n// https://openprocessing.org/sketch/2142065\n// https://twitter.com/search?q=%23genuary11&src=typeahead_click\n\n// In the style of Anni Albers (1899-1994)",
+        "children": [],
+        "fileType": "file",
+        "_id": "65a08c5258fd017af2a166d3",
+        "isSelectedFile": true,
+        "createdAt": "2024-03-08T10:59:11.911Z",
+        "updatedAt": "2024-03-08T10:59:11.911Z",
+        "id": "65a08c5258fd017af2a166d3"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65a08c5258fd017af2a166d4",
+        "createdAt": "2024-03-08T10:59:11.911Z",
+        "updatedAt": "2024-03-08T10:59:11.911Z",
+        "id": "65a08c5258fd017af2a166d4"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65a08c5258fd017af2a166d5",
+        "createdAt": "2024-03-08T10:59:11.911Z",
+        "updatedAt": "2024-03-08T10:59:11.911Z",
+        "id": "65a08c5258fd017af2a166d5"
+      }
+    ],
+    "createdAt": "2024-01-12T00:49:11.266Z",
+    "id": "zSFx_e8ZD"
+  },
+  {
+    "_id": "-OQnvyyVX",
+    "name": "2024-11-18-iframe_player",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "673bbeeb234518e40b435798",
+          "673bbeeb234518e40b435799",
+          "673bbeeb234518e40b43579a"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "673bbeeb234518e40b435797",
+        "createdAt": "2024-11-18T22:44:23.062Z",
+        "updatedAt": "2024-11-18T22:44:23.062Z",
+        "id": "673bbeeb234518e40b435797"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/-OQnvyyVX\n// 2024-11-18-iframe_player\n\n// my.items is play list of p5js sketches\n// which are played in sequence\n// switching every my.perSlideSecs seconds\n\nlet my = {};\n\nfunction my_setup() {\n  my.width = windowWidth;\n  my.height = windowHeight;\n  // my.fireb_config = \"jht9629\";\n  // // my.fireb_config = 'jht1493';\n  // // my.fireb_config = 'jhtitp';\n  // my.dbase_rootPath = \"m0-@r-@w-\";\n  // my.roomName = \"room1\";\n  // my.mo_app = \"mo-iframe_player\";\n  // my.nameDevice = \"\";\n\n  my.perSlideSecs = 7;\n  my.perSlideTime = millis();\n\n  my.item_index = 0;\n  my.items = [];\n  my.items.push('https://molab-itp.github.io/p5moLibrary/src/demo/mo-videoplayer/index.html?playlist=s1mo4k4bvEg')\n  my.items.push(\"https://karakkzzk.github.io/p5mirror-karakkzzk/p5projects/Innovative%20crafter-OcjJ4foZE/\");\n  my.items.push(\"https://jiaying0412.github.io/p5mirror---jiaying0822/p5projects/ims01-Jiaz-jYTEhmWCm/\");\n  my.items.push(\"https://molab-itp.github.io/p5moExamples/examples/shout/?v=110\");\n  my.iframe_src = my.items[my.item_index];\n}\n\n  // my.items.push('https://paulineium.github.io/p5mirror-pk2196/p5projects/ims01-paulineium-CHGZXqDjz/');\n  // my.items.push(\n  //   'https://newbenjaminb.github.io/p5mirror-bb/p5projects/%20W6.4-1v4%20colliding%20balls%20DONE-VbVQXinn1/'\n  // );\n\nfunction setup() {\n  my_setup();\n\n  create_my_iframe();\n\n  // my.canvas = createCanvas(my.width, my.height);\n  noCanvas();\n\n  // dbase_app_init({ completed: startup_completed });\n\n  createButton(\"Next\").mousePressed(next_action);\n  createButton(\"Previous\").mousePressed(previous_action);\n  createButton(\"First\").mousePressed(first_action);\n  createSpan(\" Index \");\n  my.item_index_span = createSpan(my.item_index);\n  createSpan(\" \");\n  my.timer_span = createSpan(\"\");\n\n  // Move the iframe below all the ui elements\n  let body_elt = document.querySelector(\"body\");\n  let other_elt = my.iframe_element.elt;\n  body_elt.insertBefore(other_elt, null);\n}\n\nfunction create_my_iframe() {\n  my.iframe_element = createElement(\"iframe\");\n  item_index_changed();\n}\n\nfunction draw() {\n  //\n  my.item_index_span.html(my.item_index);\n\n  let now = millis();\n  let lapse = (now - my.perSlideTime) / 1000;\n  if (lapse > my.perSlideSecs) {\n    my.perSlideTime = now;\n    next_action();\n  }\n  my.timer_span.html(lapse.toFixed(1));\n}\n\n// function startup_completed() {\n//   console.log(\"startup_completed\");\n//   dbase_devices_observe({ observed_item, all: 1 });\n//   function observed_item(device) {\n//     console.log(\"observed_item device\", device);\n//     if (device.item_index != undefined) {\n//       my.item_index = device.item_index;\n//       item_index_changed();\n//     }\n//   }\n// }\n\nfunction item_index_changed() {\n  my.iframe_src = my.items[my.item_index];\n  my.iframe_element.elt.src = my.iframe_src;\n  my.iframe_element.elt.width = windowWidth;\n  my.iframe_element.elt.height = windowHeight;\n}\n\nfunction first_action() {\n  // dbase_update_props({ item_index: 0 });\n  my.item_index = 0;\n}\n\nfunction next_action() {\n  let last = my.items.length - 1;\n  if (my.item_index >= last) {\n    // dbase_update_props({ item_index: 0 });\n    my.item_index = 0;\n  } else {\n    // dbase_update_props({ item_index: dbase_increment(1) });\n    my.item_index++;\n  }\n  item_index_changed();\n}\n\nfunction previous_action() {\n  let last = my.items.length - 1;\n  if (my.item_index <= 0) {\n    // dbase_update_props({ item_index: last });\n    my.item_index = last;\n  } else {\n    // dbase_update_props({ item_index: dbase_increment(-1) });\n    my.item_index--;\n  }\n  item_index_changed();\n}\n\nfunction windowResized() {\n  item_index_changed();\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/23h3z1G82\n// p5moExamples words 47\n\n// https://editor.p5js.org/jht9629-nyu/sketches/88yxquMBl\n// p5moExamples iframe_player 47\n// moLibrary is used to save my.item_index in firebase realtime database\n// sketches harvested from\n// https://github.com/molab-itp/p5mirror/forks\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "673bbeeb234518e40b435799",
+        "createdAt": "2024-11-18T22:44:23.062Z",
+        "updatedAt": "2024-11-18T22:44:23.062Z",
+        "id": "673bbeeb234518e40b435799"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js\"></script>\n    <!-- <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js\"></script> -->\n\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"https://molab-itp.github.io/p5moRelease/lib/47/style.css\" />\n    <!-- <link rel=\"stylesheet\" type=\"text/css\" href=\"../../../p5moLibrary/src/lib/style.css\" /> -->\n\n    <style></style>\n  </head>\n  <body>\n    <main></main>\n\n<!--     <script type=\"module\" src=\"https://molab-itp.github.io/p5moRelease/lib/47/a_lib.js\"></script> -->\n    <!-- <script type=\"module\" src=\"../../../p5moLibrary/src/lib/a_lib.js\"></script> -->\n\n<!--     <script src=\"sketch.js?v=22\"></script> -->\n    <script src=\"sketch.js\"></script>\n\n    <!-- <iframe src=\"https://www.merriam-webster.com/word-of-the-day/2023-01-01\" title=\"Words\"></iframe> -->\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "673bbeeb234518e40b435798",
+        "createdAt": "2024-11-18T22:44:23.062Z",
+        "updatedAt": "2024-11-18T22:44:23.062Z",
+        "id": "673bbeeb234518e40b435798"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "673bbeeb234518e40b43579a",
+        "createdAt": "2024-11-18T22:44:23.062Z",
+        "updatedAt": "2024-11-18T22:44:23.062Z",
+        "id": "673bbeeb234518e40b43579a"
+      }
+    ],
+    "createdAt": "2024-11-18T22:25:47.661Z",
+    "updatedAt": "2024-11-18T22:44:23.062Z",
+    "id": "-OQnvyyVX"
+  },
+  {
+    "_id": "NAReIkM1c",
+    "name": "background     0",
+    "updatedAt": "2024-04-14T18:27:00.480Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6593be0f29b100001a3b1217",
+          "64165ca48b33bf438f656399",
+          "64165ca48b33bf438f656398",
+          "64165ca48b33bf438f65639a",
+          "6593be83704c98001a443954"
+        ],
+        "fileType": "folder",
+        "_id": "64165ca48b33bf438f65639b",
+        "createdAt": "2024-04-14T18:27:00.480Z",
+        "updatedAt": "2024-04-14T18:27:00.480Z",
+        "isSelectedFile": false,
+        "id": "64165ca48b33bf438f65639b"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/NAReIkM1c\n// background 0 1\n \nfunction setup() {\n  createCanvas(windowWidth, windowHeight);\n  createA('./README.txt', 'README.txt');\n}\n\nfunction draw() {\n  background(0);\n}\n\nfunction mousePressed() {\n  let onCanvas = mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height;\n  if (onCanvas) {\n    ui_toggleFullScreen()\n  }\n}\n\nfunction ui_toggleFullScreen() {\n  if (!document.documentElement.requestFullscreen) {\n    console.log('NO document.documentElement.requestFullscreen');\n    return;\n  }\n  if (!document.fullscreenElement) {\n    document.documentElement.requestFullscreen();\n  } else {\n    if (document.exitFullscreen) {\n      document.exitFullscreen();\n    }\n  }\n}\n\n// https://p5js.org/reference/#/p5/fullscreen\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64165ca48b33bf438f656398",
+        "isSelectedFile": true,
+        "createdAt": "2024-04-14T18:27:00.480Z",
+        "updatedAt": "2024-04-14T18:27:00.480Z",
+        "id": "64165ca48b33bf438f656398"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64165ca48b33bf438f656399",
+        "createdAt": "2024-04-14T18:27:00.480Z",
+        "updatedAt": "2024-04-14T18:27:00.480Z",
+        "isSelectedFile": false,
+        "id": "64165ca48b33bf438f656399"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64165ca48b33bf438f65639a",
+        "createdAt": "2024-04-14T18:27:00.480Z",
+        "updatedAt": "2024-04-14T18:27:00.480Z",
+        "isSelectedFile": false,
+        "id": "64165ca48b33bf438f65639a"
+      },
+      {
+        "name": "README.txt",
+        "content": "# background 0\n\n- Display black background\n\n![thumb](thumb.png)",
+        "children": [],
+        "fileType": "file",
+        "_id": "6593be0f29b100001a3b1217",
+        "isSelectedFile": false,
+        "updatedAt": "2024-04-14T18:27:00.480Z",
+        "createdAt": "2024-04-14T18:27:00.480Z",
+        "id": "6593be0f29b100001a3b1217"
+      },
+      {
+        "name": "thumb.png",
+        "content": "",
+        "children": [],
+        "fileType": "file",
+        "_id": "6593be83704c98001a443954",
+        "url": "https://assets.editor.p5js.org/64165ccec9dda1001a8b6295/bc378c04-91d1-4804-9501-f00d2e2842f9.png",
+        "updatedAt": "2024-04-14T18:27:00.480Z",
+        "createdAt": "2024-04-14T18:27:00.480Z",
+        "isSelectedFile": false,
+        "id": "6593be83704c98001a443954"
+      }
+    ],
+    "createdAt": "2023-03-19T00:52:56.813Z",
+    "id": "NAReIkM1c"
+  },
+  {
+    "_id": "ySQ-S2O5d",
+    "name": "Chisel bobcat",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "66f182a4c528ab60f8bf5fa5",
+          "66f182a4c528ab60f8bf5fa4",
+          "66f182a4c528ab60f8bf5fa6"
+        ],
+        "fileType": "folder",
+        "_id": "66f182a4c528ab60f8bf5fa7",
+        "createdAt": "2024-09-23T15:01:06.373Z",
+        "updatedAt": "2024-09-23T15:01:06.373Z",
+        "id": "66f182a4c528ab60f8bf5fa7"
+      },
+      {
+        "name": "sketch.js",
+        "content": "function setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "66f182a4c528ab60f8bf5fa4",
+        "createdAt": "2024-09-23T15:01:06.373Z",
+        "updatedAt": "2024-09-23T15:01:06.373Z",
+        "id": "66f182a4c528ab60f8bf5fa4"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "66f182a4c528ab60f8bf5fa5",
+        "createdAt": "2024-09-23T15:01:06.373Z",
+        "updatedAt": "2024-09-23T15:01:06.373Z",
+        "id": "66f182a4c528ab60f8bf5fa5"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "66f182a4c528ab60f8bf5fa6",
+        "createdAt": "2024-09-23T15:01:06.373Z",
+        "updatedAt": "2024-09-23T15:01:06.373Z",
+        "id": "66f182a4c528ab60f8bf5fa6"
+      }
+    ],
+    "updatedAt": "2024-09-23T15:01:06.373Z",
+    "createdAt": "2024-09-23T15:01:02.699Z",
+    "id": "ySQ-S2O5d"
+  },
+  {
+    "_id": "TdzEIUUD5",
+    "name": "duplicate",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "658e45987d8cf084ef8f39e5",
+          "658e45987d8cf084ef8f39e6",
+          "658e45987d8cf084ef8f39e7"
+        ],
+        "fileType": "folder",
+        "_id": "658e45987d8cf084ef8f39e4",
+        "createdAt": "2023-12-29T04:05:50.796Z",
+        "updatedAt": "2023-12-29T04:05:50.796Z",
+        "id": "658e45987d8cf084ef8f39e4"
+      },
+      {
+        "name": "sketch.js",
+        "content": "function setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n}",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e45987d8cf084ef8f39e6",
+        "isSelectedFile": true,
+        "createdAt": "2023-12-29T04:05:50.796Z",
+        "updatedAt": "2023-12-29T04:05:50.796Z",
+        "id": "658e45987d8cf084ef8f39e6"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e45987d8cf084ef8f39e5",
+        "createdAt": "2023-12-29T04:05:50.796Z",
+        "updatedAt": "2023-12-29T04:05:50.796Z",
+        "id": "658e45987d8cf084ef8f39e5"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e45987d8cf084ef8f39e7",
+        "createdAt": "2023-12-29T04:05:50.796Z",
+        "updatedAt": "2023-12-29T04:05:50.796Z",
+        "id": "658e45987d8cf084ef8f39e7"
+      }
+    ],
+    "createdAt": "2023-12-29T04:05:45.035Z",
+    "updatedAt": "2023-12-29T04:05:50.796Z",
+    "id": "TdzEIUUD5"
+  },
+  {
+    "_id": "kWtHbrdjf",
+    "name": "duplicate",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "658e45907d8cf084ef8f39e1",
+          "658e45907d8cf084ef8f39e2",
+          "658e45907d8cf084ef8f39e3"
+        ],
+        "fileType": "folder",
+        "_id": "658e45907d8cf084ef8f39e0",
+        "createdAt": "2023-12-29T04:05:43.114Z",
+        "updatedAt": "2023-12-29T04:05:43.114Z",
+        "id": "658e45907d8cf084ef8f39e0"
+      },
+      {
+        "name": "sketch.js",
+        "content": "function setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n}",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e45907d8cf084ef8f39e2",
+        "isSelectedFile": true,
+        "createdAt": "2023-12-29T04:05:43.114Z",
+        "updatedAt": "2023-12-29T04:05:43.114Z",
+        "id": "658e45907d8cf084ef8f39e2"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e45907d8cf084ef8f39e1",
+        "createdAt": "2023-12-29T04:05:43.114Z",
+        "updatedAt": "2023-12-29T04:05:43.114Z",
+        "id": "658e45907d8cf084ef8f39e1"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e45907d8cf084ef8f39e3",
+        "createdAt": "2023-12-29T04:05:43.114Z",
+        "updatedAt": "2023-12-29T04:05:43.114Z",
+        "id": "658e45907d8cf084ef8f39e3"
+      }
+    ],
+    "createdAt": "2023-12-29T04:05:36.550Z",
+    "updatedAt": "2023-12-29T04:05:43.114Z",
+    "id": "kWtHbrdjf"
+  },
+  {
+    "_id": "8jzqiCbbk",
+    "name": "firebase mo-gallery-ppt copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "670c11e94d5ab27a9187cdb0",
+          "670c11e94d5ab27a9187cdb1",
+          "670c11e94d5ab27a9187cdb2"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "670c11e94d5ab27a9187cdaf",
+        "createdAt": "2024-10-31T13:40:17.433Z",
+        "updatedAt": "2024-10-31T13:40:17.433Z",
+        "id": "670c11e94d5ab27a9187cdaf"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/8jzqiCbbk\n// https://editor.p5js.org/jht9629-nyu/sketches/VtqUmOlGB\n// firebase mo-gallery-ppt\n// Display images from Firebase storage as a billboard using createImg\n\nlet a_version = 'v9 ';\nlet galleryKey = 'mo-1/gallery-@r-ppt';\nlet scrollYmax = (2000-300)*2;\nlet scrollSpeed = 2;\n// window.scrollY > scrollYmax\n// let galleryKey = 'mo-gallery-ims-web';\nlet nitems = 0;\nlet updateCount = 0;\nlet doScroll = false;\nlet rdata; // Firebase object results from server. key is id\nlet rarr; // Array of items from server\n// let rwidth = 1920; // dimensions for image element\n// let rheight = 1080;\nlet rwidth = 1080; // dimensions for image element\nlet rheight = 1920;\nlet scrollLimit = 0;\nlet doSplat = 0;\nlet debug = 0;\n\nlet shuffleBtn;\nlet fullScreenBtn;\nlet toggleScrollBtn;\nlet splatBtn;\nlet imgs = [];\nlet totalHeight = 0;\nlet scrollStartTime;\nlet lastY;\nlet stallMaxTime = 1.0;\n\nfunction setup() {\n  noCanvas();\n  // console.log('app', fireb_.app);\n  if (debug) {\n    rwidth = rwidth / 4;\n    rheight = rheight / 4;\n    scrollLimit = 2;\n    doScroll = 1;\n  }\n  check_url_param();\n\n  // Setup listner for changes to firebase db\n  let galleryRef = fireb_.ref(fireb_.database, galleryKey);\n  fireb_.onValue(galleryRef, (snapshot) => {\n    const data = snapshot.val();\n    console.log('galleryRef data', data);\n    received_gallery(data);\n  });\n\n  shuffleBtn = createButton('Shuffle').mousePressed(() => {\n    //console.log('Shuffle');\n    received_gallery(rdata, { doShuffle: 1 });\n  });\n  shuffleBtn.style('font-size:42px');\n\n  fullScreenBtn = createButton('Full Screen').mousePressed(() => {\n    ui_toggleFullScreen();\n    ui_remove_all();\n  });\n  fullScreenBtn.style('font-size:42px');\n\n  toggleScrollBtn = createButton('Scroll').mousePressed(() => {\n    doScroll = !doScroll;\n    console.log('doScroll', doScroll);\n    if (doScroll) {\n      // ui_toggleFullScreen();\n      ui_remove_all();\n    }\n    // window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });\n  });\n  toggleScrollBtn.style('font-size:42px');\n\n  splatBtn = createButton('Splat').mousePressed(() => {\n    console.log('splatBtn', doSplat);\n    doSplat = !doSplat;\n    received_gallery(rdata);\n  });\n  splatBtn.style('font-size:42px');\n\n  createElement('br');\n  \n  ui_init_update();\n}\n\nfunction draw() {\n  // calcTotalHeight();\n  // console.log('draw');\n  if (doScroll && frameCount % scrollSpeed == 0) {\n    // window.scrollBy({ top: window.scrollY + 1, behavior: 'smooth' });\n    window.scrollBy(0, 1); // 1\n    // let nlimit = scrollLimit || rarr.length;\n    // if (window.scrollY >= scrollYmax) {\n    if (scrollingStalled()) {\n      window.scrollTo(0, 0);\n      lastY = 0;\n      scrollStartTime = 0;\n    }\n  }\n}\n\n// window.scrollTo(0, 4900);\n\n\nfunction scrollingStalled() {\n  let now = millis() / 1000.0\n  if (! scrollStartTime) scrollStartTime = now;\n  if (! lastY || lastY != window.scrollY) {\n    lastY = window.scrollY;\n    return;\n  }\n  // window.scrollY not changed\n  //\n  let lapse = now - scrollStartTime;\n  if (lapse > stallMaxTime) {\n    return true;\n  }\n  return false;\n}\n\nfunction received_gallery(data, opts) {\n  window.scrollTo(0, 0);\n  let div = ui_div_empty('igallery');\n  if (!data) {\n    return;\n  }\n  rdata = data;\n  updateCount += 1;\n\n  // for (key in data) {\n  //   console.log('key', key);\n  //   let val = data[key];\n\n  // Display in reverse order to see new additions first\n  rarr = Object.values(data).reverse();\n  if (opts && opts.doShuffle) {\n    rarr = shuffle(rarr);\n  }\n  let r = rarr;\n  rarr = [r[1],r[2],r[1],r[3],r[1],r[4],r[1],r[5],r[1],r[6],r[0]];\n\n  nitems = rarr.length;\n  for (let val of rarr) {\n    // console.log('received_gallery val', val);\n    // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );\n    // select full resolution media if available\n    //\n    // let path = val.mediaPathFullRez ?? val.mediaPath;\n    let path = val.mediaPathFullRez || val.mediaPath;\n    let img = createImg(path, val.authorEmail, '', imageLoaded);\n    div.child(img);\n\n    // avoid backquote for rasberry pi browser\n    // img.style(`width: ${rwidth}px;`);\n    let iwidth = rwidth;\n    if (doSplat) {\n      iwidth = random(100, 400);\n    }\n    // img.style('width: ' + iwidth + 'px;');\n    imgs.push(img);\n    ui_init_update();\n  }\n}\n\nfunction imageLoaded(arg) {\n  console.log('imageLoaded', arg);\n}\n\nfunction calcTotalHeight() {\n  totalHeight = 0;\n  for (let img of imgs) {\n    totalHeight += img.height;\n  }\n  // console.log('totalHeight', totalHeight)\n  if (totalHeight > 0) {\n    scrollYmax = totalHeight;\n  }\n}\n\nfunction ui_remove_all() {\n  shuffleBtn.remove();\n  fullScreenBtn.remove();\n  toggleScrollBtn.remove();\n  splatBtn.remove();\n}\n\nfunction ui_init_update() {\n  ui_span('date', a_version + formatDate());\n  ui_span('updateCount', ' updateCount:' + updateCount);\n  ui_span('nitems', ' nitems:' + nitems);\n}\n\nfunction formatDate() {\n  // return '';\n  return new Date().toISOString();\n}\n\nfunction ui_div_empty(id) {\n  let div = select('#' + id);\n  // console.log('ui_device_selection div', div);\n  if (!div) {\n    div = createDiv().id(id);\n  } else {\n    let children = div.child();\n    for (let index = children.length - 1; index >= 0; index--) {\n      let elm = children[index];\n      elm.remove();\n    }\n  }\n  return div;\n}\n\nfunction ui_span(id, html) {\n  let span = select('#' + id);\n  if (document.fullscreenElement) {\n    if (span) {\n      span.remove();\n    }\n    return;\n  }\n  if (!span) {\n    span = createSpan().id(id);\n  }\n  span.html(html);\n}\n\nfunction ui_toggleFullScreen() {\n  if (!document.documentElement.requestFullscreen) {\n    console.log('NO document.documentElement.requestFullscreen');\n    return;\n  }\n  if (!document.fullscreenElement) {\n    document.documentElement.requestFullscreen();\n  } else {\n    if (document.exitFullscreen) {\n      document.exitFullscreen();\n    }\n  }\n}\n\n// let galleryKey = 'mo-gallery-web';\n// let galleryKey = 'mo-gallery-ims-web';\n\nfunction check_url_param() {\n  let query = window.location.search;\n  console.log('query', query);\n  if (query.length < 1) return;\n  let params = params_query(query);\n  let ngallery = params['gallery'];\n  if (ngallery) {\n    // mo-gallery-web\n    // rasberry pie does not like back quote\n    // galleryKey = `mo-gallery-${ngallery}-web`;\n    // galleryKey = ngallery;\n    galleryKey = 'mo-gallery-' + ngallery;\n  }\n  console.log('galleryKey', galleryKey);\n}\n\n// https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams\nfunction params_query(query) {\n  // eg. query='abc=foo&def=%5Basf%5D&xyz=5'\n  // params={abc: \"foo\", def: \"[asf]\", xyz: \"5\"}\n  const urlParams = new URLSearchParams(query);\n  const params = Object.fromEntries(urlParams);\n  return params;\n}\n\n// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/\n// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=ims-web\n// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=web\n\n// https://editor.p5js.org/jht1493/sketches/2OYRyVuhx\n// firebase mo-gallery-1\n\n// https://molab-itp.github.io/p5moLibrary/src/demo/mo-gallery-1/?v=119\n\n// https://editor.p5js.org/p5name/sketches/8jzqiCbbk\n// https://editor.p5js.org/jht9629-nyu/sketches/VtqUmOlGB\n// firebase mo-gallery-ppt\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "670c11e94d5ab27a9187cdb1",
+        "createdAt": "2024-10-31T13:40:17.433Z",
+        "updatedAt": "2024-10-31T13:40:17.433Z",
+        "id": "670c11e94d5ab27a9187cdb1"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js\"></script>\n    <!-- <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js\"></script> -->\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <!-- v2023-02-08 18:01:45 -->\n    <main></main>\n\n    <!-- Documentation reference -->\n    <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->\n\n    <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->\n    <script type=\"module\">\n      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';\n\n      // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics\n      // import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js'\n\n      // Add Firebase products that you want to use\n      import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';\n      // import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js'\n\n      import {\n        getDatabase,\n        ref,\n        child,\n        get,\n        onValue,\n      } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';\n\n      // Your web app's Firebase configuration\n      // For Firebase JS SDK v7.20.0 and later, measurementId is optional\n      const firebaseConfig = {\n        apiKey: 'AIzaSyDLxi_fvCG2kzD2eJ4MxEZbOJ_GFSpIVe0',\n        authDomain: 'molab-485f5.firebaseapp.com',\n        databaseURL: 'https://molab-485f5-default-rtdb.firebaseio.com',\n        projectId: 'molab-485f5',\n        storageBucket: 'molab-485f5.appspot.com',\n        messagingSenderId: '219508380677',\n        appId: '1:219508380677:web:b5d846a150e7d60368b86c',\n        measurementId: 'G-40F0BN8L7L',\n      };\n\n      // Initialize Firebase\n      const fireb_ = {};\n      fireb_.app = initializeApp(firebaseConfig);\n\n      const auth = getAuth();\n      const database = getDatabase();\n      // console.log('database', database);\n      const dbRef = ref(getDatabase());\n\n      signInAnonymously(auth)\n        .then(() => {\n          console.log('signInAnonymously OK 4');\n          // check_gallery();\n        })\n        .catch((error) => {\n          const errorCode = error.code;\n          const errorMessage = error.message;\n          console.log('errorCode', errorCode);\n          console.log('errorMessage', errorMessage);\n        });\n\n      function check_gallery() {\n        get(child(dbRef, `mo-gallery-web`))\n          .then((snapshot) => {\n            if (snapshot.exists()) {\n              console.log('check_gallery snapshot', snapshot.val());\n            } else {\n              console.log('No data available');\n            }\n          })\n          .catch((error) => {\n            console.error('error', error);\n          });\n      }\n\n      // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0\n\n      // const galleryRef = ref( getDatabase(), 'mo-gallery-1');\n      // fireb_.galleryRef = galleryRef;\n      // onValue(galleryRef, (snapshot) => {\n      //   const data = snapshot.val();\n      //   console.log('galleryRef data', data);\n      // });\n\n      window.fireb_ = fireb_;\n      fireb_.auth = auth;\n      fireb_.database = database;\n      fireb_.dbRef = dbRef;\n      fireb_.ref = ref;\n      fireb_.onValue = onValue;\n\n      // Callbacks are removed by calling the off() method on your Firebase database reference.\n    </script>\n\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "670c11e94d5ab27a9187cdb0",
+        "createdAt": "2024-10-31T13:40:17.433Z",
+        "updatedAt": "2024-10-31T13:40:17.433Z",
+        "id": "670c11e94d5ab27a9187cdb0"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "670c11e94d5ab27a9187cdb2",
+        "createdAt": "2024-10-31T13:40:17.433Z",
+        "updatedAt": "2024-10-31T13:40:17.433Z",
+        "id": "670c11e94d5ab27a9187cdb2"
+      }
+    ],
+    "createdAt": "2024-10-13T18:31:05.907Z",
+    "updatedAt": "2024-10-31T13:40:17.433Z",
+    "id": "8jzqiCbbk"
+  },
+  {
+    "_id": "8fkJQUg8Y",
+    "name": "FuncyChars !@#$%^&*()_-+={[}]|\\:;\"'<,>.?/",
+    "updatedAt": "2023-12-29T03:05:08.625Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "658df3e83dc2dd03eb1e1d1d",
+          "658df3e83dc2dd03eb1e1d1c",
+          "658df3e83dc2dd03eb1e1d1e"
+        ],
+        "fileType": "folder",
+        "_id": "658df3e83dc2dd03eb1e1d1f",
+        "createdAt": "2023-12-29T03:05:08.625Z",
+        "updatedAt": "2023-12-29T03:05:08.625Z",
+        "id": "658df3e83dc2dd03eb1e1d1f"
+      },
+      {
+        "name": "sketch.js",
+        "content": "function setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n}",
+        "children": [],
+        "fileType": "file",
+        "_id": "658df3e83dc2dd03eb1e1d1c",
+        "isSelectedFile": true,
+        "createdAt": "2023-12-29T03:05:08.625Z",
+        "updatedAt": "2023-12-29T03:05:08.625Z",
+        "id": "658df3e83dc2dd03eb1e1d1c"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "658df3e83dc2dd03eb1e1d1d",
+        "createdAt": "2023-12-29T03:05:08.625Z",
+        "updatedAt": "2023-12-29T03:05:08.625Z",
+        "id": "658df3e83dc2dd03eb1e1d1d"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "658df3e83dc2dd03eb1e1d1e",
+        "createdAt": "2023-12-29T03:05:08.625Z",
+        "updatedAt": "2023-12-29T03:05:08.625Z",
+        "id": "658df3e83dc2dd03eb1e1d1e"
+      }
+    ],
+    "createdAt": "2023-12-28T22:17:16.418Z",
+    "id": "8fkJQUg8Y"
+  },
+  {
+    "_id": "3K6pk1kI6",
+    "name": "image  array sin copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "658e03d7d5903b3ab71dda26",
+          "658e04acc12300001a689176",
+          "658e03d7d5903b3ab71dda28",
+          "658e03d7d5903b3ab71dda29"
+        ],
+        "fileType": "folder",
+        "_id": "658e03d7d5903b3ab71dda25",
+        "createdAt": "2023-12-28T23:30:12.432Z",
+        "updatedAt": "2023-12-28T23:30:12.432Z",
+        "isSelectedFile": false,
+        "id": "658e03d7d5903b3ab71dda25"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jhtitp/sketches/3K6pk1kI6\n// image  array sin copy\n\nlet img;\nlet imgs = [];\nlet n = 10;\n\nlet sw = {};\n\nfunction preload() {\n  img = loadImage(\"jht-w128.png\");\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n\n  let w = img.width;\n  let h = img.height;\n  console.log(\"w\", w, \"h\", h);\n\n  let s = int(h / n);\n\n  for (let i = 0; i < n; i++) {\n    imgs[i] = createImage(w, s);\n    imgs[i].copy(img, 0, s * i, w, s, 0, 0, w, s);\n  }\n\n  init_sw();\n}\n\nfunction draw() {\n  background(220);\n\n  let mw = width / 2 - img.width / 2;\n  image(img, mw, 0);\n\n  let w = img.width;\n  let h = img.height;\n\n  // let s = int(h / n) * 2;\n  let s = int(h / n);\n\n  sw.theta += 0.02;\n  sw.a = sw.theta;\n\n  for (let i = 0; i < n; i++) {\n    let val = sin(sw.a) * sw.amplitude;\n\n    image(imgs[i], mw + val, s * i);\n\n    sw.a += sw.da;\n  }\n}\n\nfunction init_sw() {\n  sw.xspacing = 16; // Distance between each horizontal location\n  sw.theta = 0.0; // Start angle at 0\n  sw.amplitude = width / 16; // Height of wave\n  sw.period = 500.0; // How many pixels before the wave repeats\n\n  let w = height + 16;\n  sw.da = (TWO_PI / sw.period) * sw.xspacing;\n  sw.numa = floor(w / sw.xspacing);\n}\n\nfunction draw_sine_wave() {\n  sw.theta += 0.02;\n  sw.a = sw.theta;\n  for (let i = 0; i < sw.numa; i++) {\n    //\n    let val = sin(sw.a) * sw.amplitude;\n\n    let y = i * sw.xspacing;\n    let x = width / 2 + val;\n\n    ellipse(x, y, 16, 16);\n\n    sw.a += sw.da;\n  }\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/0OHUgo_c6\n// image array sin\n\n// https://editor.p5js.org/jht9629-nyu/sketches/P-AHc4NF9\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e03d7d5903b3ab71dda28",
+        "isSelectedFile": true,
+        "createdAt": "2023-12-28T23:30:12.432Z",
+        "updatedAt": "2023-12-28T23:30:12.432Z",
+        "id": "658e03d7d5903b3ab71dda28"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e03d7d5903b3ab71dda26",
+        "createdAt": "2023-12-28T23:30:12.432Z",
+        "updatedAt": "2023-12-28T23:30:12.432Z",
+        "isSelectedFile": false,
+        "id": "658e03d7d5903b3ab71dda26"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e03d7d5903b3ab71dda29",
+        "createdAt": "2023-12-28T23:30:12.432Z",
+        "updatedAt": "2023-12-28T23:30:12.432Z",
+        "isSelectedFile": false,
+        "id": "658e03d7d5903b3ab71dda29"
+      },
+      {
+        "name": "jht-w128.png",
+        "content": "",
+        "children": [],
+        "fileType": "file",
+        "_id": "658e04acc12300001a689176",
+        "url": "https://assets.editor.p5js.org/64165ccec9dda1001a8b6295/0caf6dba-faf9-4187-859b-a14a5b347798.png",
+        "updatedAt": "2023-12-28T23:30:12.432Z",
+        "createdAt": "2023-12-28T23:30:12.432Z",
+        "id": "658e04acc12300001a689176"
+      }
+    ],
+    "createdAt": "2023-12-28T23:25:12.373Z",
+    "updatedAt": "2023-12-28T23:30:12.432Z",
+    "id": "3K6pk1kI6"
+  },
+  {
+    "_id": "E_hAnmkzr",
+    "name": "ims black-n rgg shape",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "678cc0e953c35f7e608a85c0",
+          "678cc0e953c35f7e608a85c1",
+          "678cc0e953c35f7e608a85c2"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "678cc0e953c35f7e608a85bf",
+        "createdAt": "2025-01-19T22:36:37.259Z",
+        "updatedAt": "2025-01-19T22:36:37.259Z",
+        "id": "678cc0e953c35f7e608a85bf"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/E_hAnmkzr\n// ims black-n rgg shape\n\nlet my = {};\n\nfunction setup() {\n  my.points = [];\n  // my.strokeWeights = [1,2,4]\n  my.strokeWeights = [1]\n  my.jitter = 0;\n  my.bgAlpha = 8;\n  my.width = 400;\n  my.height = 200;\n  my.xpos = 0;\n  my.ypos = 0;\n  my.xspeed = 1;\n  my.yspeed = 1;\n  // my.xlen = 0;\n  // my.ylen = 0;\n  my.debug = 0;\n  my.startTime = 0;\n  my.changeTime = 5.0;\n  my.colors = [\"red\", \"green\", \"gold\"];\n  my.colorIndex = 0;\n\n  if (!my.debug) {\n    my.width = windowWidth;\n    my.height = windowHeight;\n  }\n  createCanvas(my.width, my.height);\n  // noStroke();\n\n  setup_fullScreenBtn()\n\n  my.startTime = millis() / 1000.0;\n\n  new_pos();\n\n}\n\nfunction draw() {\n  background(0, my.bgAlpha);\n\n  strokeWeight(random(my.strokeWeights));\n  // stroke(255);\n  stroke(my.colors[my.colorIndex]);\n\n  let x = my.xpos + random(-my.jitter,my.jitter);\n  let y = my.ypos + random(-my.jitter,my.jitter);\n  \n  // draw_points(y % width, x % height);\n  // draw_points(x, y);\n  // draw_points(my.xpos, y);\n  // draw_points(x, );\n  // draw_points(my.ypos, my.xpos);\n\n  line(0, y, width, y);\n  line(x, 0, x, height);\n\n  update_bounce();\n}\n\nfunction draw_points(x, y) {\n  my.points.push( {x, y});\n  if (my.points.length > width) {\n    my.points.splice(0, 1);\n  }\n  noFill();\n  beginShape();\n  for (let pt of my.points) {\n    vertex(pt.x, pt.y);\n  }\n  endShape();\n}\n\nfunction update_bounce() {\n  my.ypos += my.yspeed;\n  if (my.ypos > height || my.ypos < 0) {\n    my.yspeed *= -1;\n    changeColor();\n  }\n  my.xpos += my.xspeed ;\n  if (my.xpos > width || my.xpos < 0) {\n    my.xspeed *= -1;\n    changeColor();\n  }\n}\n\nfunction changeColor() {\n  my.colorIndex = (my.colorIndex + 1) % my.colors.length;\n  my.points = [];\n}\n\nfunction new_pos() {\n  my.xpos = random(0, width);\n  my.ypos = random(0, height);\n}\n\nfunction check_time() {\n  let now = millis() / 1000;\n  if (now - my.startTime > my.changeTime) {\n    my.startTime = now;\n    new_pos();\n  }\n}\n\n// From\n// https://editor.p5js.org/jht1493/sketches/5LgILr8RF\n\nfunction setup_fullScreenBtn() {\n  my.fullScreenBtn = createButton(\"Full Screen\");\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style(\"font-size:42px\");\n}\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/8Iazn1D_P\n// ims black-n white-1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/3VKJ-q8ar\n// ims03-jht scrolling color bars\n\n// https://editor.p5js.org/jht9629-nyu/sketches/Mpgun-Kti\n// ims black-n white-1 bounce\n\n// https://editor.p5js.org/p5name/sketches/bpUutVbYo\n// ims black-n rgg-1 bounce\n\n// https://thecodingtrain.com/tracks/the-nature-of-code-2/noc/perlin/intro-to-perlin-noise\n\n// https://editor.p5js.org/p5name/sketches/vlm26-OWl\n// ims black-n rgg-1 noise\n\n// https://editor.p5js.org/p5name/sketches/IfOxC4gMZ\n// ims black-n rgg-1 gitter\n\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "678cc0e953c35f7e608a85c1",
+        "createdAt": "2025-01-19T22:36:37.259Z",
+        "updatedAt": "2025-01-19T22:36:37.259Z",
+        "id": "678cc0e953c35f7e608a85c1"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678cc0e953c35f7e608a85c0",
+        "createdAt": "2025-01-19T22:36:37.259Z",
+        "updatedAt": "2025-01-19T22:36:37.259Z",
+        "id": "678cc0e953c35f7e608a85c0"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678cc0e953c35f7e608a85c2",
+        "createdAt": "2025-01-19T22:36:37.259Z",
+        "updatedAt": "2025-01-19T22:36:37.259Z",
+        "id": "678cc0e953c35f7e608a85c2"
+      }
+    ],
+    "createdAt": "2025-01-19T09:07:53.413Z",
+    "updatedAt": "2025-01-19T22:36:37.259Z",
+    "id": "E_hAnmkzr"
+  },
+  {
+    "_id": "bpUutVbYo",
+    "name": "ims black-n rgg-1 bounce",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67701ecd91560dc94ddce0c6",
+          "67701ecd91560dc94ddce0c7",
+          "67701ecd91560dc94ddce0c8"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67701ecd91560dc94ddce0c5",
+        "createdAt": "2025-01-18T22:02:18.220Z",
+        "updatedAt": "2025-01-18T22:02:18.220Z",
+        "id": "67701ecd91560dc94ddce0c5"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/bpUutVbYo\n// ims black-n rgg-1 bounce\n\nlet my = {};\n\nfunction setup() {\n  my.bgAlpha = 5;\n  my.width = 400;\n  my.height = 400;\n  my.xpos = 0;\n  my.ypos = 0;\n  my.xspeed = 1;\n  my.yspeed = 1;\n  // my.xlen = 0;\n  // my.ylen = 0;\n  my.debug = 1;\n  // my.fullScreenBtn = 0;\n  my.startTime = 0;\n  my.changeTime = 5.0;\n  my.colors = [\"red\", \"green\", \"gold\"];\n  my.colorIndex = 0;\n\n  if (!my.debug) {\n    my.width = windowWidth;\n    my.height = windowHeight;\n  }\n  createCanvas(my.width, my.height);\n  noStroke();\n\n  my.fullScreenBtn = createButton(\"Full Screen\");\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style(\"font-size:42px\");\n\n  my.startTime = millis() / 1000.0;\n\n  new_pos();\n\n  // init_dim();\n}\n\nfunction draw() {\n  background(0, my.bgAlpha);\n  // strokeWeight(0);\n  // fill(\"black\");\n  // rect(0, 0, width, height);\n  // check_time();\n\n  strokeWeight(1);\n  // stroke(255);\n  stroke(my.colors[my.colorIndex]);\n\n  line(0, my.ypos, width, my.ypos);\n\n  line(my.xpos, 0, my.xpos, height);\n\n  my.ypos += my.yspeed;\n  if (my.ypos > height || my.ypos < 0) {\n    my.yspeed *= -1;\n    changeColor();\n  }\n  my.xpos += my.xspeed;\n  if (my.xpos > width || my.xpos < 0) {\n    my.xspeed *= -1;\n    changeColor();\n  }\n}\n\nfunction changeColor() {\n  my.colorIndex = (my.colorIndex + 1) % my.colors.length;\n}\n\nfunction new_pos() {\n  my.xpos = random(0, width);\n  my.ypos = random(0, height);\n}\n\nfunction check_time() {\n  let now = millis() / 1000;\n  if (now - my.startTime > my.changeTime) {\n    my.startTime = now;\n    new_pos();\n  }\n}\n\n// function init_dim() {\n//   xlen = width / 3;\n//   ylen = height;\n// }\n\n// From\n// https://editor.p5js.org/jht1493/sketches/5LgILr8RF\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/8Iazn1D_P\n// ims black-n white-1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/3VKJ-q8ar\n// ims03-jht scrolling color bars\n\n// https://editor.p5js.org/jht9629-nyu/sketches/Mpgun-Kti\n// ims black-n white-1 bounce\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67701ecd91560dc94ddce0c7",
+        "createdAt": "2025-01-18T22:02:18.220Z",
+        "updatedAt": "2025-01-18T22:02:18.220Z",
+        "id": "67701ecd91560dc94ddce0c7"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67701ecd91560dc94ddce0c6",
+        "createdAt": "2025-01-18T22:02:18.220Z",
+        "updatedAt": "2025-01-18T22:02:18.220Z",
+        "id": "67701ecd91560dc94ddce0c6"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67701ecd91560dc94ddce0c8",
+        "createdAt": "2025-01-18T22:02:18.220Z",
+        "updatedAt": "2025-01-18T22:02:18.220Z",
+        "id": "67701ecd91560dc94ddce0c8"
+      }
+    ],
+    "createdAt": "2024-12-28T15:52:45.595Z",
+    "updatedAt": "2025-01-18T22:02:18.220Z",
+    "id": "bpUutVbYo"
+  },
+  {
+    "_id": "LYxwpUWAG",
+    "name": "ims black-n rgg-1 bounce copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "678ff15088ca65d72b6e9d21",
+          "678ff15088ca65d72b6e9d22",
+          "678ff15088ca65d72b6e9d23"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "678ff15088ca65d72b6e9d20",
+        "createdAt": "2025-01-21T22:48:27.088Z",
+        "updatedAt": "2025-01-21T22:48:27.088Z",
+        "id": "678ff15088ca65d72b6e9d20"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/LYxwpUWAG\n// ims noise rgg\n\nlet my = {};\n\nfunction setup() {\n  my.noiseScale = 0.005;\n  my.bgAlpha = 5;\n  my.width = 400;\n  my.height = 400;\n  my.xpos = 0;\n  my.ypos = 0;\n  my.xspeed = 1;\n  my.yspeed = 1;\n  // my.xlen = 0;\n  // my.ylen = 0;\n  my.debug = 1;\n  // my.fullScreenBtn = 0;\n  my.startTime = 0;\n  my.changeTime = 5.0;\n  my.colors = [\"red\", \"green\", \"gold\"];\n  my.colorIndex = 0;\n\n  if (!my.debug) {\n    my.width = windowWidth;\n    my.height = windowHeight;\n  }\n  createCanvas(my.width, my.height);\n  noStroke();\n\n  my.fullScreenBtn = createButton(\"Full Screen\");\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style(\"font-size:42px\");\n\n  my.startTime = millis() / 1000.0;\n\n  new_pos();\n\n  // init_dim();\n}\n\nfunction draw() {\n  background(0, my.bgAlpha);\n  // strokeWeight(0);\n  // fill(\"black\");\n  // rect(0, 0, width, height);\n  check_time();\n\n  strokeWeight(1);\n  // stroke(255);\n  stroke(my.colors[my.colorIndex]);\n\n  line(0, my.ypos, width, my.ypos);\n\n  line(my.xpos, 0, my.xpos, height);\n\n  // next_bounce()\n  next_noise();\n}\n\nfunction next_noise() {\n  my.xpos = noise(frameCount * my.noiseScale, 0) * width;\n  my.ypos = noise(frameCount * my.noiseScale, 1) * height;\n  // changeColor()\n}\n\nfunction next_bounce() {\n  my.ypos += my.yspeed;\n  if (my.ypos > height || my.ypos < 0) {\n    my.yspeed *= -1;\n    changeColor();\n  }\n  my.xpos += my.xspeed;\n  if (my.xpos > width || my.xpos < 0) {\n    my.xspeed *= -1;\n    changeColor();\n  }\n}\n\nfunction changeColor() {\n  my.colorIndex = (my.colorIndex + 1) % my.colors.length;\n}\n\nfunction new_pos() {\n  my.xpos = random(0, width);\n  my.ypos = random(0, height);\n}\n\nfunction check_time() {\n  let now = millis() / 1000;\n  if (now - my.startTime > my.changeTime) {\n    my.startTime = now;\n    changeColor();\n  }\n}\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/8Iazn1D_P\n// ims black-n white-1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/3VKJ-q8ar\n// ims03-jht scrolling color bars\n\n// https://editor.p5js.org/jht9629-nyu/sketches/Mpgun-Kti\n// ims black-n white-1 bounce\n\n// https://editor.p5js.org/p5name/sketches/bpUutVbYo\n// ims black-n rgg-1 bounce\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "678ff15088ca65d72b6e9d22",
+        "createdAt": "2025-01-21T22:48:27.088Z",
+        "updatedAt": "2025-01-21T22:48:27.088Z",
+        "id": "678ff15088ca65d72b6e9d22"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678ff15088ca65d72b6e9d21",
+        "createdAt": "2025-01-21T22:48:27.088Z",
+        "updatedAt": "2025-01-21T22:48:27.088Z",
+        "id": "678ff15088ca65d72b6e9d21"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678ff15088ca65d72b6e9d23",
+        "createdAt": "2025-01-21T22:48:27.088Z",
+        "updatedAt": "2025-01-21T22:48:27.088Z",
+        "id": "678ff15088ca65d72b6e9d23"
+      }
+    ],
+    "createdAt": "2025-01-21T19:11:12.209Z",
+    "updatedAt": "2025-01-21T22:48:27.088Z",
+    "id": "LYxwpUWAG"
+  },
+  {
+    "_id": "IfOxC4gMZ",
+    "name": "ims black-n rgg-1 gitter",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "678c5732ff47011604f7b367",
+          "678c5732ff47011604f7b368",
+          "678c5732ff47011604f7b369"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "678c5732ff47011604f7b366",
+        "createdAt": "2025-01-19T01:40:36.180Z",
+        "updatedAt": "2025-01-19T01:40:36.180Z",
+        "id": "678c5732ff47011604f7b366"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/IfOxC4gMZ\n// ims black-n rgg-1 gitter\n\nlet my = {};\n\nfunction setup() {\n  my.strokeWeights = [1,2,4]\n  my.gitter = 10;\n  my.bgAlpha = 5;\n  my.width = 400;\n  my.height = 400;\n  my.xpos = 0;\n  my.ypos = 0;\n  my.xspeed = 1;\n  my.yspeed = 1;\n  // my.xlen = 0;\n  // my.ylen = 0;\n  my.debug = 1;\n  // my.fullScreenBtn = 0;\n  my.startTime = 0;\n  my.changeTime = 5.0;\n  my.colors = [\"red\", \"green\", \"gold\"];\n  my.colorIndex = 0;\n\n  if (!my.debug) {\n    my.width = windowWidth;\n    my.height = windowHeight;\n  }\n  createCanvas(my.width, my.height);\n  noStroke();\n\n  my.fullScreenBtn = createButton(\"Full Screen\");\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style(\"font-size:42px\");\n\n  my.startTime = millis() / 1000.0;\n\n  new_pos();\n\n}\n\nfunction draw() {\n  background(0, my.bgAlpha);\n\n  strokeWeight(random(my.strokeWeights));\n  // stroke(255);\n  stroke(my.colors[my.colorIndex]);\n\n  let x = my.xpos + random(-my.gitter,my.gitter);\n  let y = my.ypos + random(-my.gitter,my.gitter);\n  \n  line(0, y, width, y);\n\n  line(x, 0, x, height);\n\n  update_bounce();\n}\n\nfunction update_bounce() {\n  my.ypos += my.yspeed;\n  if (my.ypos > height || my.ypos < 0) {\n    my.yspeed *= -1;\n    changeColor();\n  }\n  my.xpos += my.xspeed ;\n  if (my.xpos > width || my.xpos < 0) {\n    my.xspeed *= -1;\n    changeColor();\n  }\n}\n\nfunction changeColor() {\n  my.colorIndex = (my.colorIndex + 1) % my.colors.length;\n}\n\nfunction new_pos() {\n  my.xpos = random(0, width);\n  my.ypos = random(0, height);\n}\n\nfunction check_time() {\n  let now = millis() / 1000;\n  if (now - my.startTime > my.changeTime) {\n    my.startTime = now;\n    new_pos();\n  }\n}\n\n// From\n// https://editor.p5js.org/jht1493/sketches/5LgILr8RF\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/8Iazn1D_P\n// ims black-n white-1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/3VKJ-q8ar\n// ims03-jht scrolling color bars\n\n// https://editor.p5js.org/jht9629-nyu/sketches/Mpgun-Kti\n// ims black-n white-1 bounce\n\n// https://editor.p5js.org/p5name/sketches/bpUutVbYo\n// ims black-n rgg-1 bounce\n\n// https://thecodingtrain.com/tracks/the-nature-of-code-2/noc/perlin/intro-to-perlin-noise\n\n// https://editor.p5js.org/p5name/sketches/vlm26-OWl\n// ims black-n rgg-1 noise\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "678c5732ff47011604f7b368",
+        "createdAt": "2025-01-19T01:40:36.180Z",
+        "updatedAt": "2025-01-19T01:40:36.180Z",
+        "id": "678c5732ff47011604f7b368"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678c5732ff47011604f7b367",
+        "createdAt": "2025-01-19T01:40:36.180Z",
+        "updatedAt": "2025-01-19T01:40:36.180Z",
+        "id": "678c5732ff47011604f7b367"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678c5732ff47011604f7b369",
+        "createdAt": "2025-01-19T01:40:36.180Z",
+        "updatedAt": "2025-01-19T01:40:36.180Z",
+        "id": "678c5732ff47011604f7b369"
+      }
+    ],
+    "createdAt": "2025-01-19T01:36:50.439Z",
+    "updatedAt": "2025-01-19T01:40:36.180Z",
+    "id": "IfOxC4gMZ"
+  },
+  {
+    "_id": "vlm26-OWl",
+    "name": "ims black-n rgg-1 noise",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "678c494dff47011604f7b363",
+          "678c494dff47011604f7b364",
+          "678c494dff47011604f7b365"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "678c494dff47011604f7b362",
+        "createdAt": "2025-01-19T01:35:36.899Z",
+        "updatedAt": "2025-01-19T01:35:36.899Z",
+        "id": "678c494dff47011604f7b362"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/vlm26-OWl\n// ims black-n rgg-1 noise\n\nlet my = {};\n\nfunction setup() {\n  init_noise();\n  my.gitter = 10;\n  my.bgAlpha = 5;\n  my.width = 400;\n  my.height = 400;\n  my.xpos = 0;\n  my.ypos = 0;\n  my.xspeed = 1;\n  my.yspeed = 1;\n  // my.xlen = 0;\n  // my.ylen = 0;\n  my.debug = 1;\n  // my.fullScreenBtn = 0;\n  my.startTime = 0;\n  my.changeTime = 5.0;\n  my.colors = [\"red\", \"green\", \"gold\"];\n  my.colorIndex = 0;\n\n  if (!my.debug) {\n    my.width = windowWidth;\n    my.height = windowHeight;\n  }\n  createCanvas(my.width, my.height);\n  noStroke();\n\n  my.fullScreenBtn = createButton(\"Full Screen\");\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style(\"font-size:42px\");\n\n  my.startTime = millis() / 1000.0;\n\n  new_pos();\n\n  // init_dim();\n}\n\nfunction draw() {\n  background(0, my.bgAlpha);\n\n  strokeWeight(1);\n  // stroke(255);\n  stroke(my.colors[my.colorIndex]);\n\n  let x = my.xpos + random(-my.gitter,my.gitter);\n  let y = my.ypos + random(-my.gitter,my.gitter);\n  \n  line(0, y, width, y);\n\n  line(x, 0, x, height);\n\n  // update_noise()\n  update_bounce();\n}\n\nfunction init_noise() {\n  my.noiseX = 0;\n  my.noiseY = 0;\n  my.noiseOffset1 = 0;\n  my.noiseOffset2 = 10000;\n  my.noiseDelta = 0.01\n}\n\nfunction update_noise() {\n  my.noiseX = noise(my.noiseOffset1);\n  my.noiseY = noise(my.noiseOffset2);\n\n  my.noiseOffset1 += my.noiseDelta;\n  my.noiseOffset2 += my.noiseDelta;\n}\n\nfunction update_bounce() {\n  my.ypos += my.yspeed + my.noiseY;\n  if (my.ypos > height || my.ypos < 0) {\n    my.yspeed *= -1;\n    changeColor();\n  }\n  my.xpos += my.xspeed + my.noiseX;\n  if (my.xpos > width || my.xpos < 0) {\n    my.xspeed *= -1;\n    changeColor();\n  }\n}\n\nfunction changeColor() {\n  my.colorIndex = (my.colorIndex + 1) % my.colors.length;\n}\n\nfunction new_pos() {\n  my.xpos = random(0, width);\n  my.ypos = random(0, height);\n}\n\nfunction check_time() {\n  let now = millis() / 1000;\n  if (now - my.startTime > my.changeTime) {\n    my.startTime = now;\n    new_pos();\n  }\n}\n\n// From\n// https://editor.p5js.org/jht1493/sketches/5LgILr8RF\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/8Iazn1D_P\n// ims black-n white-1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/3VKJ-q8ar\n// ims03-jht scrolling color bars\n\n// https://editor.p5js.org/jht9629-nyu/sketches/Mpgun-Kti\n// ims black-n white-1 bounce\n\n// https://editor.p5js.org/p5name/sketches/bpUutVbYo\n// ims black-n rgg-1 bounce\n\n// https://thecodingtrain.com/tracks/the-nature-of-code-2/noc/perlin/intro-to-perlin-noise\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "678c494dff47011604f7b364",
+        "createdAt": "2025-01-19T01:35:36.899Z",
+        "updatedAt": "2025-01-19T01:35:36.899Z",
+        "id": "678c494dff47011604f7b364"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678c494dff47011604f7b363",
+        "createdAt": "2025-01-19T01:35:36.899Z",
+        "updatedAt": "2025-01-19T01:35:36.899Z",
+        "id": "678c494dff47011604f7b363"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678c494dff47011604f7b365",
+        "createdAt": "2025-01-19T01:35:36.899Z",
+        "updatedAt": "2025-01-19T01:35:36.899Z",
+        "id": "678c494dff47011604f7b365"
+      }
+    ],
+    "createdAt": "2025-01-19T00:37:33.100Z",
+    "updatedAt": "2025-01-19T01:35:36.899Z",
+    "id": "vlm26-OWl"
+  },
+  {
+    "_id": "yeNilEnD4",
+    "name": "ims black-n white-1 bounce copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67ae11bcfdfccd80d6dbc20f",
+          "67ae11bcfdfccd80d6dbc210",
+          "67ae11bcfdfccd80d6dbc211"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67ae11bcfdfccd80d6dbc20e",
+        "createdAt": "2025-02-13T15:40:30.202Z",
+        "updatedAt": "2025-02-13T15:40:30.202Z",
+        "id": "67ae11bcfdfccd80d6dbc20e"
+      },
+      {
+        "name": "sketch.js",
+        "content": "\n// https://editor.p5js.org/p5name/sketches/yeNilEnD4\n// ims black-n white-1 bounce copy\n//\n// white cross bounces around \n// switches to random location every my.changeTime seconds\n\nlet my = {};\n\nfunction setup() {\n  my.width = 400;\n  my.height = 400;\n  my.xpos = 0;\n  my.ypos = 0;\n  my.xspeed = 1;\n  my.yspeed = 1;\n  // my.xlen = 0;\n  // my.ylen = 0;\n  my.debug = 1;\n  // my.fullScreenBtn = 0;\n  my.startTime = 0;\n  my.changeTime = 5.0;\n\n  if (!my.debug) {\n    my.width = windowWidth;\n    my.height = windowHeight;\n  }\n  createCanvas(my.width, my.height);\n  noStroke();\n\n  my.fullScreenBtn = createButton(\"Full Screen\");\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style(\"font-size:42px\");\n\n  my.startTime = millis() / 1000.0;\n\n  new_pos();\n\n  // init_dim();\n}\n\nfunction draw() {\n  background(0);\n  // strokeWeight(0);\n  // fill(\"black\");\n  // rect(0, 0, width, height);\n  check_time();\n  \n  strokeWeight(1);\n  stroke(255);\n\n  line(0, my.ypos, width, my.ypos);\n\n  line(my.xpos, 0, my.xpos, height);\n\n  my.ypos += my.yspeed;\n  if (my.ypos > height || my.ypos < 0) {\n    my.yspeed *= -1;\n  }\n  my.xpos += my.xspeed;\n  if (my.xpos > width || my.xpos < 0) {\n    my.xspeed *= -1;\n  }\n}\n\nfunction new_pos() {\n  my.xpos = random(0, width);\n  my.ypos = random(0, height);\n}\n\nfunction check_time() {\n  let now = millis() / 1000;\n  if (now - my.startTime > my.changeTime) {\n    my.startTime = now;\n    new_pos();\n  }\n}\n\n\n// From\n// https://editor.p5js.org/jht1493/sketches/5LgILr8RF\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/8Iazn1D_P\n// ims black-n white-1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/3VKJ-q8ar\n// ims03-jht scrolling color bars\n\n// https://editor.p5js.org/jht9629-nyu/sketches/Mpgun-Kti\n// ims black-n white-1 bounce \n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67ae11bcfdfccd80d6dbc210",
+        "createdAt": "2025-02-13T15:40:30.202Z",
+        "updatedAt": "2025-02-13T15:40:30.202Z",
+        "id": "67ae11bcfdfccd80d6dbc210"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67ae11bcfdfccd80d6dbc20f",
+        "createdAt": "2025-02-13T15:40:30.202Z",
+        "updatedAt": "2025-02-13T15:40:30.202Z",
+        "id": "67ae11bcfdfccd80d6dbc20f"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67ae11bcfdfccd80d6dbc211",
+        "createdAt": "2025-02-13T15:40:30.202Z",
+        "updatedAt": "2025-02-13T15:40:30.202Z",
+        "id": "67ae11bcfdfccd80d6dbc211"
+      }
+    ],
+    "createdAt": "2025-02-13T15:37:32.752Z",
+    "updatedAt": "2025-02-13T15:40:30.202Z",
+    "id": "yeNilEnD4"
+  },
+  {
+    "_id": "OX8NM-0MQ",
+    "name": "ims black-n white-1 copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "65b3266f49eba189599ef512",
+          "65b3266f49eba189599ef513",
+          "65b3266f49eba189599ef514"
+        ],
+        "fileType": "folder",
+        "_id": "65b3266f49eba189599ef511",
+        "createdAt": "2024-01-26T03:23:19.844Z",
+        "updatedAt": "2024-01-26T03:23:19.844Z",
+        "isSelectedFile": false,
+        "id": "65b3266f49eba189599ef511"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-nyu/sketches/8Iazn1D_P\n// ims black-n white-1\n\nlet xpos = 0;\nlet ypos = 0;\nlet xlen;\nlet ylen;\nlet debug = 1;\nlet dim = { width: 400, height: 400 };\nlet fullScreenBtn;\nlet startTime;\nlet changeTime = 30.0;\n\nfunction setup() {\n  if (!debug) {\n    dim.width = windowWidth;\n    dim.height = windowHeight;\n  }\n  createCanvas(dim.width, dim.height);\n  noStroke();\n\n  fullScreenBtn = createButton(\"Full Screen\")\n  fullScreenBtn.mousePressed(full_screen_action);\n  fullScreenBtn.style(\"font-size:42px\");\n\n  startTime = millis() / 1000.0;\n  \n  new_pos();\n\n  init_dim();\n}\n\nfunction draw() {\n  background(0);\n  // strokeWeight(0);\n  // fill(\"black\");\n  // rect(0, 0, width, height);\n\n  strokeWeight(1);\n  stroke(255);\n  // point(xpos, ypos);\n  line(0, ypos, width, ypos);\n  line(xpos, 0, xpos, height);\n  \n  let now = millis() / 1000;\n  if (now - startTime > changeTime) {\n    startTime = now;\n    new_pos();\n  }\n}\n\nfunction new_pos() {\n  xpos = random(0, width);\n  ypos = random(0, height);\n}\n\nfunction init_dim() {\n  xlen = width / 3;\n  ylen = height;\n}\n\n// From\n// https://editor.p5js.org/jht1493/sketches/5LgILr8RF\n\nfunction full_screen_action() {\n  ui_remove_all();\n  ui_toggleFullScreen();\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  init_dim();\n}\n\nfunction ui_remove_all() {\n  fullScreenBtn.remove();\n}\n\nfunction ui_toggleFullScreen() {\n  fullscreen(1);\n  // if (!document.documentElement.requestFullscreen) {\n  //   console.log(\"NO document.documentElement.requestFullscreen\");\n  //   return;\n  // }\n  // if (!document.fullscreenElement) {\n  //   document.documentElement.requestFullscreen();\n  // } else {\n  //   if (document.exitFullscreen) {\n  //     document.exitFullscreen();\n  //   }\n  // }\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/3VKJ-q8ar\n// ims03-jht scrolling color bars\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65b3266f49eba189599ef513",
+        "isSelectedFile": true,
+        "createdAt": "2024-01-26T03:23:19.844Z",
+        "updatedAt": "2024-01-26T03:23:19.844Z",
+        "id": "65b3266f49eba189599ef513"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65b3266f49eba189599ef512",
+        "createdAt": "2024-01-26T03:23:19.844Z",
+        "updatedAt": "2024-01-26T03:23:19.844Z",
+        "isSelectedFile": false,
+        "id": "65b3266f49eba189599ef512"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65b3266f49eba189599ef514",
+        "createdAt": "2024-01-26T03:23:19.844Z",
+        "updatedAt": "2024-01-26T03:23:19.844Z",
+        "isSelectedFile": false,
+        "id": "65b3266f49eba189599ef514"
+      }
+    ],
+    "createdAt": "2024-01-26T03:26:39.630Z",
+    "updatedAt": "2024-01-26T03:26:39.630Z",
+    "id": "OX8NM-0MQ"
+  },
+  {
+    "_id": "nvk_blNlZ",
+    "name": "ims black-n white-1 copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "65b2d560219d2961a8200cb9",
+          "65b2d560219d2961a8200cba",
+          "65b2d560219d2961a8200cbb"
+        ],
+        "fileType": "folder",
+        "_id": "65b2d560219d2961a8200cb8",
+        "createdAt": "2024-03-08T11:11:05.545Z",
+        "updatedAt": "2024-03-08T11:11:05.545Z",
+        "isSelectedFile": false,
+        "id": "65b2d560219d2961a8200cb8"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-nyu/sketches/8Iazn1D_P\n// ims black-n white-1\n\nlet xpos = 0;\nlet ypos = 0;\nlet xlen;\nlet ylen;\nlet debug = 1;\nlet dim = { width: 400, height: 400 };\nlet fullScreenBtn;\n\nfunction setup() {\n  if (!debug) {\n    dim.width = windowWidth;\n    dim.height = windowHeight;\n  }\n  createCanvas(dim.width, dim.height);\n  noStroke();\n\n  fullScreenBtn = createButton(\"Full Screen\").mousePressed(full_screen_action);\n  fullScreenBtn.style(\"font-size:42px\");\n\n  init_dim();\n}\n\nfunction draw() {\n  // background(220);\n  fill(\"black\");\n  rect(0,0,width,height)\n  strokeWeight(1)\n  stroke(255)\n  // xpos = random(0,width)\n  // ypos = random(0,height)\n  point(xpos,ypos);\n//   rect(0, 0, xpos, ylen);\n//   fill(\"red\");\n//   rect(xpos % width, 0, xlen, ylen);\n//   fill(\"green\");\n//   rect((xpos + xlen) % width, 0, xlen, ylen);\n//   fill(\"yellow\");\n//   rect((xpos + xlen + xlen) % width, 0, xlen, ylen);\n\n  xpos = (xpos + 1) % width;\n}\n\nfunction init_dim() {\n  xlen = width / 3;\n  ylen = height;\n}\n\n// From\n// https://editor.p5js.org/jht1493/sketches/5LgILr8RF\n\nfunction full_screen_action() {\n  ui_remove_all();\n  ui_toggleFullScreen();\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  init_dim();\n}\n\nfunction ui_remove_all() {\n  fullScreenBtn.remove();\n}\n\nfunction ui_toggleFullScreen() {\n  fullscreen(1);\n  // if (!document.documentElement.requestFullscreen) {\n  //   console.log(\"NO document.documentElement.requestFullscreen\");\n  //   return;\n  // }\n  // if (!document.fullscreenElement) {\n  //   document.documentElement.requestFullscreen();\n  // } else {\n  //   if (document.exitFullscreen) {\n  //     document.exitFullscreen();\n  //   }\n  // }\n}\n\n\n\n// https://editor.p5js.org/jht9629-nyu/sketches/3VKJ-q8ar\n// ims03-jht scrolling color bars\n\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65b2d560219d2961a8200cba",
+        "isSelectedFile": true,
+        "createdAt": "2024-03-08T11:11:05.545Z",
+        "updatedAt": "2024-03-08T11:11:05.545Z",
+        "id": "65b2d560219d2961a8200cba"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65b2d560219d2961a8200cb9",
+        "createdAt": "2024-03-08T11:11:05.545Z",
+        "updatedAt": "2024-03-08T11:11:05.545Z",
+        "isSelectedFile": false,
+        "id": "65b2d560219d2961a8200cb9"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65b2d560219d2961a8200cbb",
+        "createdAt": "2024-03-08T11:11:05.545Z",
+        "updatedAt": "2024-03-08T11:11:05.545Z",
+        "isSelectedFile": false,
+        "id": "65b2d560219d2961a8200cbb"
+      }
+    ],
+    "createdAt": "2024-01-25T21:40:48.324Z",
+    "updatedAt": "2024-03-08T11:11:05.545Z",
+    "id": "nvk_blNlZ"
+  },
+  {
+    "_id": "TU9CrJ1di",
+    "name": "ims noise class",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "678d5539c14a94dc99282c84",
+          "678d5539c14a94dc99282c83",
+          "678d5539c14a94dc99282c85"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "678d5539c14a94dc99282c86",
+        "createdAt": "2025-01-23T14:31:24.906Z",
+        "updatedAt": "2025-01-23T14:31:24.906Z",
+        "id": "678d5539c14a94dc99282c86"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/TU9CrJ1di\n// ims noise class\n\nlet my = {};\n\nlet alphaRed = [255, 0, 0, 80];\nlet alphaGreen = [0, 255, 0, 80];\nlet alphaGold = [255, 214, 0, 80];\nlet colors = [alphaRed, alphaGreen, alphaGold];\nlet colorIndex = 0;\nlet colorCount = 0;\nlet colorCountMax = 360;\n\nfunction setup() {\n  my.backAlpha = 10;\n  my.clearSecs = 60;\n  my.canv = createCanvas(windowWidth, windowHeight - 55);\n  my.ln1 = new LineNoise();\n  // my.ln2 = new LineNoise({ start: 10000, rot: 45, color: alphaRed });\n  // my.ln3 = new LineNoise({ start: 30000, rot: 90, color: alphaGreen });\n  // my.ln4 = new LineNoise({ start: 40000, rot: 180, color: alphaGold });\n\n  setup_fullScreenBtn();\n}\n\nfunction draw() {\n  let backAlpha = my.backAlpha;\n  let nframes = floor(frameRate() * my.clearSecs);\n  if (frameCount % nframes == 0) {\n    // backAlpha = 255;\n  }\n  background(0, backAlpha);\n  noFill();\n\n  set_color();\n\n  my.ln1.draw();\n  // my.ln2.draw();\n  // my.ln3.draw();\n  // my.ln4.draw();\n}\n\nfunction set_color() {\n  let col = colors[colorIndex];\n  stroke(col);\n  colorCount = (colorCount + 1) % colorCountMax;\n  if (colorCount == 0) {\n    colorIndex = (colorIndex + 1) % colors.length;\n  }\n}\n\n// { inc, start, rot, rotDelta, incAccel }\nclass LineNoise {\n  constructor(props) {\n    // default properties\n    this.inc = 0.001;\n    // this. inc = 0.02;\n    this.start = 0;\n    this.rot = 0;\n    // this. rotDelta = 0.0;\n    this.rotDelta = 0.2;\n    this.incAccel = 6;\n    // this. incAccel = 2;\n    // this.color = 255;\n    Object.assign(this, props);\n    console.log('LineNoise start', this.start, this.color);\n  }\n\n  draw() {\n    push();\n\n    translate(width / 2, height / 2);\n    rotate(radians(this.rot));\n    this.rot = this.rot + this.rotDelta;\n    if (this.color) {\n      stroke(this.color);\n    }\n    beginShape();\n    let xoff = this.start;\n    for (let x = -width; x < width; x++) {\n      // let y = random(height);\n      let y = (noise(xoff) - 0.5) * height;\n      vertex(x, y);\n\n      xoff += this.inc;\n    }\n    endShape();\n\n    this.start += this.inc * this.incAccel;\n\n    pop();\n  }\n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\nfunction setup_fullScreenBtn() {\n  my.fullScreenBtn = createButton('Full Screen');\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style('font-size:42px');\n}\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// Graphing 1D Perlin Noise (1D Noise Graph)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// p5.js/1.11.1\n\n// https://editor.p5js.org/p5name/sketches/ZO-2p0H5_\n// ims noise rotate\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "678d5539c14a94dc99282c83",
+        "createdAt": "2025-01-23T14:31:24.906Z",
+        "updatedAt": "2025-01-23T14:31:24.906Z",
+        "id": "678d5539c14a94dc99282c83"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678d5539c14a94dc99282c84",
+        "createdAt": "2025-01-23T14:31:24.906Z",
+        "updatedAt": "2025-01-23T14:31:24.906Z",
+        "id": "678d5539c14a94dc99282c84"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678d5539c14a94dc99282c85",
+        "createdAt": "2025-01-23T14:31:24.906Z",
+        "updatedAt": "2025-01-23T14:31:24.906Z",
+        "id": "678d5539c14a94dc99282c85"
+      }
+    ],
+    "updatedAt": "2025-01-23T14:31:24.906Z",
+    "createdAt": "2025-01-19T19:41:05.725Z",
+    "id": "TU9CrJ1di"
+  },
+  {
+    "_id": "MK6RGpvmi",
+    "name": "ims noise class trim",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6792539981e9945c4f962e01",
+          "6792539981e9945c4f962e02",
+          "6792539981e9945c4f962e03"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "6792539981e9945c4f962e00",
+        "createdAt": "2025-01-23T14:47:24.102Z",
+        "updatedAt": "2025-01-23T14:47:24.102Z",
+        "id": "6792539981e9945c4f962e00"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/MK6RGpvmi\n// ims noise class trim\n\nlet my = {};\n\n\nfunction setup() {\n  my.backAlpha = 10;\n  my.canv = createCanvas(windowWidth, windowHeight - 55);\n  my.ln1 = new LineNoise();\n\n  my.time = 0;\n  my.timeMax = 5 * 1000; // milliseconds to change color\n\n  let alphaRed = [255, 0, 0, 80];\n  let alphaGreen = [0, 255, 0, 80];\n  let alphaGold = [255, 214, 0, 80];\n  my.colors =  [alphaRed, alphaGreen, alphaGold];\n  my.colorIndex = 0;\n\n  setup_fullScreenBtn();\n}\n\nfunction draw() {\n  my.time += deltaTime;\n  if (my.time > my.timeMax) {\n    my.time = 0;\n    // change color\n    my.colorIndex = (my.colorIndex+1) % my.colors.length;\n  }\n\n  background(0, my.backAlpha);\n  noFill();\n\n  set_color();\n\n  my.ln1.draw();\n}\n\nfunction set_color() {\n  let scolor = my.colors[my.colorIndex];\n  stroke(scolor);\n}\n\n// { inc, start, rot, rotDelta, incAccel }\nclass LineNoise {\n  constructor(props) {\n    // default properties\n    this.inc = 0.001;\n    this.start = 0;\n    this.rot = 0;\n    this.rotDelta = 0.2;\n    this.incAccel = 6;\n    // this.color = 255;\n    Object.assign(this, props);\n    console.log('LineNoise start', this.start, this.color);\n  }\n\n  draw() {\n    push();\n\n    translate(width / 2, height / 2);\n    rotate(radians(this.rot));\n    this.rot = this.rot + this.rotDelta;\n    if (this.color) {\n      stroke(this.color);\n    }\n    beginShape();\n    let xoff = this.start;\n    for (let x = -width; x < width; x++) {\n      // let y = random(height);\n      let y = (noise(xoff) - 0.5) * height;\n      vertex(x, y);\n\n      xoff += this.inc;\n    }\n    endShape();\n\n    this.start += this.inc * this.incAccel;\n\n    pop();\n  }\n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\nfunction setup_fullScreenBtn() {\n  my.fullScreenBtn = createButton('Full Screen');\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style('font-size:42px');\n}\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// Graphing 1D Perlin Noise (1D Noise Graph)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// p5.js/1.11.1\n\n// https://editor.p5js.org/p5name/sketches/ZO-2p0H5_\n// ims noise rotate\n\n// https://editor.p5js.org/p5name/sketches/TU9CrJ1di\n// ims noise class\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "6792539981e9945c4f962e02",
+        "createdAt": "2025-01-23T14:47:24.102Z",
+        "updatedAt": "2025-01-23T14:47:24.102Z",
+        "id": "6792539981e9945c4f962e02"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6792539981e9945c4f962e01",
+        "createdAt": "2025-01-23T14:47:24.102Z",
+        "updatedAt": "2025-01-23T14:47:24.102Z",
+        "id": "6792539981e9945c4f962e01"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6792539981e9945c4f962e03",
+        "createdAt": "2025-01-23T14:47:24.102Z",
+        "updatedAt": "2025-01-23T14:47:24.102Z",
+        "id": "6792539981e9945c4f962e03"
+      }
+    ],
+    "createdAt": "2025-01-23T14:35:05.168Z",
+    "updatedAt": "2025-01-23T14:47:24.102Z",
+    "id": "MK6RGpvmi"
+  },
+  {
+    "_id": "ZO-2p0H5_",
+    "name": "ims noise rotate",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "678cccde537edf514e40275c",
+          "678cccde537edf514e40275d",
+          "678cccde537edf514e40275e"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "678cccde537edf514e40275b",
+        "createdAt": "2025-01-19T19:40:33.931Z",
+        "updatedAt": "2025-01-19T19:40:33.931Z",
+        "id": "678cccde537edf514e40275b"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/ZO-2p0H5_\n// ims noise rotate\n\nlet inc = 0.001;\n// let inc = 0.02;\nlet start = 0;\nlet rot = 0;\n// let rotDelta = 0.0;\nlet rotDelta = 0.2;\nlet incAccel = 6;\n// let incAccel = 2;\nlet my = {};\n\nfunction setup() {\n  my.canv = createCanvas(windowWidth, windowHeight);\n}\n\nfunction draw() {\n  background(0,10);\n  \n  translate(width/2, height/2)\n  rotate(radians(rot))\n  rot =  (rot + rotDelta) ;\n  stroke(255);\n  noFill();\n  beginShape();\n  let xoff = start;\n  for (let x = -width; x < width; x++) {\n    stroke(255);\n    // let y = random(height);\n    let y = (noise(xoff) - 0.5) * height;\n    vertex(x, y);\n    \n    xoff += inc;\n  }\n  endShape();\n  \n  start += inc * incAccel;\n}\n\n\n// Graphing 1D Perlin Noise (1D Noise Graph)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "678cccde537edf514e40275d",
+        "createdAt": "2025-01-19T19:40:33.931Z",
+        "updatedAt": "2025-01-19T19:40:33.931Z",
+        "id": "678cccde537edf514e40275d"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678cccde537edf514e40275c",
+        "createdAt": "2025-01-19T19:40:33.931Z",
+        "updatedAt": "2025-01-19T19:40:33.931Z",
+        "id": "678cccde537edf514e40275c"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678cccde537edf514e40275e",
+        "createdAt": "2025-01-19T19:40:33.931Z",
+        "updatedAt": "2025-01-19T19:40:33.931Z",
+        "id": "678cccde537edf514e40275e"
+      }
+    ],
+    "createdAt": "2025-01-19T09:58:54.966Z",
+    "updatedAt": "2025-01-19T19:40:33.931Z",
+    "id": "ZO-2p0H5_"
+  },
+  {
+    "_id": "h2G8X82wt",
+    "name": "ims perlin v1",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "678eb4eaeb599d6084dcc4d0",
+          "678eb4eaeb599d6084dcc4d1",
+          "678eb4eaeb599d6084dcc4d2"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "678eb4eaeb599d6084dcc4cf",
+        "createdAt": "2025-01-20T23:44:26.989Z",
+        "updatedAt": "2025-01-20T23:44:26.989Z",
+        "id": "678eb4eaeb599d6084dcc4cf"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n\nlet xoff1 = 0;\nlet xstep = 0.01;\nlet xscale = 1.2;\n// let xoff2 = 10000;\n\nfunction setup() {\n  createCanvas(500, 400);\n  background(200)\n  // noStroke();\n}\n\nfunction draw() {\n  // background(50, 5);\n\n  let x = map(noise(xoff1, 0) * xscale, 0, 1, 0, width);\n  let y = map(noise(xoff1, 1) * xscale, 0, 1, 0, height);\n  // let y = map(noise(xoff2), 0, 1, 0, height);\n\n  xoff1 += xstep;\n  // xoff2 += 0.01;\n\n  ellipse(x, y, 24, 24);\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "678eb4eaeb599d6084dcc4d1",
+        "createdAt": "2025-01-20T23:44:26.989Z",
+        "updatedAt": "2025-01-20T23:44:26.989Z",
+        "id": "678eb4eaeb599d6084dcc4d1"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678eb4eaeb599d6084dcc4d0",
+        "createdAt": "2025-01-20T23:44:26.989Z",
+        "updatedAt": "2025-01-20T23:44:26.989Z",
+        "id": "678eb4eaeb599d6084dcc4d0"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "678eb4eaeb599d6084dcc4d2",
+        "createdAt": "2025-01-20T23:44:26.989Z",
+        "updatedAt": "2025-01-20T23:44:26.989Z",
+        "id": "678eb4eaeb599d6084dcc4d2"
+      }
+    ],
+    "createdAt": "2025-01-20T20:41:14.450Z",
+    "updatedAt": "2025-01-20T23:44:26.989Z",
+    "id": "h2G8X82wt"
+  },
+  {
+    "_id": "Ce9F9d_lu",
+    "name": "ims perlin v2",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67919bf63c15fd16519e8e78",
+          "67919bf63c15fd16519e8e79",
+          "67919bf63c15fd16519e8e7a"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67919bf63c15fd16519e8e77",
+        "createdAt": "2025-01-23T02:00:50.744Z",
+        "updatedAt": "2025-01-23T02:00:50.744Z",
+        "id": "67919bf63c15fd16519e8e77"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/Ce9F9d_lu\n// ims perlin v2\n\nlet xoff1 = 0;\nlet xstep = 0.01;\nlet xscale = 1.2;\n// let xoff2 = 10000;\nlet my = {};\n\nfunction setup() {\n  createCanvas(500, 400);\n  my.backg = 200;\n  background(my.backg)\n  // noStroke();\n  my.x = 0;\n  my.len = height / 20;\n}\n\nfunction draw() {\n  // background(50, 5);\n\n  // let x = map(noise(xoff1, 0) * xscale, 0, 1, 0, width);\n  // let y = map(noise(xoff1, 1) * xscale, 0, 1, 0, height);\n  // let y = map(noise(xoff2), 0, 1, 0, height);\n\n  for (let ytop = 0; ytop < height; ytop += my.len) {\n    xoff1 += xstep;\n    let x = my.x;\n    // let x = noise(my.x, ytop) * width;\n    let ymid = ytop + my.len * 0.5;\n    let len = noise(xoff1, ytop) * my.len;\n    stroke(my.backg);\n    line(x, ytop, x, ytop + my.len);\n    stroke(0);\n    let hlen = len * 0.5;\n    line(x, ymid - hlen, x, ymid + hlen);\n    // line(x, ymid - hlen, x, ytop + my.len);\n  }\n  my.x = (my.x + 1) % width;\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67919bf63c15fd16519e8e79",
+        "createdAt": "2025-01-23T02:00:50.744Z",
+        "updatedAt": "2025-01-23T02:00:50.744Z",
+        "id": "67919bf63c15fd16519e8e79"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67919bf63c15fd16519e8e78",
+        "createdAt": "2025-01-23T02:00:50.744Z",
+        "updatedAt": "2025-01-23T02:00:50.744Z",
+        "id": "67919bf63c15fd16519e8e78"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67919bf63c15fd16519e8e7a",
+        "createdAt": "2025-01-23T02:00:50.744Z",
+        "updatedAt": "2025-01-23T02:00:50.744Z",
+        "id": "67919bf63c15fd16519e8e7a"
+      }
+    ],
+    "createdAt": "2025-01-23T01:31:35.089Z",
+    "updatedAt": "2025-01-23T02:00:50.744Z",
+    "id": "Ce9F9d_lu"
+  },
+  {
+    "_id": "tBsa6f3od",
+    "name": "ims perlin v3",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6791a2d63c15fd16519e8e7c",
+          "6791a2d63c15fd16519e8e7d",
+          "6791a2d63c15fd16519e8e7e"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "6791a2d63c15fd16519e8e7b",
+        "createdAt": "2025-01-23T13:00:43.496Z",
+        "updatedAt": "2025-01-23T13:00:43.496Z",
+        "id": "6791a2d63c15fd16519e8e7b"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/tBsa6f3od\n// ims perlin v3\n\nlet xoff1 = 0;\nlet xstep = 0.01;\nlet xstep2 = 0.005;\nlet xscale = 1.2;\n// let xoff2 = 10000;\nlet my = {};\n\nfunction setup() {\n  createCanvas(500, 400);\n  my.backg = 200;\n  background(my.backg)\n  // noStroke();\n  my.x = 0;\n  my.len = height / 20;\n}\n\nfunction draw() {\n  // background(50, 5);\n\n  for (let ytop = 0; ytop < height; ytop += my.len) {\n    xoff1 += xstep;\n    // let x = my.x;\n    let x = noise(my.x, ytop) * width;\n    let ymid = ytop + my.len * 0.5;\n    let len = noise(xoff1, ytop) * my.len;\n    stroke(my.backg);\n    line(x, ytop, x, ytop + my.len);\n    stroke(0);\n    let hlen = len * 0.5;\n    line(x, ymid - hlen, x, ymid + hlen);\n    // line(x, ymid - hlen, x, ytop + my.len);\n  }\n  my.x += xstep2;\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n\n// https://editor.p5js.org/p5name/sketches/Ce9F9d_lu\n// ims perlin v2\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "6791a2d63c15fd16519e8e7d",
+        "createdAt": "2025-01-23T13:00:43.496Z",
+        "updatedAt": "2025-01-23T13:00:43.496Z",
+        "id": "6791a2d63c15fd16519e8e7d"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6791a2d63c15fd16519e8e7c",
+        "createdAt": "2025-01-23T13:00:43.496Z",
+        "updatedAt": "2025-01-23T13:00:43.496Z",
+        "id": "6791a2d63c15fd16519e8e7c"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6791a2d63c15fd16519e8e7e",
+        "createdAt": "2025-01-23T13:00:43.496Z",
+        "updatedAt": "2025-01-23T13:00:43.496Z",
+        "id": "6791a2d63c15fd16519e8e7e"
+      }
+    ],
+    "createdAt": "2025-01-23T02:00:54.546Z",
+    "updatedAt": "2025-01-23T13:00:43.496Z",
+    "id": "tBsa6f3od"
+  },
+  {
+    "_id": "FdAetYG8Y",
+    "name": "ims perlin v4",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67923b333c15fd16519e8e80",
+          "67923b333c15fd16519e8e81",
+          "67923b333c15fd16519e8e82"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67923b333c15fd16519e8e7f",
+        "createdAt": "2025-01-23T13:05:38.865Z",
+        "updatedAt": "2025-01-23T13:05:38.865Z",
+        "id": "67923b333c15fd16519e8e7f"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/FdAetYG8Y\n// ims perlin v4\n// mirgate to my.\n\nlet my = {};\n\nfunction setup() {\n  createCanvas(500, 400);\n  my.backg = 200;\n  background(my.backg)\n  // noStroke();\n  my.x1 = 0;\n  my.x2 = 0;\n  my.x1step = 0.01;\n  my.x2step = 0.005;\n  my.y1 = 0;\n  my.y2 = 0;\n  my.ylen = height / 20;\n}\n\nfunction draw() {\n  // background(50, 5);\n\n\n  for (let ytop = 0; ytop < height; ytop += my.ylen) {\n    my.x1 += my.x1step;\n    let len = noise(my.x1, ytop) * my.ylen;\n    let x = noise(my.x2, ytop) * width;\n    let ymid = ytop + my.ylen * 0.5;\n    stroke(my.backg);\n    line(x, ytop, x, ytop + my.ylen);\n    stroke(0);\n    let hlen = len * 0.5;\n    line(x, ymid - hlen, x, ymid + hlen);\n    // line(x, ymid - hlen, x, ytop + my.len);\n  }\n  my.x2 += my.x2step;\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n\n// https://editor.p5js.org/p5name/sketches/Ce9F9d_lu\n// ims perlin v2\n\n// https://editor.p5js.org/p5name/sketches/tBsa6f3od\n// ims perlin v3\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67923b333c15fd16519e8e81",
+        "createdAt": "2025-01-23T13:05:38.865Z",
+        "updatedAt": "2025-01-23T13:05:38.865Z",
+        "id": "67923b333c15fd16519e8e81"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67923b333c15fd16519e8e80",
+        "createdAt": "2025-01-23T13:05:38.865Z",
+        "updatedAt": "2025-01-23T13:05:38.865Z",
+        "id": "67923b333c15fd16519e8e80"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67923b333c15fd16519e8e82",
+        "createdAt": "2025-01-23T13:05:38.865Z",
+        "updatedAt": "2025-01-23T13:05:38.865Z",
+        "id": "67923b333c15fd16519e8e82"
+      }
+    ],
+    "createdAt": "2025-01-23T12:50:59.127Z",
+    "updatedAt": "2025-01-23T13:05:38.865Z",
+    "id": "FdAetYG8Y"
+  },
+  {
+    "_id": "eQfSExLDa",
+    "name": "ims perlin v5",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67923ea721d2e9720f65cb7e",
+          "67923ea721d2e9720f65cb7f",
+          "67923ea721d2e9720f65cb80"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67923ea721d2e9720f65cb7d",
+        "createdAt": "2025-01-23T13:27:26.217Z",
+        "updatedAt": "2025-01-23T13:27:26.217Z",
+        "id": "67923ea721d2e9720f65cb7d"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/eQfSExLDa\n// ims perlin v5\n// wave on the y axis\n\nlet my = {};\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight);\n  my.backg = 200;\n  background(my.backg)\n  // noStroke();\n  my.x1 = 0;\n  my.x2 = 0;\n  my.x1step = 0.01;\n  my.x2step = 0.01; // less is tighter x spacing\n  my.y1scale = 0.001;\n  my.ylen = height / 60;\n}\n\nfunction draw() {\n  // background(50, 5);\n\n\n  for (let ytop = 0; ytop < height; ytop += my.ylen) {\n    my.x1 += my.x1step;\n    let ny = ytop * my.y1scale\n    let len = noise(my.x1, ny) * my.ylen;\n    let x = noise(my.x2, ny) * width;\n    let ymid = ytop + my.ylen * 0.5;\n    stroke(my.backg);\n    line(x, ytop, x, ytop + my.ylen);\n    stroke(0);\n    let hlen = len * 0.5;\n    line(x, ymid - hlen, x, ymid + hlen);\n    // line(x, ymid - hlen, x, ytop + my.len);\n  }\n  my.x2 += my.x2step;\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n\n// https://editor.p5js.org/p5name/sketches/Ce9F9d_lu\n// ims perlin v2\n\n// https://editor.p5js.org/p5name/sketches/tBsa6f3od\n// ims perlin v3\n\n// https://editor.p5js.org/p5name/sketches/FdAetYG8Y\n// ims perlin v4\n// mirgate to my.\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67923ea721d2e9720f65cb7f",
+        "createdAt": "2025-01-23T13:27:26.217Z",
+        "updatedAt": "2025-01-23T13:27:26.217Z",
+        "id": "67923ea721d2e9720f65cb7f"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67923ea721d2e9720f65cb7e",
+        "createdAt": "2025-01-23T13:27:26.217Z",
+        "updatedAt": "2025-01-23T13:27:26.217Z",
+        "id": "67923ea721d2e9720f65cb7e"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67923ea721d2e9720f65cb80",
+        "createdAt": "2025-01-23T13:27:26.217Z",
+        "updatedAt": "2025-01-23T13:27:26.217Z",
+        "id": "67923ea721d2e9720f65cb80"
+      }
+    ],
+    "createdAt": "2025-01-23T13:05:43.351Z",
+    "updatedAt": "2025-01-23T13:27:26.217Z",
+    "id": "eQfSExLDa"
+  },
+  {
+    "_id": "tukMKmuXP",
+    "name": "ims perlin v6",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "679243c221d2e9720f65cb82",
+          "679243c221d2e9720f65cb83",
+          "679243c221d2e9720f65cb84"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "679243c221d2e9720f65cb81",
+        "createdAt": "2025-01-23T13:30:52.667Z",
+        "updatedAt": "2025-01-23T13:30:52.667Z",
+        "id": "679243c221d2e9720f65cb81"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/tukMKmuXP\n// ims perlin v6\n// full frame - nay\n\nlet my = {};\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight);\n  my.backg = 200;\n  background(my.backg)\n  // noStroke();\n  my.x1 = 0;\n  my.x2 = 0;\n  my.x1step = 0.01;\n  my.x2step = 0.01; // less is tighter x spacing\n  my.y1scale = 0.001;\n  my.ylen = height / 60;\n}\n\nfunction draw() {\n  // background(50, 5);\n\n\n  for (let i = 0; i < width; i++) {\n    for (let ytop = 0; ytop < height; ytop += my.ylen) {\n      my.x1 += my.x1step;\n      let ny = ytop * my.y1scale\n      let len = noise(my.x1, ny) * my.ylen;\n      let x = noise(my.x2, ny) * width;\n      let ymid = ytop + my.ylen * 0.5;\n      stroke(my.backg);\n      line(x, ytop, x, ytop + my.ylen);\n      stroke(0);\n      let hlen = len * 0.5;\n      line(x, ymid - hlen, x, ymid + hlen);\n      // line(x, ymid - hlen, x, ytop + my.len);\n    }\n    my.x2 += my.x2step;\n  }\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n\n// https://editor.p5js.org/p5name/sketches/Ce9F9d_lu\n// ims perlin v2\n\n// https://editor.p5js.org/p5name/sketches/tBsa6f3od\n// ims perlin v3\n\n// https://editor.p5js.org/p5name/sketches/FdAetYG8Y\n// ims perlin v4\n// mirgate to my.\n\n// https://editor.p5js.org/p5name/sketches/eQfSExLDa\n// ims perlin v5\n// wave on the y axis\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "679243c221d2e9720f65cb83",
+        "createdAt": "2025-01-23T13:30:52.667Z",
+        "updatedAt": "2025-01-23T13:30:52.667Z",
+        "id": "679243c221d2e9720f65cb83"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "679243c221d2e9720f65cb82",
+        "createdAt": "2025-01-23T13:30:52.667Z",
+        "updatedAt": "2025-01-23T13:30:52.667Z",
+        "id": "679243c221d2e9720f65cb82"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "679243c221d2e9720f65cb84",
+        "createdAt": "2025-01-23T13:30:52.667Z",
+        "updatedAt": "2025-01-23T13:30:52.667Z",
+        "id": "679243c221d2e9720f65cb84"
+      }
+    ],
+    "createdAt": "2025-01-23T13:27:30.219Z",
+    "updatedAt": "2025-01-23T13:30:52.667Z",
+    "id": "tukMKmuXP"
+  },
+  {
+    "_id": "Xqty0l39k",
+    "name": "ims perlin v6 colors",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6792575bff49dd0ccb801ccb",
+          "6792575bff49dd0ccb801ccc",
+          "6792575bff49dd0ccb801ccd"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "6792575bff49dd0ccb801cca",
+        "createdAt": "2025-01-23T16:54:26.080Z",
+        "updatedAt": "2025-01-23T16:54:26.080Z",
+        "id": "6792575bff49dd0ccb801cca"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/Xqty0l39k\n// ims perlin v6 colors\n\nlet my = {};\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight - 55);\n  my.backg = 0;\n  background(my.backg);\n  // noStroke();\n  my.x1 = 0;\n  my.x2 = 0;\n  my.x1step = 0.01;\n  my.x2step = 0.001; // less is tighter x spacing\n  my.y1scale = 0.001;\n  my.ylen = height / 60;\n  my.time = 0;\n  my.timeMax = 5 * 1000; // milliseconds to restart\n  \n  let a = 100;\n  let aRed = [255, 0, 0, a];\n  let aGreen = [0, 255, 0, a];\n  let aGold = [255, 214, 0, a];\n  my.colors =  [aRed, aGreen, aGold, my.backg];\n  // my.colors =  [aRed, aGreen, aGold, my.backg, my.backg, my.backg];\n  // my.colors =  [aRed, aGreen, aGold];\n  my.colorIndex = 0;\n\n  setup_fullScreenBtn();\n}\n\nfunction draw() {\n  my.time += deltaTime;\n  if (my.time > my.timeMax) {\n    my.time = 0;\n    background(my.backg, 10);\n    my.colorIndex = (my.colorIndex+1) % my.colors.length;\n  }\n  for (let ytop = 0; ytop < height; ytop += my.ylen) {\n    my.x1 += my.x1step;\n    // my.x2 += my.x2step;\n    let ny = ytop * my.y1scale;\n    let len = noise(my.x1, ny) * my.ylen;\n    let x = noise(my.x2, ny) * width;\n    let ymid = ytop + my.ylen * 0.5;\n    stroke(my.backg);\n    line(x, ytop, x, ytop + my.ylen);\n    let foreColor = my.colors[my.colorIndex];\n    stroke(foreColor);\n    let hlen = len * 0.5;\n    line(x, ymid - hlen, x, ymid + hlen);\n    // line(x, ymid - hlen, x, ytop + my.len);\n  }\n  my.x2 += my.x2step;\n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\nfunction setup_fullScreenBtn() {\n  my.fullScreenBtn = createButton('Full Screen');\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style('font-size:42px');\n}\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n\n// https://editor.p5js.org/p5name/sketches/Ce9F9d_lu\n// ims perlin v2\n\n// https://editor.p5js.org/p5name/sketches/tBsa6f3od\n// ims perlin v3\n\n// https://editor.p5js.org/p5name/sketches/FdAetYG8Y\n// ims perlin v4\n// mirgate to my.\n\n// https://editor.p5js.org/p5name/sketches/eQfSExLDa\n// ims perlin v5\n// wave on the y axis\n\n// https://editor.p5js.org/p5name/sketches/LLhJrWagm\n// ims perlin v6 deltaTime\n\n// https://editor.p5js.org/p5name/sketches/ev0PtLO79\n// ims perlin v6 reverse\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "6792575bff49dd0ccb801ccc",
+        "createdAt": "2025-01-23T16:54:26.080Z",
+        "updatedAt": "2025-01-23T16:54:26.080Z",
+        "id": "6792575bff49dd0ccb801ccc"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6792575bff49dd0ccb801ccb",
+        "createdAt": "2025-01-23T16:54:26.080Z",
+        "updatedAt": "2025-01-23T16:54:26.080Z",
+        "id": "6792575bff49dd0ccb801ccb"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6792575bff49dd0ccb801ccd",
+        "createdAt": "2025-01-23T16:54:26.080Z",
+        "updatedAt": "2025-01-23T16:54:26.080Z",
+        "id": "6792575bff49dd0ccb801ccd"
+      }
+    ],
+    "createdAt": "2025-01-23T14:51:07.989Z",
+    "updatedAt": "2025-01-23T16:54:26.080Z",
+    "id": "Xqty0l39k"
+  },
+  {
+    "_id": "LLhJrWagm",
+    "name": "ims perlin v6 deltaTime",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6792480821d2e9720f65cb86",
+          "6792480821d2e9720f65cb87",
+          "6792480821d2e9720f65cb88"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "6792480821d2e9720f65cb85",
+        "createdAt": "2025-01-23T13:50:32.491Z",
+        "updatedAt": "2025-01-23T13:50:32.491Z",
+        "id": "6792480821d2e9720f65cb85"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/LLhJrWagm\n// ims perlin v6 deltaTime\n\nlet my = {};\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight);\n  my.backg = 200;\n  background(my.backg);\n  // noStroke();\n  my.x1 = 0;\n  my.x2 = 0;\n  my.x1step = 0.01;\n  my.x2step = 0.01; // less is tighter x spacing\n  my.y1scale = 0.001;\n  my.ylen = height / 60;\n  my.time = 0;\n  my.timeMax = 5 * 1000; // milliseconds to restart\n}\n\nfunction draw() {\n  // background(50, 5);\n  my.time += deltaTime;\n  if (my.time > my.timeMax) {\n    my.time = 0;\n    background(my.backg);\n  }\n\n  for (let ytop = 0; ytop < height; ytop += my.ylen) {\n    my.x1 += my.x1step;\n    let ny = ytop * my.y1scale;\n    let len = noise(my.x1, ny) * my.ylen;\n    let x = noise(my.x2, ny) * width;\n    let ymid = ytop + my.ylen * 0.5;\n    stroke(my.backg);\n    line(x, ytop, x, ytop + my.ylen);\n    stroke(0);\n    let hlen = len * 0.5;\n    line(x, ymid - hlen, x, ymid + hlen);\n    // line(x, ymid - hlen, x, ytop + my.len);\n  }\n  my.x2 += my.x2step;\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n\n// https://editor.p5js.org/p5name/sketches/Ce9F9d_lu\n// ims perlin v2\n\n// https://editor.p5js.org/p5name/sketches/tBsa6f3od\n// ims perlin v3\n\n// https://editor.p5js.org/p5name/sketches/FdAetYG8Y\n// ims perlin v4\n// mirgate to my.\n\n// https://editor.p5js.org/p5name/sketches/eQfSExLDa\n// ims perlin v5\n// wave on the y axis\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "6792480821d2e9720f65cb87",
+        "createdAt": "2025-01-23T13:50:32.491Z",
+        "updatedAt": "2025-01-23T13:50:32.491Z",
+        "id": "6792480821d2e9720f65cb87"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6792480821d2e9720f65cb86",
+        "createdAt": "2025-01-23T13:50:32.491Z",
+        "updatedAt": "2025-01-23T13:50:32.491Z",
+        "id": "6792480821d2e9720f65cb86"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6792480821d2e9720f65cb88",
+        "createdAt": "2025-01-23T13:50:32.491Z",
+        "updatedAt": "2025-01-23T13:50:32.491Z",
+        "id": "6792480821d2e9720f65cb88"
+      }
+    ],
+    "createdAt": "2025-01-23T13:45:44.432Z",
+    "updatedAt": "2025-01-23T13:50:32.491Z",
+    "id": "LLhJrWagm"
+  },
+  {
+    "_id": "ev0PtLO79",
+    "name": "ims perlin v6 reverse",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6792497521d2e9720f65cb8a",
+          "6792497521d2e9720f65cb8b",
+          "6792497521d2e9720f65cb8c"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "6792497521d2e9720f65cb89",
+        "createdAt": "2025-01-23T14:18:23.754Z",
+        "updatedAt": "2025-01-23T14:18:23.754Z",
+        "id": "6792497521d2e9720f65cb89"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/ev0PtLO79\n// ims perlin v6 reverse\n\nlet my = {};\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight);\n  my.backg = 200;\n  background(my.backg);\n  // noStroke();\n  my.x1 = 0;\n  my.x2 = 0;\n  my.x1step = 0.01;\n  my.x2step = 0.01; // less is tighter x spacing\n  my.y1scale = 0.001;\n  my.ylen = height / 60;\n  my.time = 0;\n  my.timeMax = 5 * 1000; // milliseconds to restart\n  my.colors = [0,my.backg];\n  my.colorIndex = 0;\n}\n\nfunction draw() {\n  my.time += deltaTime;\n  if (my.time > my.timeMax) {\n    my.time = 0;\n    // background(my.backg);\n    my.colorIndex = (my.colorIndex+1) % my.colors.length;\n  }\n  for (let ytop = 0; ytop < height; ytop += my.ylen) {\n    my.x1 += my.x1step;\n    let ny = ytop * my.y1scale;\n    let len = noise(my.x1, ny) * my.ylen;\n    let x = noise(my.x2, ny) * width;\n    let ymid = ytop + my.ylen * 0.5;\n    stroke(my.backg);\n    line(x, ytop, x, ytop + my.ylen);\n    let foreColor = my.colors[my.colorIndex];\n    stroke(foreColor);\n    let hlen = len * 0.5;\n    line(x, ymid - hlen, x, ymid + hlen);\n    // line(x, ymid - hlen, x, ytop + my.len);\n  }\n  my.x2 += my.x2step;\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n\n// https://editor.p5js.org/p5name/sketches/Ce9F9d_lu\n// ims perlin v2\n\n// https://editor.p5js.org/p5name/sketches/tBsa6f3od\n// ims perlin v3\n\n// https://editor.p5js.org/p5name/sketches/FdAetYG8Y\n// ims perlin v4\n// mirgate to my.\n\n// https://editor.p5js.org/p5name/sketches/eQfSExLDa\n// ims perlin v5\n// wave on the y axis\n\n// https://editor.p5js.org/p5name/sketches/LLhJrWagm\n// ims perlin v6 deltaTime\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "6792497521d2e9720f65cb8b",
+        "createdAt": "2025-01-23T14:18:23.754Z",
+        "updatedAt": "2025-01-23T14:18:23.754Z",
+        "id": "6792497521d2e9720f65cb8b"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6792497521d2e9720f65cb8a",
+        "createdAt": "2025-01-23T14:18:23.754Z",
+        "updatedAt": "2025-01-23T14:18:23.754Z",
+        "id": "6792497521d2e9720f65cb8a"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6792497521d2e9720f65cb8c",
+        "createdAt": "2025-01-23T14:18:23.754Z",
+        "updatedAt": "2025-01-23T14:18:23.754Z",
+        "id": "6792497521d2e9720f65cb8c"
+      }
+    ],
+    "createdAt": "2025-01-23T13:51:49.151Z",
+    "updatedAt": "2025-01-23T14:18:23.754Z",
+    "id": "ev0PtLO79"
+  },
+  {
+    "_id": "p261KC1ow",
+    "name": "ims perlin v7 colors",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "679273c4ff49dd0ccb801ccf",
+          "679273c4ff49dd0ccb801cd0",
+          "679273c4ff49dd0ccb801cd1"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "679273c4ff49dd0ccb801cce",
+        "createdAt": "2025-01-23T17:31:28.106Z",
+        "updatedAt": "2025-01-23T17:31:28.106Z",
+        "id": "679273c4ff49dd0ccb801cce"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/p261KC1ow\n// ims perlin v7 colors\n// x2 changes in for loop\n\nlet my = {};\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight - 55);\n  my.backg = 0;\n  background(my.backg);\n  // noStroke();\n  my.x1 = 0;\n  my.x2 = 0;\n  my.x1step = 0.01;\n  my.x2step = 0.000025; // less is tighter x spacing\n  my.y1scale = 0.001;\n  my.ylen = height / 60;\n  my.y1 = 0;\n  my.y1step = 0.01;\n  my.time = 0;\n  my.timeMax = 5 * 1000; // milliseconds to restart\n  \n  let a = 100;\n  let aRed = [255, 0, 0, a];\n  let aGreen = [0, 255, 0, a];\n  let aGold = [255, 214, 0, a];\n  my.colors =  [aRed, aGreen, aGold, my.backg];\n  // my.colors =  [aRed, aGreen, aGold, my.backg, my.backg, my.backg];\n  // my.colors =  [aRed, aGreen, aGold];\n  my.colorIndex = 0;\n\n  setup_fullScreenBtn();\n}\n\nfunction draw() {\n  my.time += deltaTime;\n  if (my.time > my.timeMax) {\n    my.time = 0;\n    background(my.backg, 10);\n    my.colorIndex = (my.colorIndex+1) % my.colors.length;\n  }\n  my.x1 = random();\n  for (let ytop = 0; ytop < height; ytop += my.ylen) {\n    my.x1 += my.x1step;\n    my.x2 += my.x2step;\n    my.y1 += my.y1step;\n    let ny = ytop * my.y1scale;\n    let len = noise(my.x1, my.y1) * my.ylen;\n    // let len = noise(my.x1, my.y1, my.x2) * my.ylen;\n    let x = noise(my.x2, ny) * width;\n    let ymid = ytop + my.ylen * 0.5;\n    stroke(my.backg);\n    line(x, ytop, x, ytop + my.ylen);\n    let foreColor = my.colors[my.colorIndex];\n    stroke(foreColor);\n    let hlen = len * 0.5;\n    line(x, ymid - hlen, x, ymid + hlen);\n    // line(x, ymid - hlen, x, ytop + my.len);\n  }\n  // my.x2 += my.x2step;\n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\nfunction setup_fullScreenBtn() {\n  my.fullScreenBtn = createButton('Full Screen');\n  my.fullScreenBtn.mousePressed(full_screen_action);\n  my.fullScreenBtn.style('font-size:42px');\n}\n\nfunction full_screen_action() {\n  my.fullScreenBtn.remove();\n  fullscreen(1);\n  let delay = 3000;\n  setTimeout(ui_present_window, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Perlin Noise - Adding Y Axis\n\n// Graphing 1D Perlin Noise (Adding Y-Axis)\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html\n// https://youtu.be/y7sgcFhk6ZM\n\n// Adding Y-Axis: https://editor.p5js.org/codingtrain/sketches/nCYG2SCNq\n// Noise Graph: https://editor.p5js.org/codingtrain/sketches/EZeHXBhei\n// Noisy Sin: https://editor.p5js.org/codingtrain/sketches/M_kuAXwV2\n\n// This example has been updated to use es6 syntax. To learn more about es6 visit: https://thecodingtrain.com/Tutorials/16-javascript-es6\n\n// https://editor.p5js.org/p5name/sketches/h2G8X82wt\n// ims perlin v1\n\n// https://editor.p5js.org/p5name/sketches/Ce9F9d_lu\n// ims perlin v2\n\n// https://editor.p5js.org/p5name/sketches/tBsa6f3od\n// ims perlin v3\n\n// https://editor.p5js.org/p5name/sketches/FdAetYG8Y\n// ims perlin v4\n// mirgate to my.\n\n// https://editor.p5js.org/p5name/sketches/eQfSExLDa\n// ims perlin v5\n// wave on the y axis\n\n// https://editor.p5js.org/p5name/sketches/LLhJrWagm\n// ims perlin v6 deltaTime\n\n// https://editor.p5js.org/p5name/sketches/ev0PtLO79\n// ims perlin v6 reverse\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "679273c4ff49dd0ccb801cd0",
+        "createdAt": "2025-01-23T17:31:28.106Z",
+        "updatedAt": "2025-01-23T17:31:28.106Z",
+        "id": "679273c4ff49dd0ccb801cd0"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "679273c4ff49dd0ccb801ccf",
+        "createdAt": "2025-01-23T17:31:28.106Z",
+        "updatedAt": "2025-01-23T17:31:28.106Z",
+        "id": "679273c4ff49dd0ccb801ccf"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "679273c4ff49dd0ccb801cd1",
+        "createdAt": "2025-01-23T17:31:28.106Z",
+        "updatedAt": "2025-01-23T17:31:28.106Z",
+        "id": "679273c4ff49dd0ccb801cd1"
+      }
+    ],
+    "createdAt": "2025-01-23T16:52:20.175Z",
+    "updatedAt": "2025-01-23T17:31:28.106Z",
+    "id": "p261KC1ow"
+  },
+  {
+    "_id": "9GXXTQNgP",
+    "name": "mo-gallery alter-ego",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "675471177758501740cc9307",
+          "675471177758501740cc9308",
+          "675471177758501740cc9309"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "675471177758501740cc9306",
+        "createdAt": "2024-12-11T00:37:55.372Z",
+        "updatedAt": "2024-12-11T00:37:55.372Z",
+        "id": "675471177758501740cc9306"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/9GXXTQNgP\n// mo-gallery alter-ego\n\nlet a_version = \"v1 \";\nlet galleryKey = \"mo-1/gallery-@r-ae\";\nlet scrollYmax = (2000 - 300) * 2;\nlet scrollMod = 1;\nlet scrollStep = 2;\n// window.scrollY > scrollYmax\n// let galleryKey = 'mo-gallery-ims-web';\nlet nitems = 0;\nlet updateCount = 0;\nlet doScroll = false;\nlet rdata; // Firebase object results from server. key is id\nlet rarr; // Array of items from server\n// let rwidth = 1920; // dimensions for image element\n// let rheight = 1080;\nlet rwidth = 1080; // dimensions for image element\nlet rheight = 1920;\nlet scrollLimit = 0;\nlet doSplat = 0;\nlet debug = 0;\n\nlet shuffleBtn;\nlet fullScreenBtn;\nlet toggleScrollBtn;\nlet splatBtn;\nlet imgs = [];\nlet totalHeight = 0;\nlet scrollStartTime;\nlet lastY;\nlet stallMaxTime = 1.0;\n\nfunction setup() {\n  noCanvas();\n  // console.log('app', fireb_.app);\n  if (debug) {\n    rwidth = rwidth / 4;\n    rheight = rheight / 4;\n    scrollLimit = 2;\n    doScroll = 1;\n  }\n  check_url_param();\n\n  // Setup listner for changes to firebase db\n  let galleryRef = fireb_.ref(fireb_.database, galleryKey);\n  fireb_.onValue(galleryRef, (snapshot) => {\n    const data = snapshot.val();\n    console.log(\"galleryRef data\", data);\n    received_gallery(data);\n  });\n\n  shuffleBtn = createButton(\"Shuffle\").mousePressed(() => {\n    //console.log('Shuffle');\n    received_gallery(rdata, { doShuffle: 1 });\n  });\n  shuffleBtn.style(\"font-size:42px\");\n\n  fullScreenBtn = createButton(\"Full Screen\").mousePressed(() => {\n    ui_toggleFullScreen();\n    ui_remove_all();\n  });\n  fullScreenBtn.style(\"font-size:42px\");\n\n  toggleScrollBtn = createButton(\"Scroll\").mousePressed(() => {\n    doScroll = !doScroll;\n    console.log(\"doScroll\", doScroll);\n    if (doScroll) {\n      if (displayWidth <= 1920) {\n        ui_toggleFullScreen();\n      }\n      ui_remove_all();\n    }\n    // window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });\n  });\n  toggleScrollBtn.style(\"font-size:42px\");\n\n  splatBtn = createButton(\"Splat\").mousePressed(() => {\n    console.log(\"splatBtn\", doSplat);\n    doSplat = !doSplat;\n    received_gallery(rdata);\n  });\n  splatBtn.style(\"font-size:42px\");\n\n  createElement(\"br\");\n\n  ui_init_update();\n}\n\nfunction draw() {\n  // calcTotalHeight();\n  // console.log('draw');\n  if (doScroll && frameCount % scrollMod == 0) {\n    // window.scrollBy({ top: window.scrollY + 1, behavior: 'smooth' });\n    window.scrollBy(0, 1); // 1\n    // let nlimit = scrollLimit || rarr.length;\n    // if (window.scrollY >= scrollYmax) {\n    if (scrollingStalled()) {\n      window.scrollTo(0, scrollStep);\n      lastY = 0;\n      scrollStartTime = 0;\n    }\n  }\n}\n\n// window.scrollTo(0, 4900);\n\nfunction scrollingStalled() {\n  let now = millis() / 1000.0;\n  if (!scrollStartTime) scrollStartTime = now;\n  if (!lastY || lastY != window.scrollY) {\n    lastY = window.scrollY;\n    return false;\n  }\n  // window.scrollY not changed\n  //\n  let lapse = now - scrollStartTime;\n  if (lapse > stallMaxTime) {\n    return true;\n  }\n  return false;\n}\n\nfunction received_gallery(data, opts) {\n  window.scrollTo(0, 0);\n  let div = ui_div_empty(\"id_gallery\");\n  if (!data) {\n    return;\n  }\n  // div.style('width:1080px; display: flex; align-items: center;')\n  // div.style(\"width:1080px; align-items: center;\");\n  rdata = data;\n  updateCount += 1;\n\n  // for (key in data) {\n  //   console.log('key', key);\n  //   let val = data[key];\n\n  // Display in reverse order to see new additions first\n  rarr = Object.values(data).reverse();\n  if (opts && opts.doShuffle) {\n    rarr = shuffle(rarr);\n  }\n  let r = rarr;\n  rarr = [r[0],r[1],r[0],r[2],r[0],r[3],r[0]];\n\n  nitems = rarr.length;\n  for (let val of rarr) {\n    // console.log('received_gallery val', val);\n    // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );\n    // select full resolution media if available\n    //\n    // let path = val.mediaPathFullRez ?? val.mediaPath;\n    let path = val.mediaPathFullRez || val.mediaPath;\n    let img = createImg(path, val.authorEmail, \"\", imageLoaded);\n    div.child(img);\n\n    let iwidth = rwidth;\n    if (doSplat) {\n      iwidth = random(100, 400);\n    }\n    img.style('width: ' + iwidth + 'px;');\n    img.addClass('center-image')\n    imgs.push(img);\n    ui_init_update();\n  }\n}\n\nfunction imageLoaded(arg) {\n  // !!@ Displaying arg causes error\n  // console.log('imageLoaded', arg);\n  console.log(\"imageLoaded\");\n}\n\nfunction calcTotalHeight() {\n  totalHeight = 0;\n  for (let img of imgs) {\n    totalHeight += img.height;\n  }\n  // console.log('totalHeight', totalHeight)\n  if (totalHeight > 0) {\n    scrollYmax = totalHeight;\n  }\n}\n\nfunction ui_remove_all() {\n  shuffleBtn.remove();\n  fullScreenBtn.remove();\n  toggleScrollBtn.remove();\n  splatBtn.remove();\n}\n\nfunction ui_init_update() {\n  ui_span(\"date\", a_version + formatDate());\n  ui_span(\"updateCount\", \" updateCount:\" + updateCount);\n  ui_span(\"nitems\", \" nitems:\" + nitems);\n}\n\nfunction formatDate() {\n  // return '';\n  return new Date().toISOString();\n}\n\nfunction ui_div_empty(id) {\n  let div = select(\"#\" + id);\n  // console.log('ui_device_selection div', div);\n  if (!div) {\n    div = createDiv().id(id);\n  } else {\n    let children = div.child();\n    for (let index = children.length - 1; index >= 0; index--) {\n      let elm = children[index];\n      elm.remove();\n    }\n  }\n  return div;\n}\n\nfunction ui_span(id, html) {\n  let span = select(\"#\" + id);\n  if (document.fullscreenElement) {\n    if (span) {\n      span.remove();\n    }\n    return;\n  }\n  if (!span) {\n    span = createSpan().id(id);\n  }\n  span.html(html);\n}\n\nfunction ui_toggleFullScreen() {\n  if (!document.documentElement.requestFullscreen) {\n    console.log(\"NO document.documentElement.requestFullscreen\");\n    return;\n  }\n  if (!document.fullscreenElement) {\n    document.documentElement.requestFullscreen();\n  } else {\n    if (document.exitFullscreen) {\n      document.exitFullscreen();\n    }\n  }\n}\n\n// let galleryKey = 'mo-gallery-web';\n// let galleryKey = 'mo-gallery-ims-web';\n\nfunction check_url_param() {\n  let query = window.location.search;\n  console.log(\"query\", query);\n  if (query.length < 1) return;\n  let params = params_query(query);\n  let ngallery = params[\"gallery\"];\n  if (ngallery) {\n    // mo-gallery-web\n    // rasberry pie does not like back quote\n    // galleryKey = `mo-gallery-${ngallery}-web`;\n    // galleryKey = ngallery;\n    galleryKey = \"mo-gallery-\" + ngallery;\n  }\n  console.log(\"galleryKey\", galleryKey);\n}\n\n// https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams\nfunction params_query(query) {\n  // eg. query='abc=foo&def=%5Basf%5D&xyz=5'\n  // params={abc: \"foo\", def: \"[asf]\", xyz: \"5\"}\n  const urlParams = new URLSearchParams(query);\n  const params = Object.fromEntries(urlParams);\n  return params;\n}\n\n// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/\n// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=ims-web\n// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=web\n\n// https://editor.p5js.org/jht1493/sketches/2OYRyVuhx\n// firebase mo-gallery-1\n\n// https://molab-itp.github.io/p5moLibrary/src/demo/mo-gallery-1/?v=119\n\n// https://editor.p5js.org/p5name/sketches/8jzqiCbbk\n// https://editor.p5js.org/jht9629-nyu/sketches/VtqUmOlGB\n// firebase mo-gallery-ppt\n\n/* Full-page container to center the image */\n/* body, html {\n  height: 100%;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n */\n/* Optional styling for the image */\n/* img {\n  max-width: 100%;\n  height: auto;\n}\n */\n\n    // avoid backquote for rasberry pi browser\n    // img.style(`width: ${rwidth}px;`);\n\n\n// https://editor.p5js.org/p5name/sketches/td6gIUqHZ\n// mo-gallery-rroom renewal-rroom\n// Display images from Firebase storage as a billboard using createImg\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "675471177758501740cc9308",
+        "createdAt": "2024-12-11T00:37:55.372Z",
+        "updatedAt": "2024-12-11T00:37:55.372Z",
+        "id": "675471177758501740cc9308"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n<!--     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js\"></script> -->\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <!-- v2023-02-08 18:01:45 -->\n    <main></main>\n\n    <!-- Documentation reference -->\n    <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->\n\n    <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->\n    <script type=\"module\">\n      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';\n\n      // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics\n      // import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js'\n\n      // Add Firebase products that you want to use\n      import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';\n      // import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js'\n\n      import {\n        getDatabase,\n        ref,\n        child,\n        get,\n        onValue,\n      } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';\n\n      // Your web app's Firebase configuration\n      // For Firebase JS SDK v7.20.0 and later, measurementId is optional\n      const firebaseConfig = {\n        apiKey: 'AIzaSyDLxi_fvCG2kzD2eJ4MxEZbOJ_GFSpIVe0',\n        authDomain: 'molab-485f5.firebaseapp.com',\n        databaseURL: 'https://molab-485f5-default-rtdb.firebaseio.com',\n        projectId: 'molab-485f5',\n        storageBucket: 'molab-485f5.appspot.com',\n        messagingSenderId: '219508380677',\n        appId: '1:219508380677:web:b5d846a150e7d60368b86c',\n        measurementId: 'G-40F0BN8L7L',\n      };\n\n      // Initialize Firebase\n      const fireb_ = {};\n      fireb_.app = initializeApp(firebaseConfig);\n\n      const auth = getAuth();\n      const database = getDatabase();\n      // console.log('database', database);\n      const dbRef = ref(getDatabase());\n\n      signInAnonymously(auth)\n        .then(() => {\n          console.log('signInAnonymously OK 4');\n          // check_gallery();\n        })\n        .catch((error) => {\n          const errorCode = error.code;\n          const errorMessage = error.message;\n          console.log('errorCode', errorCode);\n          console.log('errorMessage', errorMessage);\n        });\n\n      function check_gallery() {\n        get(child(dbRef, `mo-gallery-web`))\n          .then((snapshot) => {\n            if (snapshot.exists()) {\n              console.log('check_gallery snapshot', snapshot.val());\n            } else {\n              console.log('No data available');\n            }\n          })\n          .catch((error) => {\n            console.error('error', error);\n          });\n      }\n\n      // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0\n\n      // const galleryRef = ref( getDatabase(), 'mo-gallery-1');\n      // fireb_.galleryRef = galleryRef;\n      // onValue(galleryRef, (snapshot) => {\n      //   const data = snapshot.val();\n      //   console.log('galleryRef data', data);\n      // });\n\n      window.fireb_ = fireb_;\n      fireb_.auth = auth;\n      fireb_.database = database;\n      fireb_.dbRef = dbRef;\n      fireb_.ref = ref;\n      fireb_.onValue = onValue;\n\n      // Callbacks are removed by calling the off() method on your Firebase database reference.\n    </script>\n\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "675471177758501740cc9307",
+        "createdAt": "2024-12-11T00:37:55.372Z",
+        "updatedAt": "2024-12-11T00:37:55.372Z",
+        "id": "675471177758501740cc9307"
+      },
+      {
+        "name": "style.css",
+        "content": "html,\nbody {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n\n/* Full-page container to center the image */\n/* body, html {\n  height: 100%;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n */\n/* Optional styling for the image */\n/* img {\n  max-width: 100%;\n  height: auto;\n}\n */\n\n.center-image {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "675471177758501740cc9309",
+        "createdAt": "2024-12-11T00:37:55.372Z",
+        "updatedAt": "2024-12-11T00:37:55.372Z",
+        "id": "675471177758501740cc9309"
+      }
+    ],
+    "createdAt": "2024-12-07T16:00:23.768Z",
+    "updatedAt": "2024-12-11T00:37:55.372Z",
+    "id": "9GXXTQNgP"
+  },
+  {
+    "_id": "td6gIUqHZ",
+    "name": "mo-gallery-rroom renewal-rroom",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "672264d6debcf61a7c42cf2f",
+          "672264d6debcf61a7c42cf30",
+          "672264d6debcf61a7c42cf31"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "672264d6debcf61a7c42cf2e",
+        "createdAt": "2024-11-18T16:19:19.263Z",
+        "updatedAt": "2024-11-18T16:19:19.263Z",
+        "id": "672264d6debcf61a7c42cf2e"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/p5name/sketches/td6gIUqHZ\n// mo-gallery-rroom renewal-rroom\n// Display images from Firebase storage as a billboard using createImg\n\nlet a_version = \"v9 \";\nlet galleryKey = \"mo-1/gallery-@r-rroom\";\nlet scrollYmax = (2000 - 300) * 2;\nlet scrollSpeed = 2;\n// window.scrollY > scrollYmax\n// let galleryKey = 'mo-gallery-ims-web';\nlet nitems = 0;\nlet updateCount = 0;\nlet doScroll = false;\nlet rdata; // Firebase object results from server. key is id\nlet rarr; // Array of items from server\n// let rwidth = 1920; // dimensions for image element\n// let rheight = 1080;\nlet rwidth = 1080; // dimensions for image element\nlet rheight = 1920;\nlet scrollLimit = 0;\nlet doSplat = 0;\nlet debug = 0;\n\nlet shuffleBtn;\nlet fullScreenBtn;\nlet toggleScrollBtn;\nlet splatBtn;\nlet imgs = [];\nlet totalHeight = 0;\nlet scrollStartTime;\nlet lastY;\nlet stallMaxTime = 1.0;\n\nfunction setup() {\n  noCanvas();\n  // console.log('app', fireb_.app);\n  if (debug) {\n    rwidth = rwidth / 4;\n    rheight = rheight / 4;\n    scrollLimit = 2;\n    doScroll = 1;\n  }\n  check_url_param();\n\n  // Setup listner for changes to firebase db\n  let galleryRef = fireb_.ref(fireb_.database, galleryKey);\n  fireb_.onValue(galleryRef, (snapshot) => {\n    const data = snapshot.val();\n    console.log(\"galleryRef data\", data);\n    received_gallery(data);\n  });\n\n  shuffleBtn = createButton(\"Shuffle\").mousePressed(() => {\n    //console.log('Shuffle');\n    received_gallery(rdata, { doShuffle: 1 });\n  });\n  shuffleBtn.style(\"font-size:42px\");\n\n  fullScreenBtn = createButton(\"Full Screen\").mousePressed(() => {\n    ui_toggleFullScreen();\n    ui_remove_all();\n  });\n  fullScreenBtn.style(\"font-size:42px\");\n\n  toggleScrollBtn = createButton(\"Scroll\").mousePressed(() => {\n    doScroll = !doScroll;\n    console.log(\"doScroll\", doScroll);\n    if (doScroll) {\n      if (displayWidth <= 1920) {\n        ui_toggleFullScreen();\n      }\n      ui_remove_all();\n    }\n    // window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });\n  });\n  toggleScrollBtn.style(\"font-size:42px\");\n\n  splatBtn = createButton(\"Splat\").mousePressed(() => {\n    console.log(\"splatBtn\", doSplat);\n    doSplat = !doSplat;\n    received_gallery(rdata);\n  });\n  splatBtn.style(\"font-size:42px\");\n\n  createElement(\"br\");\n\n  ui_init_update();\n}\n\nfunction draw() {\n  // calcTotalHeight();\n  // console.log('draw');\n  if (doScroll && frameCount % scrollSpeed == 0) {\n    // window.scrollBy({ top: window.scrollY + 1, behavior: 'smooth' });\n    window.scrollBy(0, 1); // 1\n    // let nlimit = scrollLimit || rarr.length;\n    // if (window.scrollY >= scrollYmax) {\n    if (scrollingStalled()) {\n      window.scrollTo(0, 0);\n      lastY = 0;\n      scrollStartTime = 0;\n    }\n  }\n}\n\n// window.scrollTo(0, 4900);\n\nfunction scrollingStalled() {\n  let now = millis() / 1000.0;\n  if (!scrollStartTime) scrollStartTime = now;\n  if (!lastY || lastY != window.scrollY) {\n    lastY = window.scrollY;\n    return false;\n  }\n  // window.scrollY not changed\n  //\n  let lapse = now - scrollStartTime;\n  if (lapse > stallMaxTime) {\n    return true;\n  }\n  return false;\n}\n\nfunction received_gallery(data, opts) {\n  window.scrollTo(0, 0);\n  let div = ui_div_empty(\"id_gallery\");\n  if (!data) {\n    return;\n  }\n  // div.style('width:1080px; display: flex; align-items: center;')\n  // div.style(\"width:1080px; align-items: center;\");\n  rdata = data;\n  updateCount += 1;\n\n  // for (key in data) {\n  //   console.log('key', key);\n  //   let val = data[key];\n\n  // Display in reverse order to see new additions first\n  rarr = Object.values(data).reverse();\n  if (opts && opts.doShuffle) {\n    rarr = shuffle(rarr);\n  }\n  // let r = rarr;\n  // rarr = [r[0],r[1],r[0],r[2],r[0],r[3],r[0],r[4],r[0],r[5]];\n\n  nitems = rarr.length;\n  for (let val of rarr) {\n    // console.log('received_gallery val', val);\n    // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );\n    // select full resolution media if available\n    //\n    // let path = val.mediaPathFullRez ?? val.mediaPath;\n    let path = val.mediaPathFullRez || val.mediaPath;\n    let img = createImg(path, val.authorEmail, \"\", imageLoaded);\n    div.child(img);\n\n    let iwidth = rwidth;\n    if (doSplat) {\n      iwidth = random(100, 400);\n    }\n    img.style('width: ' + iwidth + 'px;');\n    img.addClass('center-image')\n    imgs.push(img);\n    ui_init_update();\n  }\n}\n\nfunction imageLoaded(arg) {\n  // !!@ Displaying arg causes error\n  // console.log('imageLoaded', arg);\n  console.log(\"imageLoaded\");\n}\n\nfunction calcTotalHeight() {\n  totalHeight = 0;\n  for (let img of imgs) {\n    totalHeight += img.height;\n  }\n  // console.log('totalHeight', totalHeight)\n  if (totalHeight > 0) {\n    scrollYmax = totalHeight;\n  }\n}\n\nfunction ui_remove_all() {\n  shuffleBtn.remove();\n  fullScreenBtn.remove();\n  toggleScrollBtn.remove();\n  splatBtn.remove();\n}\n\nfunction ui_init_update() {\n  ui_span(\"date\", a_version + formatDate());\n  ui_span(\"updateCount\", \" updateCount:\" + updateCount);\n  ui_span(\"nitems\", \" nitems:\" + nitems);\n}\n\nfunction formatDate() {\n  // return '';\n  return new Date().toISOString();\n}\n\nfunction ui_div_empty(id) {\n  let div = select(\"#\" + id);\n  // console.log('ui_device_selection div', div);\n  if (!div) {\n    div = createDiv().id(id);\n  } else {\n    let children = div.child();\n    for (let index = children.length - 1; index >= 0; index--) {\n      let elm = children[index];\n      elm.remove();\n    }\n  }\n  return div;\n}\n\nfunction ui_span(id, html) {\n  let span = select(\"#\" + id);\n  if (document.fullscreenElement) {\n    if (span) {\n      span.remove();\n    }\n    return;\n  }\n  if (!span) {\n    span = createSpan().id(id);\n  }\n  span.html(html);\n}\n\nfunction ui_toggleFullScreen() {\n  if (!document.documentElement.requestFullscreen) {\n    console.log(\"NO document.documentElement.requestFullscreen\");\n    return;\n  }\n  if (!document.fullscreenElement) {\n    document.documentElement.requestFullscreen();\n  } else {\n    if (document.exitFullscreen) {\n      document.exitFullscreen();\n    }\n  }\n}\n\n// let galleryKey = 'mo-gallery-web';\n// let galleryKey = 'mo-gallery-ims-web';\n\nfunction check_url_param() {\n  let query = window.location.search;\n  console.log(\"query\", query);\n  if (query.length < 1) return;\n  let params = params_query(query);\n  let ngallery = params[\"gallery\"];\n  if (ngallery) {\n    // mo-gallery-web\n    // rasberry pie does not like back quote\n    // galleryKey = `mo-gallery-${ngallery}-web`;\n    // galleryKey = ngallery;\n    galleryKey = \"mo-gallery-\" + ngallery;\n  }\n  console.log(\"galleryKey\", galleryKey);\n}\n\n// https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams\nfunction params_query(query) {\n  // eg. query='abc=foo&def=%5Basf%5D&xyz=5'\n  // params={abc: \"foo\", def: \"[asf]\", xyz: \"5\"}\n  const urlParams = new URLSearchParams(query);\n  const params = Object.fromEntries(urlParams);\n  return params;\n}\n\n// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/\n// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=ims-web\n// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=web\n\n// https://editor.p5js.org/jht1493/sketches/2OYRyVuhx\n// firebase mo-gallery-1\n\n// https://molab-itp.github.io/p5moLibrary/src/demo/mo-gallery-1/?v=119\n\n// https://editor.p5js.org/p5name/sketches/8jzqiCbbk\n// https://editor.p5js.org/jht9629-nyu/sketches/VtqUmOlGB\n// firebase mo-gallery-ppt\n\n/* Full-page container to center the image */\n/* body, html {\n  height: 100%;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n */\n/* Optional styling for the image */\n/* img {\n  max-width: 100%;\n  height: auto;\n}\n */\n\n    // avoid backquote for rasberry pi browser\n    // img.style(`width: ${rwidth}px;`);\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "672264d6debcf61a7c42cf30",
+        "createdAt": "2024-11-18T16:19:19.263Z",
+        "updatedAt": "2024-11-18T16:19:19.263Z",
+        "id": "672264d6debcf61a7c42cf30"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n<!--     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js\"></script> -->\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <!-- v2023-02-08 18:01:45 -->\n    <main></main>\n\n    <!-- Documentation reference -->\n    <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->\n\n    <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->\n    <script type=\"module\">\n      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';\n\n      // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics\n      // import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js'\n\n      // Add Firebase products that you want to use\n      import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';\n      // import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js'\n\n      import {\n        getDatabase,\n        ref,\n        child,\n        get,\n        onValue,\n      } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';\n\n      // Your web app's Firebase configuration\n      // For Firebase JS SDK v7.20.0 and later, measurementId is optional\n      const firebaseConfig = {\n        apiKey: 'AIzaSyDLxi_fvCG2kzD2eJ4MxEZbOJ_GFSpIVe0',\n        authDomain: 'molab-485f5.firebaseapp.com',\n        databaseURL: 'https://molab-485f5-default-rtdb.firebaseio.com',\n        projectId: 'molab-485f5',\n        storageBucket: 'molab-485f5.appspot.com',\n        messagingSenderId: '219508380677',\n        appId: '1:219508380677:web:b5d846a150e7d60368b86c',\n        measurementId: 'G-40F0BN8L7L',\n      };\n\n      // Initialize Firebase\n      const fireb_ = {};\n      fireb_.app = initializeApp(firebaseConfig);\n\n      const auth = getAuth();\n      const database = getDatabase();\n      // console.log('database', database);\n      const dbRef = ref(getDatabase());\n\n      signInAnonymously(auth)\n        .then(() => {\n          console.log('signInAnonymously OK 4');\n          // check_gallery();\n        })\n        .catch((error) => {\n          const errorCode = error.code;\n          const errorMessage = error.message;\n          console.log('errorCode', errorCode);\n          console.log('errorMessage', errorMessage);\n        });\n\n      function check_gallery() {\n        get(child(dbRef, `mo-gallery-web`))\n          .then((snapshot) => {\n            if (snapshot.exists()) {\n              console.log('check_gallery snapshot', snapshot.val());\n            } else {\n              console.log('No data available');\n            }\n          })\n          .catch((error) => {\n            console.error('error', error);\n          });\n      }\n\n      // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0\n\n      // const galleryRef = ref( getDatabase(), 'mo-gallery-1');\n      // fireb_.galleryRef = galleryRef;\n      // onValue(galleryRef, (snapshot) => {\n      //   const data = snapshot.val();\n      //   console.log('galleryRef data', data);\n      // });\n\n      window.fireb_ = fireb_;\n      fireb_.auth = auth;\n      fireb_.database = database;\n      fireb_.dbRef = dbRef;\n      fireb_.ref = ref;\n      fireb_.onValue = onValue;\n\n      // Callbacks are removed by calling the off() method on your Firebase database reference.\n    </script>\n\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "672264d6debcf61a7c42cf2f",
+        "createdAt": "2024-11-18T16:19:19.263Z",
+        "updatedAt": "2024-11-18T16:19:19.263Z",
+        "id": "672264d6debcf61a7c42cf2f"
+      },
+      {
+        "name": "style.css",
+        "content": "html,\nbody {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n\n/* Full-page container to center the image */\n/* body, html {\n  height: 100%;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n */\n/* Optional styling for the image */\n/* img {\n  max-width: 100%;\n  height: auto;\n}\n */\n\n.center-image {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "672264d6debcf61a7c42cf31",
+        "createdAt": "2024-11-18T16:19:19.263Z",
+        "updatedAt": "2024-11-18T16:19:19.263Z",
+        "id": "672264d6debcf61a7c42cf31"
+      }
+    ],
+    "createdAt": "2024-10-30T16:54:46.257Z",
+    "updatedAt": "2024-11-18T16:19:19.263Z",
+    "id": "td6gIUqHZ"
+  }
+]
