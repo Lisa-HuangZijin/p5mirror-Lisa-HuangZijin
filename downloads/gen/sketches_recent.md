@@ -1,7 +1,27 @@
 # Sketches for Lisa-HuangZijin
-245 sketches  
+262 sketches  
+[creature建class+3D解决+pose](https://editor.p5js.org/Lisa-HuangZijin/sketches/up6-jfkME)<!-- 2025-05-02T13:48:03.379Z -->  
+[creature建class+3D解决](https://editor.p5js.org/Lisa-HuangZijin/sketches/vUAaCt72o)<!-- 2025-05-02T05:31:48.407Z -->  
+[ML1 assignment ID card and phone](https://editor.p5js.org/Lisa-HuangZijin/sketches/GFlEQ64Ya)<!-- 2025-05-02T05:31:12.538Z -->  
+[ImageModel\_TM copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/efIFtPBIS)<!-- 2025-05-02T05:23:35.615Z -->  
+[Webcam Image Classification with Teachable Machine copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/POW81eTe-)<!-- 2025-05-02T05:11:36.233Z -->  
+[creature转圈test](https://editor.p5js.org/Lisa-HuangZijin/sketches/e-zYs9HBL)<!-- 2025-05-02T04:26:50.489Z -->  
+[creature建class+3D解决](https://editor.p5js.org/Lisa-HuangZijin/sketches/KJtR2rrid)<!-- 2025-05-02T04:08:10.644Z -->  
+[Coconut heather final copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/9jwNEz5ji)<!-- 2025-05-02T03:23:54.669Z -->  
+[creature+strip+mouse+handPose把水母往前移了200](https://editor.p5js.org/Lisa-HuangZijin/sketches/KEhdV8qmt)<!-- 2025-05-02T02:38:34.796Z -->  
+[creature建class](https://editor.p5js.org/Lisa-HuangZijin/sketches/agh5B-j8F)<!-- 2025-05-02T02:34:36.174Z -->  
+[creature建class test](https://editor.p5js.org/Lisa-HuangZijin/sketches/ZjPWl7-Gc)<!-- 2025-05-02T02:30:48.150Z -->  
+[openHand\_andclose](https://editor.p5js.org/Lisa-HuangZijin/sketches/AM9HvjHYK)<!-- 2025-04-29T07:28:52.026Z -->  
+[oneFollowsAnother1](https://editor.p5js.org/Lisa-HuangZijin/sketches/oGdsJfAID)<!-- 2025-04-26T05:37:29.838Z -->  
+[creature+strip+mouse+handPose](https://editor.p5js.org/Lisa-HuangZijin/sketches/5Dnqo4-UE)<!-- 2025-04-25T15:16:05.762Z -->  
+[HandPoseTry3Dz](https://editor.p5js.org/Lisa-HuangZijin/sketches/cqd7AIHXm)<!-- 2025-04-25T14:21:48.095Z -->  
+[creature+strip+mouse](https://editor.p5js.org/Lisa-HuangZijin/sketches/o9DatmfG0)<!-- 2025-04-25T14:07:11.517Z -->  
+[flower3D\_try1](https://editor.p5js.org/Lisa-HuangZijin/sketches/mftaxyGIB)<!-- 2025-04-25T05:33:54.991Z -->  
+[chatGPT\_rotation\_in3D](https://editor.p5js.org/Lisa-HuangZijin/sketches/1r4bbZydi)<!-- 2025-04-25T02:23:19.047Z -->  
+[creature+mouse](https://editor.p5js.org/Lisa-HuangZijin/sketches/lRyASDbFF)<!-- 2025-04-25T02:16:01.240Z -->  
+[NOCweek10](https://editor.p5js.org/Lisa-HuangZijin/sketches/Bda0GPLoa)<!-- 2025-04-25T01:36:33.703Z -->  
+[HandPosekeypointsTryz](https://editor.p5js.org/Lisa-HuangZijin/sketches/ZwGoeZlhF)<!-- 2025-04-25T00:37:31.459Z -->  
 [ML3 nn assignment final version with prof's help](https://editor.p5js.org/Lisa-HuangZijin/sketches/aLdh3Hm6A)<!-- 2025-04-23T17:21:55.175Z -->  
-[oneFollowsAnother1](https://editor.p5js.org/Lisa-HuangZijin/sketches/oGdsJfAID)<!-- 2025-04-23T16:56:56.704Z -->  
 [oneFollowsAnother](https://editor.p5js.org/Lisa-HuangZijin/sketches/SuAQrgcJL)<!-- 2025-04-18T14:53:31.068Z -->  
 [multiscreen\_fullScreen](https://editor.p5js.org/Lisa-HuangZijin/sketches/J3SNMDiYw)<!-- 2025-04-18T01:08:31.693Z -->  
 [NOC\_final\_test6 - MoveNet copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/nx-IYMP0X)<!-- 2025-04-16T18:10:06.215Z -->  
@@ -78,7 +98,6 @@
 [flocking exploring](https://editor.p5js.org/Lisa-HuangZijin/sketches/RYzpnqD9T)<!-- 2024-05-02T13:24:07.703Z -->  
 [week10\_test1](https://editor.p5js.org/Lisa-HuangZijin/sketches/9QvdLvzt6)<!-- 2024-04-16T10:56:32.948Z -->  
 [NOC Autonomous Agents - Wanderer 01 - Wander copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/us6g4Ai9n)<!-- 2024-04-15T15:32:04.209Z -->  
-[NOCweek10](https://editor.p5js.org/Lisa-HuangZijin/sketches/Bda0GPLoa)<!-- 2024-04-15T14:28:44.056Z -->  
 [NOC Autonomous Agents - Wanderer 06 - Avoid Each Other + Same Target (Desire) copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/qCNItgSS-)<!-- 2024-04-15T13:33:23.589Z -->  
 [NOC Autonomous Agents - Wanderer 04 - Avoid Mouse in Detection Area copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/xMm1dKEp9)<!-- 2024-04-15T13:31:38.559Z -->  
 [NOC S24 Autonomous Agents 02 copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/pi1y-5hKa)<!-- 2024-04-11T11:29:06.636Z -->  
@@ -199,7 +218,6 @@
 [ML2 Handpose Basic](https://editor.p5js.org/Lisa-HuangZijin/sketches/aygKUtawz)<!-- 2023-09-16T15:31:27.249Z -->  
 [X & Y Classification copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/4bCTCGSzR)<!-- 2023-09-16T07:07:41.185Z -->  
 [ML2 refined assignment with Prof. array](https://editor.p5js.org/Lisa-HuangZijin/sketches/c2vHYIQF6)<!-- 2023-09-11T11:31:22.544Z -->  
-[ML1 assignment ID card and phone](https://editor.p5js.org/Lisa-HuangZijin/sketches/GFlEQ64Ya)<!-- 2023-09-11T11:30:32.324Z -->  
 [ML2 pose+注释](https://editor.p5js.org/Lisa-HuangZijin/sketches/8tyeblpFe)<!-- 2023-09-11T11:29:46.135Z -->  
 [ML2 face basic](https://editor.p5js.org/Lisa-HuangZijin/sketches/Gw0334hjD)<!-- 2023-09-11T11:28:10.039Z -->  
 [ML2 assignment about motion](https://editor.p5js.org/Lisa-HuangZijin/sketches/VvHZssxo-)<!-- 2023-09-11T11:27:32.304Z -->  
@@ -211,7 +229,6 @@
 [PoseNet Motion Game copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/Jgp4NcOHB)<!-- 2023-09-04T06:53:59.191Z -->  
 [Webcam Image Classification with Teachable Machine copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/WEIzX8k_g)<!-- 2023-09-01T06:27:32.355Z -->  
 [Webcam Image Classification with Teachable Machine copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/UHb-942cV)<!-- 2023-08-30T16:29:41.879Z -->  
-[Coconut heather final copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/9jwNEz5ji)<!-- 2023-05-13T08:44:14.177Z -->  
 [Coconut heather ver6 final copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/TB-hZAWjF)<!-- 2023-05-10T07:26:08.329Z -->  
 [Lisa - Coconut heather ver7 final](https://editor.p5js.org/Lisa-HuangZijin/sketches/KnMcm5z7o)<!-- 2023-05-10T07:09:35.292Z -->  
 [Coconut heather ver6 final](https://editor.p5js.org/Lisa-HuangZijin/sketches/JdXSE0lQr)<!-- 2023-05-10T05:29:14.568Z -->  

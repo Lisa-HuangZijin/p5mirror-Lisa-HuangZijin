@@ -14,7 +14,7 @@ function draw() {
   background(50);
 
   let target = createVector(mouseX, mouseY);
-  //for (let i = 0; i < vehicles.length; i++) {
+  for (let i = 0; i < vehicles.length; i++) {
     let v = vehicles[i];
     v.detect(vehicles);
     v.update();
@@ -22,7 +22,7 @@ function draw() {
     v.display();
     v.setBarriers()
     v.seek(target)
-  //}
+  }
 
   // display text
   fill(255);

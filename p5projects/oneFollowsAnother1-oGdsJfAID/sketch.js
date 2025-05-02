@@ -1,7 +1,7 @@
 //inspiration and example code for the behavior of "following" all comes from Daniel Shiffman's code https://editor.p5js.org/codingtrain/sketches/CvGJFQPLa
 
 let segments = [];
-const segmentNumber = 12;
+const segmentNumber = 20;
 const segmentBaseSize = 40;
 
 function setup() {
@@ -39,19 +39,22 @@ class Segment {
     this.index = index;
     this.angle = 0;
     this.energy = 0;
+    this.lerpSmooth=0
   }
 
   update(index) {
     if (index === 0) {
       this.target = createVector(mouseX, mouseY);
+      this.lerpSmooth=0.05
     } else {
       this.target = segments[index - 1].position.copy();
+      this.lerpSmooth=0.15
     }
 
     let offset;
     offset = createVector(0, 0);
 
-    this.position.lerp(p5.Vector.add(this.target, offset), 0.15);
+    this.position.lerp(p5.Vector.add(this.target, offset), this.lerpSmooth);
 
     this.size =
       segmentBaseSize * (0.8 + 0.4 * sin(frameCount * 0.1 + this.index));

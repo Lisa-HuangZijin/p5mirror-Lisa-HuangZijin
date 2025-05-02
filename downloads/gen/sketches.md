@@ -1,5 +1,5 @@
 # Sketches for Lisa-HuangZijin
-245 sketches  
+262 sketches  
 [about bounce](https://editor.p5js.org/Lisa-HuangZijin/sketches/MLgRMgToR)<!-- 2024-02-22T12:30:26.412Z -->  
 [about bounce2](https://editor.p5js.org/Lisa-HuangZijin/sketches/3LNADQPjd)<!-- 2024-02-18T09:48:15.603Z -->  
 [animation explore](https://editor.p5js.org/Lisa-HuangZijin/sketches/DYYkuzJjy)<!-- 2023-11-20T07:45:53.113Z -->  
@@ -25,11 +25,12 @@
 [CCLab-week4(4)](https://editor.p5js.org/Lisa-HuangZijin/sketches/OAA0gE52Z)<!-- 2024-01-30T03:49:55.971Z -->  
 [CCLab-小猫](https://editor.p5js.org/Lisa-HuangZijin/sketches/uEFsx5fJH)<!-- 2024-01-30T03:54:22.501Z -->  
 [chasing the mouse copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/GKmOJunEf)<!-- 2023-03-06T07:47:27.076Z -->  
+[chatGPT\_rotation\_in3D](https://editor.p5js.org/Lisa-HuangZijin/sketches/1r4bbZydi)<!-- 2025-04-25T02:23:19.047Z -->  
 [Cheshire Cat + GUI copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/SC6hGbRDL)<!-- 2024-03-19T12:36:14.158Z -->  
 [class套class](https://editor.p5js.org/Lisa-HuangZijin/sketches/X2u6zK-Vz)<!-- 2024-02-05T03:55:16.834Z -->  
 [Coconut heather](https://editor.p5js.org/Lisa-HuangZijin/sketches/FDD7vDJu0)<!-- 2023-05-03T09:12:00.532Z -->  
 [Coconut heather - test](https://editor.p5js.org/Lisa-HuangZijin/sketches/Q_TlfsoSY)<!-- 2023-05-03T05:40:34.959Z -->  
-[Coconut heather final copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/9jwNEz5ji)<!-- 2023-05-13T08:44:14.177Z -->  
+[Coconut heather final copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/9jwNEz5ji)<!-- 2025-05-02T03:23:54.669Z -->  
 [Coconut heather ver2 solve move Q](https://editor.p5js.org/Lisa-HuangZijin/sketches/F1wNYunDR)<!-- 2023-05-03T09:43:22.940Z -->  
 [Coconut heather ver3 create wall](https://editor.p5js.org/Lisa-HuangZijin/sketches/GSAkadb-w)<!-- 2023-05-05T06:49:08.735Z -->  
 [Coconut heather ver4 win condition](https://editor.p5js.org/Lisa-HuangZijin/sketches/m0fS8Aj5z)<!-- 2023-05-09T10:49:43.813Z -->  
@@ -41,6 +42,16 @@
 [ComfyUI Image-to-Image SDXL Lightning copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/EjA3To6Xt)<!-- 2025-03-12T15:00:48.651Z -->  
 [ComfyUI Inpainting SD1.5 copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/I6nYUK3Xj)<!-- 2025-03-12T15:11:32.691Z -->  
 [Continuous suede](https://editor.p5js.org/Lisa-HuangZijin/sketches/AaQEZwAsp)<!-- 2023-05-08T18:20:21.435Z -->  
+[creature+mouse](https://editor.p5js.org/Lisa-HuangZijin/sketches/lRyASDbFF)<!-- 2025-04-25T02:16:01.240Z -->  
+[creature+strip+mouse](https://editor.p5js.org/Lisa-HuangZijin/sketches/o9DatmfG0)<!-- 2025-04-25T14:07:11.517Z -->  
+[creature+strip+mouse+handPose](https://editor.p5js.org/Lisa-HuangZijin/sketches/5Dnqo4-UE)<!-- 2025-04-25T15:16:05.762Z -->  
+[creature+strip+mouse+handPose把水母往前移了200](https://editor.p5js.org/Lisa-HuangZijin/sketches/KEhdV8qmt)<!-- 2025-05-02T02:38:34.796Z -->  
+[creature建class](https://editor.p5js.org/Lisa-HuangZijin/sketches/agh5B-j8F)<!-- 2025-05-02T02:34:36.174Z -->  
+[creature建class test](https://editor.p5js.org/Lisa-HuangZijin/sketches/ZjPWl7-Gc)<!-- 2025-05-02T02:30:48.150Z -->  
+[creature建class+3D解决](https://editor.p5js.org/Lisa-HuangZijin/sketches/vUAaCt72o)<!-- 2025-05-02T05:31:48.407Z -->  
+[creature建class+3D解决](https://editor.p5js.org/Lisa-HuangZijin/sketches/KJtR2rrid)<!-- 2025-05-02T04:08:10.644Z -->  
+[creature建class+3D解决+pose](https://editor.p5js.org/Lisa-HuangZijin/sketches/up6-jfkME)<!-- 2025-05-02T13:48:03.379Z -->  
+[creature转圈test](https://editor.p5js.org/Lisa-HuangZijin/sketches/e-zYs9HBL)<!-- 2025-05-02T04:26:50.489Z -->  
 [c爷的week3](https://editor.p5js.org/Lisa-HuangZijin/sketches/Xf24a1q3o)<!-- 2024-02-19T16:08:43.349Z -->  
 [dancer drft1 copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/sFkVX-G_2)<!-- 2023-04-24T11:47:50.346Z -->  
 [David的星体](https://editor.p5js.org/Lisa-HuangZijin/sketches/-uKG9dUiO)<!-- 2024-02-17T14:14:53.593Z -->  
@@ -72,6 +83,7 @@
 [flame简易版（不用class套class](https://editor.p5js.org/Lisa-HuangZijin/sketches/RH_bavV3K)<!-- 2024-03-18T05:49:21.688Z -->  
 [flocking exploring](https://editor.p5js.org/Lisa-HuangZijin/sketches/RYzpnqD9T)<!-- 2024-05-02T13:24:07.703Z -->  
 [flocking exploring2](https://editor.p5js.org/Lisa-HuangZijin/sketches/H5I41AGMj)<!-- 2024-05-06T18:08:58.252Z -->  
+[flower3D\_try1](https://editor.p5js.org/Lisa-HuangZijin/sketches/mftaxyGIB)<!-- 2025-04-25T05:33:54.991Z -->  
 [for loop ball](https://editor.p5js.org/Lisa-HuangZijin/sketches/njqsfvwh5)<!-- 2023-03-05T04:29:17.559Z -->  
 [Futuristic snout](https://editor.p5js.org/Lisa-HuangZijin/sketches/YoY8rQELhW)<!-- 2024-07-11T03:22:38.999Z -->  
 [Generated sapphire](https://editor.p5js.org/Lisa-HuangZijin/sketches/87WS4k7BN)<!-- 2023-05-08T05:43:42.927Z -->  
@@ -80,9 +92,12 @@
 [grassMod copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/jS84iMMYD)<!-- 2024-04-07T14:20:14.554Z -->  
 [grassMod copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/cuurcOsGl)<!-- 2024-04-08T08:14:52.753Z -->  
 [Handpose Classification copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/1m4eEwic7)<!-- 2023-09-17T03:58:21.237Z -->  
+[HandPosekeypointsTryz](https://editor.p5js.org/Lisa-HuangZijin/sketches/ZwGoeZlhF)<!-- 2025-04-25T00:37:31.459Z -->  
+[HandPoseTry3Dz](https://editor.p5js.org/Lisa-HuangZijin/sketches/cqd7AIHXm)<!-- 2025-04-25T14:21:48.095Z -->  
 [help Rachel](https://editor.p5js.org/Lisa-HuangZijin/sketches/O26T4uYWN)<!-- 2023-09-22T05:13:35.994Z -->  
 [Image: Load and Display Image copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/I1fjLrcAk)<!-- 2024-09-06T15:14:48.017Z -->  
 [Image: Load and Display Image copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/cHwG97m74)<!-- 2024-09-02T16:09:55.944Z -->  
+[ImageModel\_TM copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/efIFtPBIS)<!-- 2025-05-02T05:23:35.615Z -->  
 [ImageSegmentation Click n Show (Move) copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/-K0Bd_8mL)<!-- 2024-08-16T09:21:18.613Z -->  
 [Indecisive crown](https://editor.p5js.org/Lisa-HuangZijin/sketches/Bv2MRzs_N)<!-- 2023-05-08T05:43:39.736Z -->  
 [Jumpy close](https://editor.p5js.org/Lisa-HuangZijin/sketches/F7owdkqpB)<!-- 2023-05-02T02:18:35.768Z -->  
@@ -98,7 +113,7 @@
 [Local Stable Diffusion Interactive In-painting copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/PTEXyo_gJ)<!-- 2023-10-30T06:13:20.287Z -->  
 [Local Stable Diffusion LORA copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/D29VckVfa)<!-- 2023-11-20T03:36:49.193Z -->  
 [Mini Project 7 Particles copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/Twthjz1DS)<!-- 2023-11-20T10:49:49.871Z -->  
-[ML1 assignment ID card and phone](https://editor.p5js.org/Lisa-HuangZijin/sketches/GFlEQ64Ya)<!-- 2023-09-11T11:30:32.324Z -->  
+[ML1 assignment ID card and phone](https://editor.p5js.org/Lisa-HuangZijin/sketches/GFlEQ64Ya)<!-- 2025-05-02T05:31:12.538Z -->  
 [ML1 ml5 included template](https://editor.p5js.org/Lisa-HuangZijin/sketches/mkFZq4Ybx)<!-- 2023-09-11T11:26:15.885Z -->  
 [ML2 assignment about motion](https://editor.p5js.org/Lisa-HuangZijin/sketches/VvHZssxo-)<!-- 2023-09-11T11:27:32.304Z -->  
 [ML2 face basic](https://editor.p5js.org/Lisa-HuangZijin/sketches/Gw0334hjD)<!-- 2023-09-11T11:28:10.039Z -->  
@@ -152,13 +167,14 @@
 [NOC\_midterm\_须须 copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/gu_C_JIL0)<!-- 2024-03-17T16:34:53.995Z -->  
 [NOC\_midterm\_须须 copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/CKR2pIT_-)<!-- 2024-03-17T16:34:56.301Z -->  
 [NOC\_week1](https://editor.p5js.org/Lisa-HuangZijin/sketches/y1Qv8hbNl)<!-- 2024-02-01T12:20:10.252Z -->  
-[NOCweek10](https://editor.p5js.org/Lisa-HuangZijin/sketches/Bda0GPLoa)<!-- 2024-04-15T14:28:44.056Z -->  
+[NOCweek10](https://editor.p5js.org/Lisa-HuangZijin/sketches/Bda0GPLoa)<!-- 2025-04-25T01:36:33.703Z -->  
 [Omniscient moonstone](https://editor.p5js.org/Lisa-HuangZijin/sketches/_o7z8hWsn)<!-- 2023-05-09T09:58:09.596Z -->  
 [Omniscient moonstone copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/FgSQpGTgY)<!-- 2023-05-09T10:14:12.533Z -->  
 [oneFollowsAnother](https://editor.p5js.org/Lisa-HuangZijin/sketches/SuAQrgcJL)<!-- 2025-04-18T14:53:31.068Z -->  
-[oneFollowsAnother1](https://editor.p5js.org/Lisa-HuangZijin/sketches/oGdsJfAID)<!-- 2025-04-23T16:56:56.704Z -->  
+[oneFollowsAnother1](https://editor.p5js.org/Lisa-HuangZijin/sketches/oGdsJfAID)<!-- 2025-04-26T05:37:29.838Z -->  
 [OpenAI Dialog copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/BWPD95Bzz)<!-- 2023-10-09T06:56:28.590Z -->  
 [OpenAI Prompting copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/mhsFL8Ucm)<!-- 2023-09-25T07:31:49.957Z -->  
+[openHand\_andclose](https://editor.p5js.org/Lisa-HuangZijin/sketches/AM9HvjHYK)<!-- 2025-04-29T07:28:52.026Z -->  
 [p5.comfyui-helper Hello World copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/hGi09yYMj)<!-- 2025-03-12T14:45:14.863Z -->  
 [Pixelator](https://editor.p5js.org/Lisa-HuangZijin/sketches/X2IHczHMy)<!-- 2024-03-15T11:49:37.921Z -->  
 [PoseNet Basic copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/L0eAT-PwF)<!-- 2023-09-10T13:10:19.745Z -->  
@@ -195,6 +211,7 @@
 [W6 assignment with Jiapei\!](https://editor.p5js.org/Lisa-HuangZijin/sketches/y5yx4h-WA)<!-- 2023-12-03T14:03:55.829Z -->  
 [W6\_Assignment](https://editor.p5js.org/Lisa-HuangZijin/sketches/YDL_nvrMb)<!-- 2023-10-14T17:38:03.257Z -->  
 [W6\_Assignment copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/NqH_iS97z)<!-- 2023-10-14T11:38:51.998Z -->  
+[Webcam Image Classification with Teachable Machine copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/POW81eTe-)<!-- 2025-05-02T05:11:36.233Z -->  
 [Webcam Image Classification with Teachable Machine copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/WEIzX8k_g)<!-- 2023-09-01T06:27:32.355Z -->  
 [Webcam Image Classification with Teachable Machine copy copy](https://editor.p5js.org/Lisa-HuangZijin/sketches/UHb-942cV)<!-- 2023-08-30T16:29:41.879Z -->  
 [webcam+list](https://editor.p5js.org/Lisa-HuangZijin/sketches/Hhng_Zega)<!-- 2024-08-16T11:06:49.687Z -->  

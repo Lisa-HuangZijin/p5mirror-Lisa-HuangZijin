@@ -1727,6 +1727,60 @@
     "id": "GKmOJunEf"
   },
   {
+    "_id": "1r4bbZydi",
+    "name": "chatGPT_rotation_in3D",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "680aeaf7696c72219d37d7a2",
+          "680aeaf7696c72219d37d7a1",
+          "680aeaf7696c72219d37d7a3"
+        ],
+        "fileType": "folder",
+        "_id": "680aeaf7696c72219d37d7a4",
+        "createdAt": "2025-04-25T02:23:19.047Z",
+        "updatedAt": "2025-04-25T02:23:19.047Z",
+        "id": "680aeaf7696c72219d37d7a4"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let velocity = p5.Vector.sub(target, position).normalize();\n\nlet yaw = atan2(velocity.x, velocity.z);\nlet pitch = asin(-velocity.y); // minus to look \"up\" when y is negative (p5.js convention)\n\n//atan2(y, x) gives you the angle (in radians or degrees) between the X-axis and the point (x, y).\n\n//In P5 reference:\n//atan2 Calculates the angle formed by a point, the origin, and the positive x-axis.\n//atan2() is most often used for orienting geometry to the mouse's position, as in atan2(mouseY, mouseX). The first parameter is the point's y-coordinate and the second parameter is its x-coordinate.\n//By default, atan2() returns values in the range -π (about -3.14) to π (3.14). If the angleMode() is DEGREES, then values are returned in the range -180 to 180.\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "680aeaf7696c72219d37d7a1",
+        "createdAt": "2025-04-25T02:23:19.047Z",
+        "updatedAt": "2025-04-25T02:23:19.047Z",
+        "id": "680aeaf7696c72219d37d7a1"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "680aeaf7696c72219d37d7a2",
+        "createdAt": "2025-04-25T02:23:19.047Z",
+        "updatedAt": "2025-04-25T02:23:19.047Z",
+        "id": "680aeaf7696c72219d37d7a2"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "680aeaf7696c72219d37d7a3",
+        "createdAt": "2025-04-25T02:23:19.047Z",
+        "updatedAt": "2025-04-25T02:23:19.047Z",
+        "id": "680aeaf7696c72219d37d7a3"
+      }
+    ],
+    "updatedAt": "2025-04-25T02:23:19.047Z",
+    "createdAt": "2025-04-25T01:53:01.890Z",
+    "id": "1r4bbZydi"
+  },
+  {
     "_id": "SC6hGbRDL",
     "name": "Cheshire Cat + GUI copy",
     "files": [
@@ -2012,10 +2066,10 @@
           "645f4dd649230d7d3aef6e77"
         ],
         "fileType": "folder",
-        "_id": "645f4dd649230d7d3aef6e6d",
         "isSelectedFile": false,
-        "createdAt": "2023-05-13T08:44:14.177Z",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
+        "_id": "645f4dd649230d7d3aef6e6d",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e6d"
       },
       {
@@ -2023,10 +2077,10 @@
         "content": "let stageHistory = 0;\n\nlet character;\nlet blocks = [];\nlet checkColor = true;\nlet imgCoin;\nlet cy;\n\nlet stage = 0;\nlet setSize = 40;\n\nvar mainFont;\nvar subFont;\nlet changeSize1 = 80;\nlet changeSize2 = 80; //for mainMenu + set\n\nlet winSize = 40;\n\nfunction setup() {\n  createCanvas(900, 680);\n\n  character = new Character();\n}\nfunction preload() {\n  imgCoin = loadImage(\"coin.png\");\n  imgSet = loadImage(\"settings.png\");\n  imgRight = loadImage(\"right.png\");\n  imgLeft = loadImage(\"left.png\");\n  imgJump=loadImage(\"jump.png\")\n  mainFont = loadFont(\"Silkscreen-Regular.ttf\");\n  subFont = loadFont(\"Geo-Regular.ttf\");\n}\n\nfunction draw() {\n  if (stage == 0) {\n    mainMenu();\n  }\n  if (stage == 1) {\n    tutor();\n  }\n  if (stage == 2) {\n    level1();\n  }\n  if (stage == 3) {\n    level2();\n  }\n  if (stage == 4) {\n    level3();\n  }\n  if (stage == 5) {\n    setting();\n  }\n  if (stage == 6) {\n    win();\n  }\n\n  noStroke();\n\n  ////////////////settings/////////////////\n  if (dist(mouseX, mouseY, 850, 49) < 20) {\n    setSize = 50;\n  } else {\n    setSize = 40;\n  }\n  image(imgSet, 830, 28, setSize, setSize);\n}\n\nfunction mousePressed() {\n  // Moon: have another variable\n  if (mouseIsPressed) {\n    if (dist(mouseX, mouseY, 850, 49) < 20) {\n      stageHistory = stage; // ***\n      stage = 5; //settings stage\n    }\n  }\n}\n\nfunction keyPressed() {\n  for (let i = 0; i < blocks.length; i++) {\n    let b = blocks[i];\n    if (key == \"w\") {\n      character.jump();\n    }\n  }\n  if (key == \"w\") {\n    checkColor = !checkColor;\n  }\n  if (keyCode === LEFT_ARROW) {\n    character.goleft = true;\n  } else if (keyCode === RIGHT_ARROW) {\n    character.goright = true;\n  }\n}\n\nfunction keyReleased() {\n  if (keyCode === LEFT_ARROW) {\n    character.goleft = false;\n  } else if (keyCode === RIGHT_ARROW) {\n    character.goright = false;\n  }\n}\n\nclass Block {\n  constructor(bx, by, bw, bh) {\n    this.bx = bx;\n    this.by = by;\n    this.bw = bw;\n    this.bh = bh;\n  }\n\n  show() {\n    rect(this.bx, this.by, this.bw, this.bh);\n  }\n}\n\nclass Character {\n  constructor() {\n    this.r = 60;\n    this.x = 100;\n    this.y = 300;\n    this.vy = 0;\n    this.gravity = 1.6;\n    this.minHeight = height - 70 - this.r;\n    this.goleft = false;\n    this.goright = false;\n    this.left = -200;\n    this.right = width + 200;\n    this.winning = false;\n  }\n  jump() {\n    if (this.y > this.minHeight - 60) {\n      this.vy = -20;\n    }\n  }\n  upDown() {\n    this.y += this.vy;\n    this.vy += this.gravity; //mimic gravity\n    this.y = constrain(this.y, 0, this.minHeight);\n  }\n  move() {\n    if (this.x + this.r < 0) {\n      this.x = width;\n    } else if (this.x > width) {\n      this.x = 0 - this.r;\n    }\n    if (this.goleft === true) {\n      this.x = this.x - 5; //move left\n    } else if (this.goright === true) {\n      this.x = this.x + 5; //move right\n    }\n    this.x = constrain(this.x, this.left, this.right);\n  }\n\n  collisions1(objects) {\n    let count = 0;\n    for (let i = 0; i < objects.length; i = i + 2) {\n      let b = objects[i];\n      if (\n        this.x > b.bx - this.r &&\n        this.x < b.bx + b.bw &&\n        this.y <= b.by - this.r\n      ) {\n        this.minHeight = b.by - this.r;\n        count++;\n      }\n    }\n    if (count == 0) {\n      this.minHeight = height - 70 - this.r;\n    }\n  }\n  collisions2(objects) {\n    let count = 0;\n    for (let i = 1; i < objects.length; i = i + 2) {\n      let b = objects[i];\n      if (\n        this.x > b.bx - this.r &&\n        this.x < b.bx + b.bw &&\n        this.y <= b.by - this.r\n      ) {\n        this.minHeight = b.by - this.r;\n        count++;\n      }\n    }\n    if (count == 0) {\n      this.minHeight = height - 70 - this.r;\n    }\n  }\n  collisions3(objects) {\n    let count = 0;\n    for (let i = 0; i < objects.length; i++) {\n      let b = objects[i];\n      if (\n        this.x + this.r <= b.bx &&\n        this.y >= b.by &&\n        this.y + this.r <= b.by + b.bh\n      ) {\n        this.right = b.bx - this.r;\n        count++;\n      }\n    }\n    if (count == 0) {\n      this.right = width + 200;\n    }\n  }\n  collisions4(objects) {\n    let count = 0;\n    for (let i = 0; i < objects.length; i++) {\n      let b = objects[i];\n      if (\n        this.x >= b.bx + b.bw &&\n        this.y >= b.by &&\n        this.y + this.r <= b.by + b.bh\n      ) {\n        this.left = b.bx + b.bw;\n        count++;\n      }\n    }\n    if (count == 0) {\n      this.left = -200;\n    }\n  }\n\n  show() {\n    rect(this.x, this.y, this.r, this.r);\n  }\n}\n//////////////////////////main menu//////////////////////\nfunction mainMenu() {\n  fill(255);\n\n  textAlign(CENTER);\n\n  if (mouseX < width / 2 && mouseY < height / 2) {\n    background(63, 62, 106); //set1-1\n    fill(227, 151, 112); //set1-2\n  } else if (mouseX >= width / 2 && mouseY <= height / 2) {\n    background(227, 151, 112); //set1-2\n    fill(63, 62, 106); //set1-1\n  } else if (mouseX <= width / 2 && mouseY >= height / 2) {\n    background(91, 125, 88); //set2-1\n    fill(112, 42, 40); //set2-2\n  } else if (mouseX > width / 2 && mouseY > height / 2) {\n    background(112, 42, 40); //set2-2\n    fill(91, 125, 88); //set2-1\n  }\n  textSize(100);\n  textFont(mainFont);\n  text(\"BALANCE\", width / 2, 200); //title\n  //rect(380,275,140,70)\n  //rect(380,380,140,70)\n  if (mouseX > 380 && mouseX < 520 && mouseY > 275 && mouseY < 345) {\n    changeSize1 = 96;\n  } else {\n    changeSize1 = 80;\n  }\n  textSize(changeSize1);\n  textFont(subFont);\n  text(\"PLAY\", width / 2, 340);\n  if (mouseX > 380 && mouseX < 520 && mouseY > 380 && mouseY < 450) {\n    changeSize2 = 96;\n  } else {\n    changeSize2 = 80;\n  }\n  textSize(changeSize2);\n  text(\"TUTOR\", width / 2, 440);\n\n  textSize(20);\n\n  if (mouseIsPressed) {\n    if (mouseX > 380 && mouseX < 520 && mouseY > 275 && mouseY < 345) {\n      stage = 2;\n    } else if (mouseX > 380 && mouseX < 520 && mouseY > 380 && mouseY < 450) {\n      stage = 1;\n    } else {\n      stage = 0;\n    }\n  }\n  character.show();\n  character.move();\n  character.upDown();\n  character.jump();\n}\n///////////////////////level1/////////////////////////////\nfunction level1() {\n  blocks[0] = new Block(width / 2 - 50 - 65, 530, 100, 10);\n  blocks[1] = new Block(width / 2 - 50 + 65, 440, 100, 10);\n  blocks[2] = new Block(width / 2 - 50 - 65, 350, 100, 10);\n  blocks[3] = new Block(width / 2 - 50 + 65, 260, 100, 10);\n  blocks[4] = new Block(width / 2 - 50 - 65, 170, 100, 10);\n  blocks[5] = new Block(width / 2 - 50 + 65, 80, 100, 10);\n  blocks[6] = new Block(-100, 10, 10, 10);\n  blocks[7] = new Block(-100, 10, 10, 10);\n  blocks[8] = new Block(-100, 10, 10, 10);\n  blocks[9] = new Block(-100, 10, 10, 10);\n  blocks[10] = new Block(-100, 10, 10, 10);\n\n  if (checkColor == false) {\n    background(63, 62, 160);\n    for (let i = 0; i < blocks.length; i = i + 2) {\n      let b = blocks[i];\n      fill(227, 151, 112);\n      b.show();\n      character.collisions1(blocks);\n      character.collisions3(blocks);\n      character.collisions4(blocks);\n    }\n  } else if (checkColor == true) {\n    background(227, 151, 112);\n    for (let i = 1; i < blocks.length; i = i + 2) {\n      let b = blocks[i];\n      fill(63, 62, 160);\n      b.show();\n      character.collisions2(blocks);\n      character.collisions3(blocks);\n      character.collisions4(blocks);\n    }\n  }\n  character.show();\n  character.upDown();\n  character.move();\n  cy = 34 + map(sin(frameCount * 0.042), -1, 1, -5, 8);\n  image(imgCoin, 498, cy, 30, 30);\n\n  if (\n    character.x < 498 &&\n    character.x + character.r > 498 + 30 &&\n    character.y < cy &&\n    character.y + character.r > cy + 30\n  ) {\n    stage = 3;\n  }\n}\n\n/////////////////////////level2////////////////////////////\nfunction level2() {\n  blocks[0] = new Block(480, 560, 100, 10);\n  blocks[1] = new Block(360, 450, 100, 10);\n  blocks[2] = new Block(30, 120, 100, 10);\n  blocks[3] = new Block(820, 400, 100, 10);\n  blocks[4] = new Block(20, 20, 10, 100);\n  blocks[5] = new Block(150, 220, 100, 10);\n  blocks[6] = new Block(250, 350, 100, 10);\n  blocks[7] = new Block(-100, 10, 10, 10);\n  blocks[8] = new Block(-100, 10, 10, 10);\n  blocks[9] = new Block(-100, 10, 10, 10);\n  blocks[10] = new Block(-100, 10, 10, 10);\n\n  if (checkColor == false) {\n    background(91, 125, 88);\n    for (let i = 0; i < blocks.length; i = i + 2) {\n      let b = blocks[i];\n      fill(112, 42, 40);\n      b.show();\n      character.collisions1(blocks);\n      character.collisions3(blocks);\n      character.collisions4(blocks);\n    }\n  } else if (checkColor == true) {\n    background(112, 42, 40);\n    for (let i = 1; i < blocks.length; i = i + 2) {\n      let b = blocks[i];\n      fill(91, 125, 88);\n      b.show();\n      character.collisions2(blocks);\n      character.collisions3(blocks);\n      character.collisions4(blocks);\n    }\n  }\n  character.show();\n  character.upDown();\n  character.move();\n\n  cy = 350 + map(sin(frameCount * 0.042), -1, 1, -5, 8);\n  image(imgCoin, 838, cy, 30, 30);\n\n  if (\n    character.x < 838 &&\n    character.x + character.r > 838 + 30 &&\n    character.y < cy &&\n    character.y + character.r > cy + 30\n  ) {\n    stage = 4;\n  }\n}\n\n////////////////////////level3////////////////////////////\nfunction level3() {\n  blocks[0] = new Block(825, 550, 100, 10);\n  blocks[1] = new Block(-15, 460, 100, 10);\n  blocks[2] = new Block(825, 370, 100, 10);\n  blocks[3] = new Block(-15, 280, 100, 10);\n  blocks[4] = new Block(825, 190, 100, 10);\n  blocks[5] = new Block(605, 140, 140, 10);\n  blocks[6] = new Block(390, 166, 120, 10);\n  blocks[7] = new Block(390, 250, 120, 10); //final block\n  blocks[8] = new Block(375, 176, 10, 50);\n  blocks[9] = new Block(-100, 176, 10, 10);\n  blocks[10] = new Block(515, 176, 10, 50);\n\n  if (checkColor == false) {\n    background(243, 143, 0);\n    for (let i = 0; i < blocks.length; i = i + 2) {\n      let b = blocks[i];\n      fill(118, 100, 0);\n      b.show();\n      character.collisions1(blocks);\n      character.collisions3(blocks);\n      character.collisions4(blocks);\n    }\n  } else if (checkColor == true) {\n    background(118, 100, 0);\n    for (let i = 1; i < blocks.length; i = i + 2) {\n      let b = blocks[i];\n      fill(243, 143, 0);\n      b.show();\n      character.collisions2(blocks);\n      character.collisions3(blocks);\n      character.collisions4(blocks);\n    }\n  }\n\n  character.show();\n  character.upDown();\n  character.move();\n\n  cy = 204 + map(sin(frameCount * 0.042), -1, 1, -5, 8);\n  image(imgCoin, 433, cy, 30, 30);\n\n  if (\n    character.x < 433 &&\n    character.x + character.r > 433 + 30 &&\n    character.y < cy &&\n    character.y + character.r > cy + 30\n  ) {\n    stage = 6;\n  }\n}\n/////////////////////tutor//////////////////////\nfunction tutor() {\n  blocks[0] = new Block(width / 2, 530, 100, 10);\n  blocks[1] = new Block(width / 2 + 120, 440, 100, 10);\n  blocks[2] = new Block(width / 2 + 240, 350, 100, 10);\n  blocks[3] = new Block(width / 2 + 360, 260, 100, 10);\n  blocks[4] = new Block(-20, 170, 100, 10);\n  blocks[5] = new Block(-100, 10, 10, 10);\n  blocks[6] = new Block(-100, 10, 10, 10);\n  blocks[7] = new Block(-100, 10, 10, 10);\n  blocks[8] = new Block(-100, 10, 10, 10);\n  blocks[9] = new Block(-100, 10, 10, 10);\n  blocks[10] = new Block(-100, 10, 10, 10);\n\n  if (checkColor == false) {\n    background(245, 231, 198);\n    for (let i = 0; i < blocks.length; i = i + 2) {\n      let b = blocks[i];\n      fill(158, 136, 109);\n      b.show();\n      character.collisions1(blocks);\n      character.collisions3(blocks);\n      character.collisions4(blocks);\n    }\n  } else if (checkColor == true) {\n    background(158, 136, 109);\n    for (let i = 1; i < blocks.length; i = i + 2) {\n      let b = blocks[i];\n      fill(245, 231, 198);\n      b.show();\n      character.collisions2(blocks);\n      character.collisions3(blocks);\n      character.collisions4(blocks);\n    }\n  }\n  character.show();\n  character.upDown();\n  character.move();\n  cy = 111 + map(sin(frameCount * 0.042), -1, 1, -5, 8);\n  image(imgCoin, 26, cy, 30, 30);\n\n  image(imgCoin, 26, cy, 30, 30);\n  image(imgLeft,245,45,46,46)\n  image(imgRight,310,45,46,46)\n  image(imgJump,375,45,46,46)\n  \n  textAlign(CENTER)\n  textFont(subFont)\n  textSize(20)\n  text(\"jump right!!!\",496,457)\n  text(\"haha~,get you~\",618,370)\n  text(\"jump right again!\",830,153)\n  text(\"No kidding!\",830,173)\n  text(\"get here and jump\",501,637)\n  \n  fill(255)\n  \n  text(\"left\",267,116)\n  text(\"right\", 334,116)\n  text(\"jump\",398,116)\n  text(\"instructions:\",170,67)\n\n  if (\n    character.x < 26 &&\n    character.x + character.r > 26 + 30 &&\n    character.y < cy &&\n    character.y + character.r > cy + 30\n  ) {\n    stage = 6;\n  }\n}\n\n/////////////////////////setting stage5//////////////////////////\nfunction setting() {\n  background(112, 42, 40);\n  textAlign(CENTER);\n  fill(91, 125, 88);\n\n  textFont(mainFont);\n  textSize(100);\n  text(\"SETTINGS\", width / 2, 290);\n\n  if (mouseX > 502 && mouseX < 860 && mouseY > 544 && mouseY < 587) {\n    changeSize1 = 90;\n    if (mouseIsPressed) {\n      stage = 0;\n    }\n  } else {\n    changeSize1 = 80;\n  }\n  textFont(subFont);\n  textSize(changeSize1);\n  text(\"Main Manue\", 680, 585);\n\n  if (mouseX > 83 && mouseX < 220 && mouseY > 535 && mouseY < 585) {\n    changeSize2 = 90;\n    if (mouseIsPressed) {\n      stage = stageHistory; // set stage to former value\n    }\n  } else {\n    changeSize2 = 80;\n  }\n  textSize(changeSize2);\n  text(\"back\", 150, 585);\n}\n//////////////////success////////////////////\nfunction win() {\n  //stage 6\n  background(63, 62, 106);\n  textAlign(CENTER);\n  fill(227, 151, 112);\n\n  textFont(mainFont);\n  textSize(70);\n  text(\"Congratulations!\", width / 2, 200);\n  textSize(winSize);\n  text(\"main menu\", 187, 590);\n\n  textSize(50);\n  textFont(subFont);\n  text(\"You are really\", width / 2, 300);\n  text(\"skilled at \", width / 2, 370);\n  text(\"keeping a balance!\", width / 2, 440);\n\n  if (mouseX > 62 && mouseX < 311 && mouseY > 567 && mouseY < 590) {\n    winSize = 50;\n    if (mouseIsPressed) {\n      stage = 0;\n    }\n  } else {\n    winSize = 40;\n  }\n  character.show();\n  character.move();\n  character.upDown();\n  character.jump();\n}\n",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e76",
         "isSelectedFile": true,
-        "createdAt": "2023-05-13T08:44:14.177Z",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
+        "_id": "645f4dd649230d7d3aef6e76",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e76"
       },
       {
@@ -2034,10 +2088,10 @@
         "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e71",
         "isSelectedFile": false,
-        "createdAt": "2023-05-13T08:44:14.177Z",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
+        "_id": "645f4dd649230d7d3aef6e71",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e71"
       },
       {
@@ -2045,99 +2099,99 @@
         "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e77",
         "isSelectedFile": false,
-        "createdAt": "2023-05-13T08:44:14.177Z",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
+        "_id": "645f4dd649230d7d3aef6e77",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e77"
       },
       {
         "name": "coin.png",
         "content": "",
+        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/b6824ceb-312f-490d-b107-13189e79eadf.png",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e70",
-        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/b6824ceb-312f-490d-b107-13189e79eadf.png",
         "isSelectedFile": false,
-        "updatedAt": "2023-05-13T08:44:14.177Z",
-        "createdAt": "2023-05-13T08:44:14.177Z",
+        "_id": "645f4dd649230d7d3aef6e70",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e70"
       },
       {
         "name": "Geo-Regular.ttf",
         "content": "",
+        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/664a551d-ce16-4430-bb81-6a86d30c18c4.ttf",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e6e",
-        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/664a551d-ce16-4430-bb81-6a86d30c18c4.ttf",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
-        "createdAt": "2023-05-13T08:44:14.177Z",
         "isSelectedFile": false,
+        "_id": "645f4dd649230d7d3aef6e6e",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e6e"
       },
       {
         "name": "Silkscreen-Regular.ttf",
         "content": "",
+        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/53621598-efc5-4ff6-9608-53b6242f0ca8.ttf",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e6f",
-        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/53621598-efc5-4ff6-9608-53b6242f0ca8.ttf",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
-        "createdAt": "2023-05-13T08:44:14.177Z",
         "isSelectedFile": false,
+        "_id": "645f4dd649230d7d3aef6e6f",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e6f"
       },
       {
         "name": "settings.png",
         "content": "",
+        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/f10908c0-32f3-40b9-bcc6-6a7d026faa55.png",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e75",
-        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/f10908c0-32f3-40b9-bcc6-6a7d026faa55.png",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
-        "createdAt": "2023-05-13T08:44:14.177Z",
         "isSelectedFile": false,
+        "_id": "645f4dd649230d7d3aef6e75",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e75"
       },
       {
         "name": "left.png",
         "content": "",
+        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/fe7a759e-b1ce-4e1e-8537-617a55aadca2.png",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e73",
-        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/fe7a759e-b1ce-4e1e-8537-617a55aadca2.png",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
-        "createdAt": "2023-05-13T08:44:14.177Z",
         "isSelectedFile": false,
+        "_id": "645f4dd649230d7d3aef6e73",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e73"
       },
       {
         "name": "right.png",
         "content": "",
+        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/8b8554c2-2db7-4740-8097-dff76b68d45c.png",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e74",
-        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/8b8554c2-2db7-4740-8097-dff76b68d45c.png",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
-        "createdAt": "2023-05-13T08:44:14.177Z",
         "isSelectedFile": false,
+        "_id": "645f4dd649230d7d3aef6e74",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e74"
       },
       {
         "name": "jump.png",
         "content": "",
+        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/548f4d15-6d0b-4926-9f7d-c89b0a6b440b.png",
         "children": [],
         "fileType": "file",
-        "_id": "645f4dd649230d7d3aef6e72",
-        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/548f4d15-6d0b-4926-9f7d-c89b0a6b440b.png",
-        "updatedAt": "2023-05-13T08:44:14.177Z",
-        "createdAt": "2023-05-13T08:44:14.177Z",
         "isSelectedFile": false,
+        "_id": "645f4dd649230d7d3aef6e72",
+        "createdAt": "2025-05-02T03:23:54.669Z",
+        "updatedAt": "2025-05-02T03:23:54.669Z",
         "id": "645f4dd649230d7d3aef6e72"
       }
     ],
     "createdAt": "2023-05-13T08:44:07.632Z",
-    "updatedAt": "2023-05-13T08:44:14.177Z",
+    "updatedAt": "2025-05-02T03:23:54.669Z",
     "id": "9jwNEz5ji"
   },
   {
@@ -3146,6 +3200,779 @@
     ],
     "createdAt": "2023-05-08T18:20:21.435Z",
     "id": "AaQEZwAsp"
+  },
+  {
+    "_id": "lRyASDbFF",
+    "name": "creature+mouse",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "680ad97aa9373244398ea14c",
+          "680ad97aa9373244398ea14d",
+          "680ad97aa9373244398ea14e"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "680ad97aa9373244398ea14b",
+        "createdAt": "2025-04-25T02:16:01.240Z",
+        "updatedAt": "2025-04-25T02:16:01.240Z",
+        "id": "680ad97aa9373244398ea14b"
+      },
+      {
+        "name": "sketch.js",
+        "content": "//3D creature orgins from the 3D flower created by Kazuki Umeda, I watched his youtube tutorial https://www.youtube.com/watch?v=YsGeMIpEcY4&t=220s\n//vector rotation learnt from chatGPT below is the code and instruction https://editor.p5js.org/Lisa-HuangZijin/sketches/1r4bbZydi\nlet posVec, prevousPosVec, targetVec;\nlet currentY = 0;\nlet currentX = 0;\n\nfunction setup() {\n  createCanvas(700, 700, WEBGL);\n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  posVec = createVector(0, 0, 0);\n  prevousPosVec = posVec.copy();\n  targetVec = createVector(0, 0, 0);\n}\n\nfunction draw() {\n  background(0);\n  //orbitControl();\n\n  targetVec.set(mouseX - width / 2, mouseY - height / 2, 0);//// store the current position\n\n  prevousPosVec.set(posVec);\n  posVec.lerp(targetVec, 0.05);\n\n  let velocity = p5.Vector.sub(posVec, prevousPosVec);\n  let SP = velocity.mag();\n  if (SP > 0.01) velocity.normalize();\n\n  let targerY = atan2(velocity.x, velocity.z); \n  let targerX = asin(-velocity.y);        \n\n  currentY = lerpAngle(currentY, targerY, 0.06);\n  currentX = lerpAngle(currentX, targerX, 0.06);\n\n  push();\n  translate(posVec.x, posVec.y, posVec.z);\n  rotateY(currentY);\n  rotateX(currentX+90);\n  drawCreature();\n  pop();\n}\n\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) {\n    diff -= 360 * Math.sign(diff);\n  }\n  return a + diff * t;\n}\n\nfunction drawCreature() {\n  for (let r = 0; r <= 1; r += 0.04) {\n    stroke(255, 0, r * 100 + 20);\n    beginShape(POINTS);\n    for (let theta = -360; theta <= 2700; theta += 2) {\n      let phi = (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n        Math.exp(-theta / (map(abs(sin(frameCount * 1 + PI)), 0, 1, 100, 10) * 180));\n      let petalCut = 1 - (1 / 2) * pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n      let hangDown = map(cos(frameCount * 5 +0.5), -1, 1, -3, 5) *\n        pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n      if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n        let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n        let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n        let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n        vertex(pX, pY, pZ);\n      }\n    }\n    endShape();\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "680ad97aa9373244398ea14d",
+        "createdAt": "2025-04-25T02:16:01.240Z",
+        "updatedAt": "2025-04-25T02:16:01.240Z",
+        "id": "680ad97aa9373244398ea14d"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680ad97aa9373244398ea14c",
+        "createdAt": "2025-04-25T02:16:01.240Z",
+        "updatedAt": "2025-04-25T02:16:01.240Z",
+        "id": "680ad97aa9373244398ea14c"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680ad97aa9373244398ea14e",
+        "createdAt": "2025-04-25T02:16:01.240Z",
+        "updatedAt": "2025-04-25T02:16:01.240Z",
+        "id": "680ad97aa9373244398ea14e"
+      }
+    ],
+    "createdAt": "2025-04-25T00:38:18.685Z",
+    "updatedAt": "2025-04-25T02:16:01.240Z",
+    "id": "lRyASDbFF"
+  },
+  {
+    "_id": "o9DatmfG0",
+    "name": "creature+strip+mouse",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "680af1fa696c72219d37d7a6",
+          "680b92cf35d2b0d236e2ae4e",
+          "680af1fa696c72219d37d7a7",
+          "680af1fa696c72219d37d7a8"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "680af1fa696c72219d37d7a5",
+        "createdAt": "2025-04-25T14:07:11.517Z",
+        "updatedAt": "2025-04-25T14:07:11.517Z",
+        "id": "680af1fa696c72219d37d7a5"
+      },
+      {
+        "name": "sketch.js",
+        "content": "//3D creature orgins from the 3D flower created by Kazuki Umeda, I watched his youtube tutorial https://www.youtube.com/watch?v=YsGeMIpEcY4&t=220s\n//vector rotation learnt from chatGPT below is the code and instruction https://editor.p5js.org/Lisa-HuangZijin/sketches/1r4bbZydi\nlet posVec, prevousPosVec, targetVec;\nlet currentY = 0;\nlet currentX = 0;\n\nlet segments = [];\nconst segmentNumber = 20;\nconst segmentBaseSize = 20;\n\nfunction setup() {\n  createCanvas(1200, 900, WEBGL);\n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  posVec = createVector(0, 0, 0);\n  prevousPosVec = posVec.copy();\n  targetVec = createVector(0, 0, 0);\n  \n  for (let i = 0; i < segmentNumber; i++) {\n    segments.push(\n      new Segment(\n        width / 2 + i * segmentBaseSize * 0.8,\n        height / 2,\n        segmentBaseSize,\n        255,\n        i\n      )\n    );\n  }\n}\n\nfunction draw() {\n  background(0);\n  //orbitControl();\n  segments.forEach((seg, index) => {\n    seg.update(index);\n    seg.display();\n  });\n \n\n  targetVec.set(mouseX - width / 2, mouseY - height / 2, 0);//// store the current position\n\n  prevousPosVec.set(posVec);\n  posVec.lerp(targetVec, 0.05);\n\n  let velocity = p5.Vector.sub(posVec, prevousPosVec);\n  let SP = velocity.mag();\n  if (SP > 0.01) velocity.normalize();\n\n  let targerY = atan2(velocity.x, velocity.z); \n  let targerX = asin(-velocity.y);        \n\n  currentY = lerpAngle(currentY, targerY, 0.06);\n  currentX = lerpAngle(currentX, targerX, 0.06);\n\n  push();\n  translate(posVec.x, posVec.y, posVec.z);\n  rotateY(currentY);\n  rotateX(currentX+90);\n  drawCreature();\n  pop();\n  \n  \n}\n\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) {\n    diff -= 360 * Math.sign(diff);\n  }\n  return a + diff * t;\n}\n\nfunction drawCreature() {\n  push()\n  stroke(255)\n  rotateX(90)\n  translate(0,0,220)\n  ellipse(0,0,150,150)\n  //drawTails()\n  pop()\n  for (let r = 0; r <= 1; r += 0.04) {\n    stroke(255, 0, r * 100 + 20);\n    beginShape(POINTS);\n    for (let theta = -360; theta <= 2700; theta += 2) {\n      let phi = (180 / map(sin(frameCount * 2), -1, 1, 2, 10)) *\n        Math.exp(-theta / (map(abs(sin(frameCount * 0.2 + PI)), 0, 1, 100, 10) * 180));\n      let petalCut = 1 - (1 / 2) * pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n      let hangDown = map(cos(frameCount * 2 +0.5), -1, 1, -3, 5) *\n        pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n      if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n        let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n        let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n        let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n        vertex(pX, pY, pZ);\n      }\n    }\n    endShape();\n  }\n}\n\nclass Segment {\n  constructor(x, y, size, col, index) {\n    this.home = createVector(x, y, 0);\n    this.position = createVector(x, y, 0);\n    this.target = createVector(x, y, 0);\n    this.size = size;\n    this.color = col;\n    this.index = index;\n    this.energy = 0;\n    this.lerpSmooth = 0;\n\n    this.angleY = 0; // for facing direction\n    this.angleX = 0;\n  }\n\n  update(index) {\n    if (index === 0) {\n  this.target = posVec.copy(); // Follow the flower creature!\n      //this.target=p5.Vector.add(posVec.copy(),createVector(0,0,100))\n  // let anchor=p5.Vector.sub(createVector(10,0,0),posVec.copy())\n  // point(anchor.x,anchor.y)\n  this.lerpSmooth = 0.04;\n} else {\n  this.target = segments[index - 1].position.copy();\n  this.lerpSmooth = 0.10;\n}\n\n\n    // Update position smoothly\n    this.position.lerp(this.target, this.lerpSmooth);\n\n    // Direction vector for rotation\n    let dir = p5.Vector.sub(this.target, this.position);\n    if (dir.mag() > 0.01) {\n      dir.normalize();\n      this.angleY = atan2(dir.x, dir.z);  // turn left/right\n      this.angleX = asin(-dir.y);         // look up/down\n    }\n\n    // Animate size\n    this.size = segmentBaseSize * (0.8 + 0.4 * sin(frameCount * 10 + this.index*40));\n  }\n\n  display() {\n    push();\n    translate(this.position.x, this.position.y, this.position.z);\n\n    //Rotate segment to face its motion direction\n    rotateY(this.angleY);\n    rotateX(this.angleX);\n\n    stroke(this.color);\n    fill(255)\n    // strokeWeight(2);\n\n//ellipse(0,0,1,1)\n\n\npush();\ntranslate(0, 0, 0);\nsphere(this.size / 8);\npop();\n\n\n    pop();\n  }\n}\n\nfunction drawTails(){\n  // ellipse(0,0,30)\n  // point(30*sin(PI),30*cos(PI))\n  // //  segments.forEach((seg, index) => {\n  //   seg.update(index);\n  //   seg.display();\n  // });\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "680af1fa696c72219d37d7a7",
+        "createdAt": "2025-04-25T14:07:11.517Z",
+        "updatedAt": "2025-04-25T14:07:11.517Z",
+        "id": "680af1fa696c72219d37d7a7"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680af1fa696c72219d37d7a6",
+        "createdAt": "2025-04-25T14:07:11.517Z",
+        "updatedAt": "2025-04-25T14:07:11.517Z",
+        "id": "680af1fa696c72219d37d7a6"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680af1fa696c72219d37d7a8",
+        "createdAt": "2025-04-25T14:07:11.517Z",
+        "updatedAt": "2025-04-25T14:07:11.517Z",
+        "id": "680af1fa696c72219d37d7a8"
+      },
+      {
+        "name": "simplySin.js",
+        "content": "",
+        "children": [],
+        "fileType": "file",
+        "_id": "680b92cf35d2b0d236e2ae4e",
+        "createdAt": "2025-04-25T14:07:11.517Z",
+        "updatedAt": "2025-04-25T14:07:11.517Z",
+        "id": "680b92cf35d2b0d236e2ae4e"
+      }
+    ],
+    "createdAt": "2025-04-25T02:22:51.001Z",
+    "updatedAt": "2025-04-25T14:07:11.517Z",
+    "id": "o9DatmfG0"
+  },
+  {
+    "_id": "5Dnqo4-UE",
+    "name": "creature+strip+mouse+handPose",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "680b959635d2b0d236e51f39",
+          "680b94fb696c72219d37d7aa",
+          "680b94fb696c72219d37d7ab",
+          "680b94fb696c72219d37d7ac",
+          "680b94fb696c72219d37d7ad"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "680b94fb696c72219d37d7a9",
+        "createdAt": "2025-04-25T15:16:05.762Z",
+        "updatedAt": "2025-04-25T15:16:05.762Z",
+        "id": "680b94fb696c72219d37d7a9"
+      },
+      {
+        "name": "sketch.js",
+        "content": "//3D creature orgins from the 3D flower created by Kazuki Umeda, I watched his youtube tutorial https://www.youtube.com/watch?v=YsGeMIpEcY4&t=220s\n//vector rotation learnt from chatGPT below is the code and instruction https://editor.p5js.org/Lisa-HuangZijin/sketches/1r4bbZydi\n//handPose keypoints example code from ml5!\n//需要改进的问题：让\nlet posVec, prevousPosVec, targetVec;\nlet currentY = 0;\nlet currentX = 0;\n\nlet segments = [];\nconst segmentNumber = 20;\nconst segmentBaseSize = 20;\n\nfunction setup() {\n  \n  createCanvas(windowWidth,windowHeight, WEBGL);\n  \n  setuphandPose()\n  \n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  posVec = createVector(0, 0, 0);\n  prevousPosVec = posVec.copy();\n  targetVec = createVector(0, 0, 0);\n  \n  for (let i = 0; i < segmentNumber; i++) {\n    segments.push(\n      new Segment(\n        width / 2 + i * segmentBaseSize * 0.8,\n        height / 2,\n        segmentBaseSize,\n        255,\n        i\n      )\n    );\n  }\n}\n\nfunction draw() {\n  background(0);\n  //orbitControl();\n  \n  drawhandPose()\n  \n  \n  \n  \n  segments.forEach((seg, index) => {\n    seg.update(index);\n    seg.display();\n  });\n \n  if(indexX&&indexY){\n    if(hands[1]){//还是没有达到效果//优先右手的效果\n      targetVec.set(indexX , indexY , 0);\n    }else\n    {targetVec.set(indexX , indexY , 0);}\n  }else{\n    targetVec.set(mouseX - width / 2, mouseY - height / 2, 0);\n  }\n\n  \n\n  prevousPosVec.set(posVec);\n  posVec.lerp(targetVec, 0.05);\n\n  let velocity = p5.Vector.sub(posVec, prevousPosVec);\n  let SP = velocity.mag();\n  if (SP > 0.01) velocity.normalize();\n\n  let targerY = atan2(velocity.x, velocity.z); \n  let targerX = asin(-velocity.y);        \n\n  currentY = lerpAngle(currentY, targerY, 0.06);\n  currentX = lerpAngle(currentX, targerX, 0.06);\n\n  push();\n  translate(posVec.x, posVec.y, posVec.z);\n  rotateY(currentY);\n  rotateX(currentX+90);\n  drawCreature();\n  pop();\n  \n  if (hands.handedness === \"Right\" && hands.keypoints){\n    // ellipse(indexX,indexY,200)\n    push()\n    translate(indexX,indexY,0)\n    sphere(200)\n    pop()\n  }\n  \n  \n}\n\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) {\n    diff -= 360 * Math.sign(diff);\n  }\n  return a + diff * t;\n}\n\nfunction drawCreature() {\n  push()\n  stroke(255)\n  rotateX(90)\n  translate(0,0,220)\n  //ellipse(0,0,150,150)\n  //drawTails()\n  pop()\n  for (let r = 0; r <= 1; r += 0.04) {\n    stroke(255, 0, r * 100 + 20);\n    beginShape(POINTS);\n    for (let theta = -360; theta <= 2700; theta += 2) {\n      let phi = (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n        Math.exp(-theta / (map(abs(sin(frameCount * 1 + PI)), 0, 1, 100, 10) * 180));\n      let petalCut = 1 - (1 / 2) * pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n      let hangDown = map(cos(frameCount * 5 +0.5), -1, 1, -3, 5) *\n        pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n      if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n        let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n        let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n        let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n        vertex(pX, pY, pZ);\n      }\n    }\n    endShape();\n  }\n}\n\nclass Segment {\n  constructor(x, y, size, col, index) {\n    this.home = createVector(x, y, 0);\n    this.position = createVector(x, y, 0);\n    this.target = createVector(x, y, 0);\n    this.size = size;\n    this.color = col;\n    this.index = index;\n    this.energy = 0;\n    this.lerpSmooth = 0;\n\n    this.angleY = 0; // for facing direction\n    this.angleX = 0;\n  }\n\n  update(index) {\n    if (index === 0) {\n  this.target = posVec.copy(); \n      //this.target=p5.Vector.add(posVec.copy(),createVector(0,0,100))\n  // let anchor=p5.Vector.sub(createVector(10,0,0),posVec.copy())\n  // point(anchor.x,anchor.y)\n  this.lerpSmooth = 0.04;\n} else {\n  this.target = segments[index - 1].position.copy();\n  this.lerpSmooth = 0.10;\n}\n\n\n    // Update position smoothly\n    this.position.lerp(this.target, this.lerpSmooth);\n\n    // Direction vector for rotation\n    let dir = p5.Vector.sub(this.target, this.position);\n    if (dir.mag() > 0.01) {\n      dir.normalize();\n      this.angleY = atan2(dir.x, dir.z);  // turn left/right\n      this.angleX = asin(-dir.y);         // look up/down\n    }\n\n    // Animate size\n    this.size = segmentBaseSize * (0.8 + 0.4 * sin(frameCount * 10 + this.index*40));\n  }\n\n  display() {\n    push();\n    translate(this.position.x, this.position.y, this.position.z);\n\n    //Rotate segment to face its motion direction\n    rotateY(this.angleY);\n    rotateX(this.angleX);\n\n    stroke(this.color);\n    fill(255)\n    // strokeWeight(2);\n\n//ellipse(0,0,1,1)\n\n\npush();\ntranslate(0, 0, 0);\nsphere(this.size / 8);\npop();\n\n\n    pop();\n  }\n}\n\nfunction keyPressed() {\n  if (keyCode === ENTER) {\n    let fs = fullscreen();\n    fullscreen(!fs); \n    //fullscreen(true);\n  }\n}\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\nfunction drawTails(){\n  // ellipse(0,0,30)\n  // point(30*sin(PI),30*cos(PI))\n  // //  segments.forEach((seg, index) => {\n  //   seg.update(index);\n  //   seg.display();\n  // });\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "680b94fb696c72219d37d7ac",
+        "createdAt": "2025-04-25T15:16:05.762Z",
+        "updatedAt": "2025-04-25T15:16:05.762Z",
+        "id": "680b94fb696c72219d37d7ac"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"simplifySin.js\"></script>\n    <script src=\"handPose.js\"></script>\n     <script src=\"sketch.js\"></script>\n    \n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680b94fb696c72219d37d7aa",
+        "createdAt": "2025-04-25T15:16:05.762Z",
+        "updatedAt": "2025-04-25T15:16:05.762Z",
+        "id": "680b94fb696c72219d37d7aa"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680b94fb696c72219d37d7ad",
+        "createdAt": "2025-04-25T15:16:05.762Z",
+        "updatedAt": "2025-04-25T15:16:05.762Z",
+        "id": "680b94fb696c72219d37d7ad"
+      },
+      {
+        "name": "simplifySin.js",
+        "content": "let sinArray = [];\nlet cosArray = [];\nlet sinCosResolution = 360 * 2;\n\nfunction setupFastSinCos() {\n  for (let i = 0; i < sinCosResolution; i++) {\n    let deg = map(i, 0, sinCosResolution, 0, 360);\n    let rad = radians(deg);\n    sinArray.push(sin(rad));\n    cosArray.push(cos(rad));\n  }\n}\n\nfunction mSin(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return sinArray[index];\n}\n\nfunction mCos(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return cosArray[index];\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680b94fb696c72219d37d7ab",
+        "createdAt": "2025-04-25T15:16:05.762Z",
+        "updatedAt": "2025-04-25T15:16:05.762Z",
+        "id": "680b94fb696c72219d37d7ab"
+      },
+      {
+        "name": "handPose.js",
+        "content": "//问题是有的时候video会把creature盖住\nlet video;\nlet handPose;\nlet hands = [];\nlet smoothedZ = 0;\nlet indexX,indexY\n\nfunction preload(){\n  handPose = ml5.handPose({ flipped: true }); \n}\n\nfunction setuphandPose(){\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  //video.position(120, windowHeight + 120);\n  handPose.detectStart(video, gotHands);\n}\n\nfunction gotHands(results) {\n  hands = results;\n}\n\nfunction drawhandPose() {\n  \n  // Flip & display the video\n  // push();\n  // translate(-width / 2, -height / 2);\n  // scale(-1, 1);\n  // image(video, -video.width, 0); // Flipped display\n  // pop();\n  // push()\n  // translate(0,0,-200)\n push();\n  translate(-width/2, -height/2); // Top-left corner\n\n  push();\n  translate(width, 0); // Move to the right edge\n  scale(-1, 1);        // Flip horizontally\n  image(video, 0, 0, width, height); // Draw flipped\n  pop();\n\n  pop();\n  //pop()\n\n\n  ambientLight(100);\n  directionalLight(255, 255, 255, 0, 0, -1);\n\n  // Draw hand keypoints and a sphere at the right index fingertip (3D)\n  //let windowheight=windowWidth/640*480\nfor (let hand of hands) {\n  if (hand.confidence > 0.1) {\n    for (let i = 0; i < hand.keypoints.length; i++) {\n      let keypoint = hand.keypoints[i];\n      \n      let x = map(keypoint.x, 0, video.width, -windowWidth / 2, windowWidth / 2);\n      let y = map(keypoint.y, 0, video.height, -windowHeight / 2, windowHeight  / 2);\n      if(i==8){\n        indexX=map(keypoint.x, 0, video.width, -windowWidth / 2, windowWidth / 2);\n        indexY=map(keypoint.y, 0, video.height, -windowHeight / 2, windowHeight  / 2);\n      }\n\n      push();\n      translate(x, y, 0); \n      if (hand.handedness === \"Left\") {\n        fill(255, 100, 255);\n      } else {\n        fill(255, 255, 255);\n      }\n      noStroke();\n      ellipse(0, 0, 16);\n      pop();\n    }\n  }\n}\n\n\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680b959635d2b0d236e51f39",
+        "createdAt": "2025-04-25T15:16:05.762Z",
+        "updatedAt": "2025-04-25T15:16:05.762Z",
+        "id": "680b959635d2b0d236e51f39"
+      }
+    ],
+    "createdAt": "2025-04-25T13:58:20.021Z",
+    "updatedAt": "2025-04-25T15:16:05.762Z",
+    "id": "5Dnqo4-UE"
+  },
+  {
+    "_id": "KEhdV8qmt",
+    "name": "creature+strip+mouse+handPose把水母往前移了200",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "680ba745696c72219d37d7af",
+          "680ba745696c72219d37d7b0",
+          "680ba745696c72219d37d7b1",
+          "680ba745696c72219d37d7b2",
+          "680ba745696c72219d37d7b3"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "680ba745696c72219d37d7ae",
+        "createdAt": "2025-05-02T02:38:34.796Z",
+        "updatedAt": "2025-05-02T02:38:34.796Z",
+        "id": "680ba745696c72219d37d7ae"
+      },
+      {
+        "name": "sketch.js",
+        "content": "//3D creature orgins from the 3D flower created by Kazuki Umeda, I watched his youtube tutorial https://www.youtube.com/watch?v=YsGeMIpEcY4&t=220s\n//vector rotation learnt from chatGPT below is the code and instruction https://editor.p5js.org/Lisa-HuangZijin/sketches/1r4bbZydi\n//handPose keypoints example code from ml5!\n//现在正在：建不同的graphic layer\n\nlet posVec, prevousPosVec, targetVec;\nlet currentY = 0;\nlet currentX = 0;\n\nlet segments = [];\nlet segmentNumber = 20;\nlet segmentBaseSize = 20;\n\nlet creatureLayer;\n\nfunction setup() {\n  \n  createCanvas(windowWidth,windowHeight, WEBGL);\n  \n  setuphandPose()\n  \n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  posVec = createVector(0, 0, 0);\n  prevousPosVec = posVec.copy();\n  targetVec = createVector(0, 0, 0);\n  \n  // for (let i = 0; i < segmentNumber; i++) {\n  //   segments.push(\n  //     new Segment(\n  //       width / 2 + i * segmentBaseSize * 0.8,\n  //       height / 2,\n  //       segmentBaseSize,\n  //       255,\n  //       i\n  //     )\n  //   );\n  // }\n}\n\nfunction draw() {\n  background(0);\n  //orbitControl();\n  \n  drawhandPose()\n  \n  \n  \n  \n  segments.forEach((seg, index) => {\n    seg.update(index);\n    seg.display();\n  });\n \n  if(indexX&&indexY){\n    if(hands[1]){//还是没有达到效果//优先右手的效果\n      targetVec.set(indexX , indexY , 220);\n    }else\n    {targetVec.set(indexX , indexY , 220);}\n  }else{\n    targetVec.set(mouseX - width / 2, mouseY - height / 2, 0);\n  }\n\n  \n\n  prevousPosVec.set(posVec);\n  posVec.lerp(targetVec, 0.05);\n\n  let velocity = p5.Vector.sub(posVec, prevousPosVec);\n  let SP = velocity.mag();\n  if (SP > 0.01) velocity.normalize();\n\n  let targerY = atan2(velocity.x, velocity.z); \n  let targerX = asin(-velocity.y);        \n\n  currentY = lerpAngle(currentY, targerY, 0.06);\n  currentX = lerpAngle(currentX, targerX, 0.06);\n\n  push();\n  translate(posVec.x, posVec.y, posVec.z);\n  rotateY(currentY);\n  rotateX(currentX+90);\n  drawCreature();\n  pop();\n  \n  if (hands.handedness === \"Right\" && hands.keypoints){\n    // ellipse(indexX,indexY,200)\n    push()\n    translate(indexX,indexY,0)\n    sphere(200)\n    pop()\n  }\n  \n  \n}\n\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) {\n    diff -= 360 * Math.sign(diff);\n  }\n  return a + diff * t;\n}\n\nfunction drawCreature() {\n  push()\n  stroke(255)\n  rotateX(90)\n  translate(0,0,220)\n  //ellipse(0,0,150,150)\n  //drawTails()\n  pop()\n  for (let r = 0; r <= 1; r += 0.04) {\n    stroke(255, 0, r * 100 + 20);\n    beginShape(POINTS);\n    for (let theta = -360; theta <= 2700; theta += 2) {\n      let phi = (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n        Math.exp(-theta / (map(abs(sin(frameCount * 1 + PI)), 0, 1, 100, 10) * 180));\n      let petalCut = 1 - (1 / 2) * pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n      let hangDown = map(cos(frameCount * 5 +0.5), -1, 1, -3, 5) *\n        pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n      if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n        let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n        let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n        let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n        vertex(pX, pY, pZ);\n      }\n    }\n    endShape();\n  }\n}\n\n// class Segment {\n//   constructor(x, y, size, col, index) {\n//     this.home = createVector(x, y, 0);\n//     this.position = createVector(x, y, 0);\n//     this.target = createVector(x, y, 0);\n//     this.size = size;\n//     this.color = col;\n//     this.index = index;\n//     this.energy = 0;\n//     this.lerpSmooth = 0;\n\n//     this.angleY = 0; // for facing direction\n//     this.angleX = 0;\n//   }\n\n//   update(index) {\n//     if (index === 0) {\n//   this.target = posVec.copy(); \n//       //this.target=p5.Vector.add(posVec.copy(),createVector(0,0,100))\n//   // let anchor=p5.Vector.sub(createVector(10,0,0),posVec.copy())\n//   // point(anchor.x,anchor.y)\n//   this.lerpSmooth = 0.04;\n// } else {\n//   this.target = segments[index - 1].position.copy();\n//   this.lerpSmooth = 0.10;\n// }\n\n\n//     // Update position smoothly\n//     this.position.lerp(this.target, this.lerpSmooth);\n\n//     // Direction vector for rotation\n//     let dir = p5.Vector.sub(this.target, this.position);\n//     if (dir.mag() > 0.01) {\n//       dir.normalize();\n//       this.angleY = atan2(dir.x, dir.z);  // turn left/right\n//       this.angleX = asin(-dir.y);         // look up/down\n//     }\n\n//     // Animate size\n//     this.size = segmentBaseSize * (0.8 + 0.4 * sin(frameCount * 10 + this.index*40));\n//   }\n\n//   display() {\n//     push();\n//     translate(this.position.x, this.position.y, this.position.z);\n    \n// /////Rotate segment to face its motion direction\n//     rotateY(this.angleY);\n//     rotateX(this.angleX);\n\n//     stroke(this.color);\n//     fill(255)\n\n//     pop();\n//   }\n// }\n\nfunction keyPressed() {\n  if (keyCode === ENTER) {\n    let fs = fullscreen();\n    fullscreen(!fs); \n  }\n}\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\nfunction drawTails(){\n  // ellipse(0,0,30)\n  // point(30*sin(PI),30*cos(PI))\n  // //  segments.forEach((seg, index) => {\n  //   seg.update(index);\n  //   seg.display();\n  // });\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "680ba745696c72219d37d7b2",
+        "createdAt": "2025-05-02T02:38:34.796Z",
+        "updatedAt": "2025-05-02T02:38:34.796Z",
+        "id": "680ba745696c72219d37d7b2"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"simplifySin.js\"></script>\n    <script src=\"handPose.js\"></script>\n     <script src=\"sketch.js\"></script>\n    \n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680ba745696c72219d37d7b0",
+        "createdAt": "2025-05-02T02:38:34.796Z",
+        "updatedAt": "2025-05-02T02:38:34.796Z",
+        "id": "680ba745696c72219d37d7b0"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680ba745696c72219d37d7b3",
+        "createdAt": "2025-05-02T02:38:34.796Z",
+        "updatedAt": "2025-05-02T02:38:34.796Z",
+        "id": "680ba745696c72219d37d7b3"
+      },
+      {
+        "name": "simplifySin.js",
+        "content": "let sinArray = [];\nlet cosArray = [];\nlet sinCosResolution = 360 * 2;\n\nfunction setupFastSinCos() {\n  for (let i = 0; i < sinCosResolution; i++) {\n    let deg = map(i, 0, sinCosResolution, 0, 360);\n    let rad = radians(deg);\n    sinArray.push(sin(rad));\n    cosArray.push(cos(rad));\n  }\n}\n\nfunction mSin(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return sinArray[index];\n}\n\nfunction mCos(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return cosArray[index];\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680ba745696c72219d37d7b1",
+        "createdAt": "2025-05-02T02:38:34.796Z",
+        "updatedAt": "2025-05-02T02:38:34.796Z",
+        "id": "680ba745696c72219d37d7b1"
+      },
+      {
+        "name": "handPose.js",
+        "content": "//问题是有的时候video会把creature盖住\nlet video;\nlet handPose;\nlet hands = [];\nlet smoothedZ = 0;\nlet indexX,indexY\n\nfunction preload(){\n  handPose = ml5.handPose({ flipped: true }); \n}\n\nfunction setuphandPose(){\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  //video.position(120, windowHeight + 120);\n  handPose.detectStart(video, gotHands);\n}\n\nfunction gotHands(results) {\n  hands = results;\n}\n\nfunction drawhandPose() {\n  \n push();\n  translate(-width/2, -height/2); // Top-left corner\n  push();\n  translate(width, 0);// Move to the right edge\n  scale(-1, 1); // Flip horizontally\n  tint(0, 0, 255, 10);\n  image(video, 0, 0, width, height); // Draw flipped\n  noTint();\n  pop();\nnoStroke()\nfill(0,0,0,0.5);\nrect(0,0,windowWidth,windowHeight)\n  pop();\n  //pop()\n\n\n  ambientLight(100);\n  directionalLight(255, 255, 255, 0, 0, -1);\n\n  // Draw hand keypoints and a sphere at the right index fingertip (3D)\n  //let windowheight=windowWidth/640*480\nfor (let hand of hands) {\n  if (hand.confidence > 0.1) {\n    for (let i = 0; i < hand.keypoints.length; i++) {\n      let keypoint = hand.keypoints[i];\n      \n      let x = map(keypoint.x, 0, video.width, -windowWidth / 2, windowWidth / 2);\n      let y = map(keypoint.y, 0, video.height, -windowHeight / 2, windowHeight  / 2);\n      if(i==8){\n        indexX=map(keypoint.x, 0, video.width, -windowWidth / 2, windowWidth / 2);\n        indexY=map(keypoint.y, 0, video.height, -windowHeight / 2, windowHeight  / 2);\n      }\n\n      push();\n      translate(x, y, 0); \n      if (hand.handedness === \"Left\") {\n        fill(255, 100, 255);\n      } else {\n        fill(255, 255, 255);\n      }\n      noStroke();\n      ellipse(0, 0, 16);\n      pop();\n    }\n  }\n}\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680ba745696c72219d37d7af",
+        "createdAt": "2025-05-02T02:38:34.796Z",
+        "updatedAt": "2025-05-02T02:38:34.796Z",
+        "id": "680ba745696c72219d37d7af"
+      }
+    ],
+    "createdAt": "2025-04-25T15:16:22.019Z",
+    "updatedAt": "2025-05-02T02:38:34.796Z",
+    "id": "KEhdV8qmt"
+  },
+  {
+    "_id": "agh5B-j8F",
+    "name": "creature建class",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "68142421728b2d72fb64aa3b",
+          "68142421728b2d72fb64aa3c",
+          "68142421728b2d72fb64aa3d",
+          "68142421728b2d72fb64aa3e",
+          "68142421728b2d72fb64aa3f"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "68142421728b2d72fb64aa3a",
+        "createdAt": "2025-05-02T02:34:36.174Z",
+        "updatedAt": "2025-05-02T02:34:36.174Z",
+        "id": "68142421728b2d72fb64aa3a"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let creature;\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  setuphandPose();\n\n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  creature = new Creature();\n}\n\nfunction draw() {\n  background(0);\n  drawhandPose();\n\n  \n  if (indexX && indexY) {\n    creature.follow(indexX, indexY, 220);\n  } else {\n    creature.follow(mouseX - width / 2, mouseY - height / 2, 0);\n  }\n\n  creature.update();\n  creature.display();\n\n  \n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\nfunction keyPressed() {\n  if (keyCode === ENTER) {\n    fullscreen(!fullscreen());\n  }\n}\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) diff -= 360 * Math.sign(diff);\n  return a + diff * t;\n}\nclass Creature {\n  constructor() {\n    this.pos = createVector(0, 0, 0);\n    this.prevPos = this.pos.copy();\n    this.target = createVector(0, 0, 0);\n\n    this.rotY = 0;\n    this.rotX = 0;\n  }\n\n  follow(x, y, z) {\n    this.target.set(x, y, z);\n  }\n\n  update() {\n    this.prevPos.set(this.pos);\n    this.pos.lerp(this.target, 0.05);\n\n    let velocity = p5.Vector.sub(this.pos, this.prevPos);\n    if (velocity.mag() > 0.01) velocity.normalize();\n\n    let targetY = atan2(velocity.x, velocity.z);\n    let targetX = asin(-velocity.y);\n\n    this.rotY = lerpAngle(this.rotY, targetY, 0.06);\n    this.rotX = lerpAngle(this.rotX, targetX, 0.06);\n  }\n\n  display() {\n    push();\n    translate(this.pos.x, this.pos.y, this.pos.z);\n    rotateY(this.rotY);\n    rotateX(this.rotX + 90);\n    this.drawCreature(); \n  }\n\n  drawCreature() {\n    for (let r = 0; r <= 1; r += 0.04) {\n      stroke(255, 0, r * 100 + 20);\n      beginShape(POINTS);\n      for (let theta = -360; theta <= 2700; theta += 2) {\n        let phi = (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n          Math.exp(-theta / (map(abs(sin(frameCount * 1 + PI)), 0, 1, 100, 10) * 180));\n        \n        let petalCut = 1 - (1 / 2) *\n          pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n\n        let hangDown = map(cos(frameCount * 5 + 0.5), -1, 1, -3, 5) *\n          pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n        if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n          let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n          let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n          let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n          vertex(pX, pY, pZ);\n        }\n      }\n      endShape();\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "68142421728b2d72fb64aa3e",
+        "createdAt": "2025-05-02T02:34:36.174Z",
+        "updatedAt": "2025-05-02T02:34:36.174Z",
+        "id": "68142421728b2d72fb64aa3e"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"simplifySin.js\"></script>\n    <script src=\"handPose.js\"></script>\n     <script src=\"sketch.js\"></script>\n    \n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142421728b2d72fb64aa3c",
+        "createdAt": "2025-05-02T02:34:36.174Z",
+        "updatedAt": "2025-05-02T02:34:36.174Z",
+        "id": "68142421728b2d72fb64aa3c"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142421728b2d72fb64aa3f",
+        "createdAt": "2025-05-02T02:34:36.174Z",
+        "updatedAt": "2025-05-02T02:34:36.174Z",
+        "id": "68142421728b2d72fb64aa3f"
+      },
+      {
+        "name": "simplifySin.js",
+        "content": "let sinArray = [];\nlet cosArray = [];\nlet sinCosResolution = 360 * 2;\n\nfunction setupFastSinCos() {\n  for (let i = 0; i < sinCosResolution; i++) {\n    let deg = map(i, 0, sinCosResolution, 0, 360);\n    let rad = radians(deg);\n    sinArray.push(sin(rad));\n    cosArray.push(cos(rad));\n  }\n}\n\nfunction mSin(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return sinArray[index];\n}\n\nfunction mCos(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return cosArray[index];\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142421728b2d72fb64aa3d",
+        "createdAt": "2025-05-02T02:34:36.174Z",
+        "updatedAt": "2025-05-02T02:34:36.174Z",
+        "id": "68142421728b2d72fb64aa3d"
+      },
+      {
+        "name": "handPose.js",
+        "content": "//问题是有的时候video会把creature盖住\nlet video;\nlet handPose;\nlet hands = [];\nlet smoothedZ = 0;\nlet indexX,indexY\n\nfunction preload(){\n  handPose = ml5.handPose({ flipped: true }); \n}\n\nfunction setuphandPose(){\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  //video.position(120, windowHeight + 120);\n  handPose.detectStart(video, gotHands);\n}\n\nfunction gotHands(results) {\n  hands = results;\n}\n\nfunction drawhandPose() {\n  \n push();\n  translate(-width/2, -height/2); // Top-left corner\n  push();\n  translate(width, 0);// Move to the right edge\n  scale(-1, 1); // Flip horizontally\n  tint(0, 0, 255, 10);\n  image(video, 0, 0, width, height); // Draw flipped\n  noTint();\n  pop();\nnoStroke()\nfill(0,0,0,0.5);\nrect(0,0,windowWidth,windowHeight)\n  pop();\n  //pop()\n\n\n  ambientLight(100);\n  directionalLight(255, 255, 255, 0, 0, -1);\n\n  // Draw hand keypoints and a sphere at the right index fingertip (3D)\n  //let windowheight=windowWidth/640*480\nfor (let hand of hands) {\n  if (hand.confidence > 0.1) {\n    for (let i = 0; i < hand.keypoints.length; i++) {\n      let keypoint = hand.keypoints[i];\n      \n      let x = map(keypoint.x, 0, video.width, -windowWidth / 2, windowWidth / 2);\n      let y = map(keypoint.y, 0, video.height, -windowHeight / 2, windowHeight  / 2);\n      if(i==8){\n        indexX=map(keypoint.x, 0, video.width, -windowWidth / 2, windowWidth / 2);\n        indexY=map(keypoint.y, 0, video.height, -windowHeight / 2, windowHeight  / 2);\n      }\n\n      push();\n      translate(x, y, 0); \n      if (hand.handedness === \"Left\") {\n        fill(255, 100, 255);\n      } else {\n        fill(255, 255, 255);\n      }\n      noStroke();\n      ellipse(0, 0, 16);\n      pop();\n    }\n  }\n}\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142421728b2d72fb64aa3b",
+        "createdAt": "2025-05-02T02:34:36.174Z",
+        "updatedAt": "2025-05-02T02:34:36.174Z",
+        "id": "68142421728b2d72fb64aa3b"
+      }
+    ],
+    "createdAt": "2025-05-02T01:47:13.267Z",
+    "updatedAt": "2025-05-02T02:34:36.174Z",
+    "id": "agh5B-j8F"
+  },
+  {
+    "_id": "ZjPWl7-Gc",
+    "name": "creature建class test",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "68142e4e728b2d72fb64aa41",
+          "68142e4e728b2d72fb64aa42",
+          "68142e4e728b2d72fb64aa43",
+          "68142e4e728b2d72fb64aa44",
+          "68142e4e728b2d72fb64aa45"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "68142e4e728b2d72fb64aa40",
+        "createdAt": "2025-05-02T02:30:48.150Z",
+        "updatedAt": "2025-05-02T02:30:48.150Z",
+        "id": "68142e4e728b2d72fb64aa40"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let creature;\nlet creatureLayer;\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  setuphandPose();\n\n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  // 创建一个单独的图层，带 WEBGL\n  creatureLayer = createGraphics(windowWidth, windowHeight, WEBGL);\n  creatureLayer.colorMode(HSB);\n  creatureLayer.angleMode(DEGREES);\n  creatureLayer.strokeWeight(4);\n\n  creature = new Creature();\n}\n\nfunction draw() {\n  background(100);\n  drawhandPose(); // 底层主画面在主 canvas 上绘制\n\n  // 更新 creature 逻辑\n  if (indexX && indexY) {\n    creature.follow(indexX, indexY, 0);\n  } else {\n    //creature.follow(mouseX - width / 2, mouseY - height / 2, 0);\n  }\n\n  creature.update();\n\n  // 清空 creatureLayer，每帧重绘\n  creatureLayer.clear();\n  creatureLayer.push();\n  creatureLayer.translate(creature.pos.x, creature.pos.y,creature.pos.z);\n  creatureLayer.rotateY(creature.rotY);\n  creatureLayer.rotateX(creature.rotX + 90);\n  creature.drawOn(creatureLayer);  // 👈 将绘制放入图层中\n  creatureLayer.pop();\n\n  // 最后把 creatureLayer 显示在最上层\n  resetMatrix();\n  image(creatureLayer, -width / 2, -height / 2);\n}\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) diff -= 360 * Math.sign(diff);\n  return a + diff * t;\n}\n\nclass Creature {\n  constructor() {\n    this.pos = createVector(0, 0, 0);\n    this.prevPos = this.pos.copy();\n    this.target = createVector(0, 0, 0);\n\n    this.rotY = 0;\n    this.rotX = 0;\n  }\n\n  follow(x, y, z) {\n    this.target.set(x, y, z);\n  }\n\n  update() {\n    this.prevPos.set(this.pos);\n    this.pos.lerp(this.target, 0.05); \n\n    let velocity = p5.Vector.sub(this.pos, this.prevPos);\n    if (velocity.mag() > 0.01) velocity.normalize();\n\n    let targetY = atan2(velocity.x, velocity.z);\n    let targetX = asin(-velocity.y);\n\n    this.rotY = lerpAngle(this.rotY, targetY, 0.06);\n    this.rotX = lerpAngle(this.rotX, targetX, 0.06);\n  }\n\n  display() {\n    push();\n    translate(this.pos.x, this.pos.y, this.pos.z);\n    rotateY(this.rotY);\n    rotateX(this.rotX + 90);\n    this.drawCreature(); // 保留旧函数名\n    pop();\n  }\n\n  drawOn(pg) {\n    for (let r = 0; r <= 1; r += 0.04) {\n      pg.stroke(255, 0, r * 100 + 20);\n      pg.beginShape(POINTS);\n      for (let theta = -360; theta <= 2700; theta += 2) {\n        let phi = (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n          Math.exp(-theta / (map(abs(sin(frameCount * 1 + PI)), 0, 1, 100, 10) * 180));\n        \n        let petalCut = 1 - (1 / 2) *\n          pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n\n        let hangDown = map(cos(frameCount * 5 + 0.5), -1, 1, -3, 5) *\n          pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n        if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n          let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n          let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n          let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n          pg.vertex(pX, pY, pZ);\n        }\n      }\n      pg.endShape();\n    }\n  }\n\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "68142e4e728b2d72fb64aa44",
+        "createdAt": "2025-05-02T02:30:48.150Z",
+        "updatedAt": "2025-05-02T02:30:48.150Z",
+        "id": "68142e4e728b2d72fb64aa44"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"simplifySin.js\"></script>\n    <script src=\"handPose.js\"></script>\n     <script src=\"sketch.js\"></script>\n    \n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142e4e728b2d72fb64aa42",
+        "createdAt": "2025-05-02T02:30:48.150Z",
+        "updatedAt": "2025-05-02T02:30:48.150Z",
+        "id": "68142e4e728b2d72fb64aa42"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142e4e728b2d72fb64aa45",
+        "createdAt": "2025-05-02T02:30:48.150Z",
+        "updatedAt": "2025-05-02T02:30:48.150Z",
+        "id": "68142e4e728b2d72fb64aa45"
+      },
+      {
+        "name": "simplifySin.js",
+        "content": "let sinArray = [];\nlet cosArray = [];\nlet sinCosResolution = 360 * 2;\n\nfunction setupFastSinCos() {\n  for (let i = 0; i < sinCosResolution; i++) {\n    let deg = map(i, 0, sinCosResolution, 0, 360);\n    let rad = radians(deg);\n    sinArray.push(sin(rad));\n    cosArray.push(cos(rad));\n  }\n}\n\nfunction mSin(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return sinArray[index];\n}\n\nfunction mCos(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return cosArray[index];\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142e4e728b2d72fb64aa43",
+        "createdAt": "2025-05-02T02:30:48.150Z",
+        "updatedAt": "2025-05-02T02:30:48.150Z",
+        "id": "68142e4e728b2d72fb64aa43"
+      },
+      {
+        "name": "handPose.js",
+        "content": "//问题是有的时候video会把creature盖住\nlet video;\nlet handPose;\nlet hands = [];\nlet smoothedZ = 0;\nlet indexX,indexY\n\nfunction preload(){\n  handPose = ml5.handPose({ flipped: true }); \n}\n\nfunction setuphandPose(){\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  //video.position(120, windowHeight + 120);\n  handPose.detectStart(video, gotHands);\n}\n\nfunction gotHands(results) {\n  hands = results;\n}\n\nfunction drawhandPose() {\n  \n push();\n  translate(-width/2, -height/2); // Top-left corner\n  push();\n  translate(width, 0);// Move to the right edge\n  scale(-1, 1); // Flip horizontally\n  tint(0, 0, 255, 10);\n  image(video, 0, 0, width, height); // Draw flipped\n  noTint();\n  pop();\nnoStroke()\nfill(0,0,0,0.5);\nrect(0,0,windowWidth,windowHeight)\n  pop();\n  //pop()\n\n\n  ambientLight(100);\n  directionalLight(255, 255, 255, 0, 0, -1);\n\n  // Draw hand keypoints and a sphere at the right index fingertip (3D)\n  //let windowheight=windowWidth/640*480\nfor (let hand of hands) {\n  if (hand.confidence > 0.1) {\n    for (let i = 0; i < hand.keypoints.length; i++) {\n      let keypoint = hand.keypoints[i];\n      \n      let x = map(keypoint.x, 0, video.width, -windowWidth / 2, windowWidth / 2);\n      let y = map(keypoint.y, 0, video.height, -windowHeight / 2, windowHeight  / 2);\n      if(i==8){\n        indexX=map(keypoint.x, 0, video.width, -windowWidth / 2, windowWidth / 2);\n        indexY=map(keypoint.y, 0, video.height, -windowHeight / 2, windowHeight  / 2);\n      }\n\n      push();\n      translate(x, y, 0); \n      if (hand.handedness === \"Left\") {\n        fill(255, 100, 255);\n      } else {\n        fill(255, 255, 255);\n      }\n      noStroke();\n      ellipse(0, 0, 16);\n      pop();\n    }\n  }\n}\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142e4e728b2d72fb64aa41",
+        "createdAt": "2025-05-02T02:30:48.150Z",
+        "updatedAt": "2025-05-02T02:30:48.150Z",
+        "id": "68142e4e728b2d72fb64aa41"
+      }
+    ],
+    "createdAt": "2025-05-02T02:30:38.279Z",
+    "updatedAt": "2025-05-02T02:30:48.150Z",
+    "id": "ZjPWl7-Gc"
+  },
+  {
+    "_id": "vUAaCt72o",
+    "name": "creature建class+3D解决",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "68144b0c876ecd6f7b985144",
+          "68144b0c876ecd6f7b985145",
+          "68144b0c876ecd6f7b985146",
+          "68144b0c876ecd6f7b985147",
+          "68144b0c876ecd6f7b985148"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "68144b0c876ecd6f7b985143",
+        "createdAt": "2025-05-02T05:31:48.407Z",
+        "updatedAt": "2025-05-02T05:31:48.407Z",
+        "id": "68144b0c876ecd6f7b985143"
+      },
+      {
+        "name": "sketch.js",
+        "content": "//解决了遮挡问题，把3D打开又关上哈哈哈哈\n\nlet creature;\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  setuphandPose();\n\n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  creature = new Creature();\n}\n\nfunction draw() {\n  background(0);\n  drawhandPose();\n\n  \n  if (indexX && indexY) {\n    creature.follow(indexX, indexY, 0);\n  } else {\n    creature.follow(mouseX - width / 2, mouseY - height / 2, 0);\n  }\n  \n\n  creature.update();\n  creature.display();\n\n  \n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\nfunction keyPressed() {\n  if (keyCode === ENTER) {\n    fullscreen(!fullscreen());\n  }\n}\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) diff -= 360 * Math.sign(diff);\n  return a + diff * t;\n}\nclass Creature {\n  constructor() {\n    this.pos = createVector(0, 0, 0);\n    this.prevPos = this.pos.copy();\n    this.target = createVector(0, 0, 0);\n\n    this.rotY = 0;\n    this.rotX = 0;\n    this.rotZ = 0;\n  }\n\n  follow(x, y, z) {\n    this.target.set(x, y, z);\n  }\n\n\n  update() {\n    this.prevPos.set(this.pos);\n    this.pos.lerp(this.target, 0.05);\n\n    let velocity = p5.Vector.sub(this.pos, this.prevPos);\n    if (velocity.mag() > 0.01) velocity.normalize();\n\n    let targetY = atan2(velocity.x, velocity.z);\n    let targetX = asin(-velocity.y);\n\n    this.rotY = lerpAngle(this.rotY, targetY, 0.06);\n    this.rotX = lerpAngle(this.rotX, targetX, 0.06);\n  }\n\n  display() {\n  push();\n  \n  // Temporarily disable depth testing\n  const gl = _renderer.GL || _renderer.drawingContext;\n  gl.disable(gl.DEPTH_TEST);\n\n  translate(this.pos.x, this.pos.y, this.pos.z);\n  rotateY(this.rotY);\n  rotateX(this.rotX + 90);\n  rotateZ(this.rotZ);\n  this.drawCreature();\n\n  // Turn depth test back on\n  gl.enable(gl.DEPTH_TEST);\n\n  pop();\n}\n\n  drawCreature() {\n    for (let r = 0; r <= 1; r += 0.04) {\n      stroke(255, 0, r * 100);\n      //stroke(255, 0, r * 100 + 50); // or +80, depending on how pale it looks\n\n      beginShape(POINTS);\n      for (let theta = -360; theta <= 2700; theta += 2) {\n        let phi = (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n          Math.exp(-theta / (map(abs(sin(frameCount * 1 + PI)), 0, 1, 100, 10) * 180));\n        \n        let petalCut = 1 - (1 / 2) *\n          pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n\n        let hangDown = map(cos(frameCount * 5 + 0.5), -1, 1, -3, 5) *\n          pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n        if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n          let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n          let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n          let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n          vertex(pX, pY, pZ);\n        }\n      }\n      endShape();\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "68144b0c876ecd6f7b985147",
+        "createdAt": "2025-05-02T05:31:48.407Z",
+        "updatedAt": "2025-05-02T05:31:48.407Z",
+        "id": "68144b0c876ecd6f7b985147"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"simplifySin.js\"></script>\n    <script src=\"handPose.js\"></script>\n     <script src=\"sketch.js\"></script>\n    \n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68144b0c876ecd6f7b985145",
+        "createdAt": "2025-05-02T05:31:48.407Z",
+        "updatedAt": "2025-05-02T05:31:48.407Z",
+        "id": "68144b0c876ecd6f7b985145"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68144b0c876ecd6f7b985148",
+        "createdAt": "2025-05-02T05:31:48.407Z",
+        "updatedAt": "2025-05-02T05:31:48.407Z",
+        "id": "68144b0c876ecd6f7b985148"
+      },
+      {
+        "name": "simplifySin.js",
+        "content": "let sinArray = [];\nlet cosArray = [];\nlet sinCosResolution = 360 * 2;\n\nfunction setupFastSinCos() {\n  for (let i = 0; i < sinCosResolution; i++) {\n    let deg = map(i, 0, sinCosResolution, 0, 360);\n    let rad = radians(deg);\n    sinArray.push(sin(rad));\n    cosArray.push(cos(rad));\n  }\n}\n\nfunction mSin(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return sinArray[index];\n}\n\nfunction mCos(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return cosArray[index];\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68144b0c876ecd6f7b985146",
+        "createdAt": "2025-05-02T05:31:48.407Z",
+        "updatedAt": "2025-05-02T05:31:48.407Z",
+        "id": "68144b0c876ecd6f7b985146"
+      },
+      {
+        "name": "handPose.js",
+        "content": "//问题是有的时候video会把creature盖住\nlet video;\nlet handPose;\nlet hands = [];\nlet smoothedZ = 0;\nlet indexX, indexY;\nlet handsNotDetect=true\n\nfunction preload() {\n  handPose = ml5.handPose({ flipped: true });\n  myFont = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf');\n  //mainFont = loadFont(\"Titillium+Web.ttf\");\n}\n\nfunction setuphandPose() {\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  //video.position(120, windowHeight + 120);\n  handPose.detectStart(video, gotHands);\n  textFont(myFont);\n}\n\nfunction gotHands(results) {\n  hands = results;\n\n  if (hands.length > 0 && hands[0].confidence > 0.1) {\n    lastHandTime = millis(); // ⏱️ store the current timestamp\n  }\n}\n\n\nfunction drawhandPose() {\n  push();\n  translate(-width / 2, -height / 2); // Top-left corner\n  push();\n  translate(width, 0); // Move to the right edge\n  scale(-1, 1); // Flip horizontally\n  tint(0, 0, 255, 10);\n  image(video, 0, 0, width, height); // Draw flipped\n  noTint();\n  pop();\n  noStroke();\n  fill(0, 0, 0, 0.5);\n  rect(0, 0, windowWidth, windowHeight);\n  pop();\n  //pop()\n\n  ambientLight(100);\n  directionalLight(255, 255, 255, 0, 0, -1);\n\n  // Draw hand keypoints and a sphere at the right index fingertip (3D)\n  //let windowheight=windowWidth/640*480\n  for (let hand of hands) {\n    if (hand.confidence > 0.1) {\n      for (let i = 0; i < hand.keypoints.length; i++) {\n        let keypoint = hand.keypoints[i];\n\n        let x = map(\n          keypoint.x,\n          0,\n          video.width,\n          -windowWidth / 2,\n          windowWidth / 2\n        );\n        let y = map(\n          keypoint.y,\n          0,\n          video.height,\n          -windowHeight / 2,\n          windowHeight / 2\n        );\n        if (i == 8) {\n          indexX = map(\n            keypoint.x,\n            0,\n            video.width,\n            -windowWidth / 2,\n            windowWidth / 2\n          );\n          indexY = map(\n            keypoint.y,\n            0,\n            video.height,\n            -windowHeight / 2,\n            windowHeight / 2\n          );\n        }\n\n        push();\n        translate(-width / 2, -height / 2); // Text position in top-left of screen\n        fill(255);\n        textSize(32);\n        textAlign(LEFT, TOP);\n        \n        handsDetect=hands.length > 0 && hands[0].confidence > 0.1;\n        \n        if (handsDetect) {\n          text(\"Hands detected\", 20, 20);\n        } else {\n          //text(\"No hands\", 20, 20);\n        }\n        pop();\n        //       push();\n        //       translate(x, y, 0);\n        //       if (hand.handedness === \"Left\") {\n        //         fill(255, 100, 255);\n        //       } else {\n        //         fill(255, 255, 255);\n        //       }\n        //       noStroke();\n        //       ellipse(0, 0, 16);\n        //       pop();\n      }\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68144b0c876ecd6f7b985144",
+        "createdAt": "2025-05-02T05:31:48.407Z",
+        "updatedAt": "2025-05-02T05:31:48.407Z",
+        "id": "68144b0c876ecd6f7b985144"
+      }
+    ],
+    "createdAt": "2025-05-02T04:33:16.859Z",
+    "updatedAt": "2025-05-02T05:31:48.407Z",
+    "id": "vUAaCt72o"
+  },
+  {
+    "_id": "KJtR2rrid",
+    "name": "creature建class+3D解决",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "68142f43728b2d72fb64aa47",
+          "68142f43728b2d72fb64aa48",
+          "68142f43728b2d72fb64aa49",
+          "68142f43728b2d72fb64aa4a",
+          "68142f43728b2d72fb64aa4b"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "68142f43728b2d72fb64aa46",
+        "createdAt": "2025-05-02T04:08:10.644Z",
+        "updatedAt": "2025-05-02T04:08:10.644Z",
+        "id": "68142f43728b2d72fb64aa46"
+      },
+      {
+        "name": "sketch.js",
+        "content": "//解决了遮挡问题，把3D打开又关上哈哈哈哈\n\nlet creature;\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  setuphandPose();\n\n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  creature = new Creature();\n}\n\nfunction draw() {\n  background(0);\n  drawhandPose();\n\n  \n  if (indexX && indexY) {\n    creature.follow(indexX, indexY, 0);\n  } else {\n    creature.follow(mouseX - width / 2, mouseY - height / 2, 0);\n  }\n  \n\n  creature.update();\n  creature.display();\n\n  \n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\nfunction keyPressed() {\n  if (keyCode === ENTER) {\n    fullscreen(!fullscreen());\n  }\n}\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) diff -= 360 * Math.sign(diff);\n  return a + diff * t;\n}\nclass Creature {\n  constructor() {\n    this.pos = createVector(0, 0, 0);\n    this.prevPos = this.pos.copy();\n    this.target = createVector(0, 0, 0);\n\n    this.rotY = 0;\n    this.rotX = 0;\n    this.rotZ = 0;\n  }\n\n  follow(x, y, z) {\n    this.target.set(x, y, z);\n  }\n\n\n  update() {\n    this.prevPos.set(this.pos);\n    this.pos.lerp(this.target, 0.05);\n\n    let velocity = p5.Vector.sub(this.pos, this.prevPos);\n    if (velocity.mag() > 0.01) velocity.normalize();\n\n    let targetY = atan2(velocity.x, velocity.z);\n    let targetX = asin(-velocity.y);\n\n    this.rotY = lerpAngle(this.rotY, targetY, 0.06);\n    this.rotX = lerpAngle(this.rotX, targetX, 0.06);\n  }\n\n  display() {\n  push();\n  \n  // Temporarily disable depth testing\n  const gl = _renderer.GL || _renderer.drawingContext;\n  gl.disable(gl.DEPTH_TEST);\n\n  translate(this.pos.x, this.pos.y, this.pos.z);\n  rotateY(this.rotY);\n  rotateX(this.rotX + 90);\n  rotateZ(this.rotZ);\n  this.drawCreature();\n\n  // Turn depth test back on\n  gl.enable(gl.DEPTH_TEST);\n\n  pop();\n}\n\n  drawCreature() {\n    for (let r = 0; r <= 1; r += 0.04) {\n      stroke(255, 0, r * 100);\n      //stroke(255, 0, r * 100 + 50); // or +80, depending on how pale it looks\n\n      beginShape(POINTS);\n      for (let theta = -360; theta <= 2700; theta += 2) {\n        let phi = (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n          Math.exp(-theta / (map(abs(sin(frameCount * 1 + PI)), 0, 1, 100, 10) * 180));\n        \n        let petalCut = 1 - (1 / 2) *\n          pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n\n        let hangDown = map(cos(frameCount * 5 + 0.5), -1, 1, -3, 5) *\n          pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n        if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n          let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n          let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n          let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n          vertex(pX, pY, pZ);\n        }\n      }\n      endShape();\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "68142f43728b2d72fb64aa4a",
+        "createdAt": "2025-05-02T04:08:10.644Z",
+        "updatedAt": "2025-05-02T04:08:10.644Z",
+        "id": "68142f43728b2d72fb64aa4a"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"simplifySin.js\"></script>\n    <script src=\"handPose.js\"></script>\n     <script src=\"sketch.js\"></script>\n    \n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142f43728b2d72fb64aa48",
+        "createdAt": "2025-05-02T04:08:10.644Z",
+        "updatedAt": "2025-05-02T04:08:10.644Z",
+        "id": "68142f43728b2d72fb64aa48"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142f43728b2d72fb64aa4b",
+        "createdAt": "2025-05-02T04:08:10.644Z",
+        "updatedAt": "2025-05-02T04:08:10.644Z",
+        "id": "68142f43728b2d72fb64aa4b"
+      },
+      {
+        "name": "simplifySin.js",
+        "content": "let sinArray = [];\nlet cosArray = [];\nlet sinCosResolution = 360 * 2;\n\nfunction setupFastSinCos() {\n  for (let i = 0; i < sinCosResolution; i++) {\n    let deg = map(i, 0, sinCosResolution, 0, 360);\n    let rad = radians(deg);\n    sinArray.push(sin(rad));\n    cosArray.push(cos(rad));\n  }\n}\n\nfunction mSin(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return sinArray[index];\n}\n\nfunction mCos(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return cosArray[index];\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142f43728b2d72fb64aa49",
+        "createdAt": "2025-05-02T04:08:10.644Z",
+        "updatedAt": "2025-05-02T04:08:10.644Z",
+        "id": "68142f43728b2d72fb64aa49"
+      },
+      {
+        "name": "handPose.js",
+        "content": "//问题是有的时候video会把creature盖住\nlet video;\nlet handPose;\nlet hands = [];\nlet smoothedZ = 0;\nlet indexX, indexY;\nlet handsNotDetect=true\n\nfunction preload() {\n  handPose = ml5.handPose({ flipped: true });\n  myFont = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf');\n  //mainFont = loadFont(\"Titillium+Web.ttf\");\n}\n\nfunction setuphandPose() {\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  //video.position(120, windowHeight + 120);\n  handPose.detectStart(video, gotHands);\n  textFont(myFont);\n}\n\nfunction gotHands(results) {\n  hands = results;\n\n  if (hands.length > 0 && hands[0].confidence > 0.1) {\n    lastHandTime = millis(); // ⏱️ store the current timestamp\n  }\n}\n\n\nfunction drawhandPose() {\n  push();\n  translate(-width / 2, -height / 2); // Top-left corner\n  push();\n  translate(width, 0); // Move to the right edge\n  scale(-1, 1); // Flip horizontally\n  tint(0, 0, 255, 10);\n  image(video, 0, 0, width, height); // Draw flipped\n  noTint();\n  pop();\n  noStroke();\n  fill(0, 0, 0, 0.5);\n  rect(0, 0, windowWidth, windowHeight);\n  pop();\n  //pop()\n\n  ambientLight(100);\n  directionalLight(255, 255, 255, 0, 0, -1);\n\n  // Draw hand keypoints and a sphere at the right index fingertip (3D)\n  //let windowheight=windowWidth/640*480\n  for (let hand of hands) {\n    if (hand.confidence > 0.1) {\n      for (let i = 0; i < hand.keypoints.length; i++) {\n        let keypoint = hand.keypoints[i];\n\n        let x = map(\n          keypoint.x,\n          0,\n          video.width,\n          -windowWidth / 2,\n          windowWidth / 2\n        );\n        let y = map(\n          keypoint.y,\n          0,\n          video.height,\n          -windowHeight / 2,\n          windowHeight / 2\n        );\n        if (i == 8) {\n          indexX = map(\n            keypoint.x,\n            0,\n            video.width,\n            -windowWidth / 2,\n            windowWidth / 2\n          );\n          indexY = map(\n            keypoint.y,\n            0,\n            video.height,\n            -windowHeight / 2,\n            windowHeight / 2\n          );\n        }\n\n        push();\n        translate(-width / 2, -height / 2); // Text position in top-left of screen\n        fill(255);\n        textSize(32);\n        textAlign(LEFT, TOP);\n        \n        handsDetect=hands.length > 0 && hands[0].confidence > 0.1;\n        \n        if (handsDetect) {\n          text(\"Hands detected\", 20, 20);\n        } else {\n          //text(\"No hands\", 20, 20);\n        }\n        pop();\n        //       push();\n        //       translate(x, y, 0);\n        //       if (hand.handedness === \"Left\") {\n        //         fill(255, 100, 255);\n        //       } else {\n        //         fill(255, 255, 255);\n        //       }\n        //       noStroke();\n        //       ellipse(0, 0, 16);\n        //       pop();\n      }\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68142f43728b2d72fb64aa47",
+        "createdAt": "2025-05-02T04:08:10.644Z",
+        "updatedAt": "2025-05-02T04:08:10.644Z",
+        "id": "68142f43728b2d72fb64aa47"
+      }
+    ],
+    "createdAt": "2025-05-02T02:34:43.829Z",
+    "updatedAt": "2025-05-02T04:08:10.644Z",
+    "id": "KJtR2rrid"
+  },
+  {
+    "_id": "up6-jfkME",
+    "name": "creature建class+3D解决+pose",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "681459c1876ecd6f7b98514a",
+          "681459c1876ecd6f7b98514b",
+          "681459c1876ecd6f7b98514c",
+          "681459c1876ecd6f7b98514d",
+          "681459c1876ecd6f7b98514e"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "681459c1876ecd6f7b985149",
+        "createdAt": "2025-05-02T13:48:03.379Z",
+        "updatedAt": "2025-05-02T13:48:03.379Z",
+        "id": "681459c1876ecd6f7b985149"
+      },
+      {
+        "name": "sketch.js",
+        "content": "//3D creature orgins from the 3D flower created by Kazuki Umeda, I watched his youtube tutorial https://www.youtube.com/watch?v=YsGeMIpEcY4&t=220s\n//vector rotation learnt from chatGPT below is the code and instruction https://editor.p5js.org/Lisa-HuangZijin/sketches/1r4bbZydi\n//handPose keypoints example code from ml5!\n//解决了遮挡问题，把3D打开又关上哈哈哈哈\n\n\nlet creature;\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  setuphandPose();\n\n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  creature = new Creature();\n}\n\nfunction draw() {\n  background(0);\n  drawhandPose();\n\n  if (handsDetect && openHand) {\n    creature.follow(indexX, indexY, 0);\n    creature.rotZ = lerp(creature.rotZ, 0, 0.03);\n  } else if (handsDetect && !openHand) {\n    // creature.rotZ += 5;\n    // creature.rotY += 5;\n\n    creature.follow(indexX, indexY +180 * cos(frameCount*2), 200 * sin(frameCount*2));\n  } \n  if(hands.length==0||!indexX){\n    creature.follow(\n      windowWidth * 0.4 * sin(frameCount),\n      windowWidth * 0.2 * cos(frameCount),\n      0\n    );\n   creature.rotZ = lerp(creature.rotZ, 0, 0.03);\n  }\n\n  creature.update();\n  creature.display();\n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\nfunction keyPressed() {\n  if (keyCode === ENTER) {\n    fullscreen(!fullscreen());\n  }\n}\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) diff -= 360 * Math.sign(diff);\n  return a + diff * t;\n}\n\nclass Creature {\n  constructor() {\n    this.pos = createVector(0, 0, 0);\n    this.prevPos = this.pos.copy();\n    this.target = createVector(0, 0, 0);\n\n    this.rotY = 0;\n    this.rotX = 0;\n    this.rotZ = 0;\n  }\n\n  follow(x, y, z) {\n    this.target.set(x, y, z);\n  }\n  aroundCenter() {}\n\n  update() {\n    this.prevPos.set(this.pos);\n    this.pos.lerp(this.target, 0.05);\n\n    let velocity = p5.Vector.sub(this.pos, this.prevPos);\n    if (velocity.mag() > 0.01) velocity.normalize();\n\n    let targetY = atan2(velocity.x, velocity.z);\n    let targetX = asin(-velocity.y);\n\n    this.rotY = lerpAngle(this.rotY, targetY, 0.06);\n    this.rotX = lerpAngle(this.rotX, targetX, 0.06);\n  }\n\n  display() {\n    push();\n\n    // Temporarily disable depth testing\n    const gl = _renderer.GL || _renderer.drawingContext;\n    gl.disable(gl.DEPTH_TEST);\n\n    translate(this.pos.x, this.pos.y, this.pos.z);\n    rotateY(this.rotY);\n    rotateX(this.rotX + 90);\n    rotateZ(this.rotZ);\n    this.drawCreature();\n\n    // Turn depth test back on\n    gl.enable(gl.DEPTH_TEST);\n\n    pop();\n  }\n\n  drawCreature() {\n    for (let r = 0; r <= 1; r += 0.04) {\n      stroke(255, 0, r * 100);\n      //stroke(255, 0, r * 100 + 50); // or +80, depending on how pale it looks\n\n      beginShape(POINTS);\n      for (let theta = -360; theta <= 2700; theta += 2) {\n        let phi =\n          (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n          Math.exp(\n            -theta / (map(abs(sin(frameCount * 1 + PI)), 0, 1, 100, 10) * 180)\n          );\n\n        let petalCut =\n          1 -\n          (1 / 2) *\n            pow((5 / 4) * pow(1 - ((3.6 * theta) % 360) / 90, 2) - 1 / 4, 2);\n\n        let hangDown =\n          map(cos(frameCount * 5 + 0.5), -1, 1, -3, 5) *\n          pow(r, 2) *\n          pow(1.3 * r - 1, 2) *\n          sin(phi);\n\n        if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n          let pX =\n            260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n          let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n          let pZ =\n            260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n          vertex(pX, pY, pZ);\n        }\n      }\n      endShape();\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "681459c1876ecd6f7b98514d",
+        "createdAt": "2025-05-02T13:48:03.379Z",
+        "updatedAt": "2025-05-02T13:48:03.379Z",
+        "id": "681459c1876ecd6f7b98514d"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"simplifySin.js\"></script>\n    <script src=\"handPose.js\"></script>\n     <script src=\"sketch.js\"></script>\n    \n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "681459c1876ecd6f7b98514b",
+        "createdAt": "2025-05-02T13:48:03.379Z",
+        "updatedAt": "2025-05-02T13:48:03.379Z",
+        "id": "681459c1876ecd6f7b98514b"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "681459c1876ecd6f7b98514e",
+        "createdAt": "2025-05-02T13:48:03.379Z",
+        "updatedAt": "2025-05-02T13:48:03.379Z",
+        "id": "681459c1876ecd6f7b98514e"
+      },
+      {
+        "name": "simplifySin.js",
+        "content": "let sinArray = [];\nlet cosArray = [];\nlet sinCosResolution = 360 * 2;\n\nfunction setupFastSinCos() {\n  for (let i = 0; i < sinCosResolution; i++) {\n    let deg = map(i, 0, sinCosResolution, 0, 360);\n    let rad = radians(deg);\n    sinArray.push(sin(rad));\n    cosArray.push(cos(rad));\n  }\n}\n\nfunction mSin(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return sinArray[index];\n}\n\nfunction mCos(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return cosArray[index];\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "681459c1876ecd6f7b98514c",
+        "createdAt": "2025-05-02T13:48:03.379Z",
+        "updatedAt": "2025-05-02T13:48:03.379Z",
+        "id": "681459c1876ecd6f7b98514c"
+      },
+      {
+        "name": "handPose.js",
+        "content": "//问题是有的时候video会把creature盖住\nlet video;\nlet handPose;\nlet hands = [];\nlet smoothedZ = 0;\nlet indexX, indexY;\nlet handsDetect=false\n\nlet dtip;\nlet dmcp;\nlet openHand;\nlet mist;\n\nfunction preload() {\n  handPose = ml5.handPose({ flipped: true });\n  myFont = loadFont(\n    \"https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf\"\n  );\n  //mainFont = loadFont(\"Titillium+Web.ttf\");\n}\n\nfunction setuphandPose() {\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  //video.position(120, windowHeight + 120);\n  handPose.detectStart(video, gotHands);\n  textFont(myFont);\n}\n\nfunction gotHands(results) {\n  hands = results;\n\n  if (hands.length > 0 && hands[0].confidence > 0.1) {\n    lastHandTime = millis(); // ⏱️ store the current timestamp\n  }\n}\n\nfunction drawhandPose() {\n  push();\n  translate(-width / 2, -height / 2); // Top-left corner\n  push();\n  translate(width, 0); // Move to the right edge\n  scale(-1, 1); // Flip horizontally\n  tint(0, 0, 255, 10);\n  image(video, 0, 0, width, height); // Draw flipped\n  noTint();\n  pop();\n  noStroke();\n  fill(0, 0, 0, 0.5);\n  rect(0, 0, windowWidth, windowHeight);\n  pop();\n  //pop()\n\n  ambientLight(100);\n  directionalLight(255, 255, 255, 0, 0, -1);\n\n  // Draw hand keypoints and a sphere at the right index fingertip (3D)\n  //let windowheight=windowWidth/640*480\n  for (let hand of hands) {\n    if (hand.confidence > 0.1) {\n      for (let i = 0; i < hand.keypoints.length; i++) {\n        let keypoint = hand.keypoints[i];\n\n        let x = map(\n          keypoint.x,\n          0,\n          video.width,\n          -windowWidth / 2,\n          windowWidth / 2\n        );\n        let y = map(\n          keypoint.y,\n          0,\n          video.height,\n          -windowHeight / 2,\n          windowHeight / 2\n        );\n        if (i == 8) {\n          indexX = map(\n            keypoint.x,\n            0,\n            video.width,\n            -windowWidth / 2,\n            windowWidth / 2\n          );\n          indexY = map(\n            keypoint.y,\n            0,\n            video.height,\n            -windowHeight / 2,\n            windowHeight / 2\n          );\n        }\n        \n\n        push();\n        translate(-width / 2, -height / 2); // Text position in top-left of screen\n        fill(255);\n        textSize(32);\n        textAlign(LEFT, TOP);\n\n        handsDetect = hands.length > 0 && hands[0].confidence > 0.1;\n\n        if (handsDetect) {\n          text(\"Hands detected\", 20, 20);\n          let hand = hands[0];\n\n          let wrist = hand.keypoints[0];\n          let middleTip = hand.keypoints[12]; // Tip of the middle//tip指尖 mcp指头最下面一节\n          let middleMcp = hand.keypoints[9];\n          dtip = dist(wrist.x, wrist.y, middleTip.x, middleTip.y);\n          dmcp = dist(wrist.x, wrist.y, middleMcp.x, middleMcp.y);\n          if (dtip > dmcp) {\n            openHand = true;\n            mist=false\n          } else {\n            openHand = false;\n            mist=true\n          }\n\n          if (openHand) {\n            fill(0, 255, 0);\n            textSize(32);\n            text(\"Open Hand ✋\", 20, 60);\n            //text(d)\n          } else {\n            fill(255, 0, 0);\n            textSize(32);\n            text(\"Closed Fist ✊\", 20, 60);\n          }\n        } else {\n          //text(\"No hands\", 20, 20);\n        }\n\n        pop();\n\n        //       push();\n        //       translate(x, y, 0);\n        //       if (hand.handedness === \"Left\") {\n        //         fill(255, 100, 255);\n        //       } else {\n        //         fill(255, 255, 255);\n        //       }\n        //       noStroke();\n        //       ellipse(0, 0, 16);\n        //       pop();\n      }\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "681459c1876ecd6f7b98514a",
+        "createdAt": "2025-05-02T13:48:03.379Z",
+        "updatedAt": "2025-05-02T13:48:03.379Z",
+        "id": "681459c1876ecd6f7b98514a"
+      }
+    ],
+    "createdAt": "2025-05-02T05:36:01.052Z",
+    "updatedAt": "2025-05-02T13:48:03.379Z",
+    "id": "up6-jfkME"
+  },
+  {
+    "_id": "e-zYs9HBL",
+    "name": "creature转圈test",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6814452d728b2d72fb64aa4d",
+          "6814452d728b2d72fb64aa4e",
+          "6814452d728b2d72fb64aa4f",
+          "6814452d728b2d72fb64aa50",
+          "6814452d728b2d72fb64aa51"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "6814452d728b2d72fb64aa4c",
+        "createdAt": "2025-05-02T04:26:50.489Z",
+        "updatedAt": "2025-05-02T04:26:50.489Z",
+        "id": "6814452d728b2d72fb64aa4c"
+      },
+      {
+        "name": "sketch.js",
+        "content": "//解决了遮挡问题，把3D打开又关上哈哈哈哈\n\nlet creature;\nlet HandsDetected\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  setuphandPose();\n\n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  creature = new Creature();\n}\n\nfunction draw() {\n  background(0);\n  drawhandPose();\n\n  \n  if (indexX && indexY) {\n    creature.follow(indexX, indexY, 0);\n  } else {\n    creature.follow(mouseX - width / 2, mouseY - height / 2, 0);\n  }\n  \n\n  creature.update();\n  creature.display();\n\n  \n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\nfunction keyPressed() {\n  if (keyCode === ENTER) {\n    fullscreen(!fullscreen());\n  }\n}\n\nfunction lerpAngle(a, b, t) {\n  let diff = b - a;\n  if (abs(diff) > 180) diff -= 360 * Math.sign(diff);\n  return a + diff * t;\n}\nclass Creature {\n  constructor() {\n    this.pos = createVector(0, -150, 0); // start offset\n    this.vel = createVector(2, 0, 0);    // tangential initial velocity\n    this.acc = createVector(0, 0, 0);\n    this.center = createVector(0, 0, 0);\n    this.intensity = 0.001; // attraction strength\n\n    this.target = createVector(0, 0, 0);\n    this.prevPos = this.pos.copy();\n\n    this.rotX = 0;\n    this.rotY = 0;\n    \n    this.maxSteerForce = 0.1\n    \n    \n\n  }\n\n  follow(x, y, z) {\n    this.target.set(x, y, z);\n  }\n\n  update(handsDetect) {\n    this.prevPos.set(this.pos);\n\n    if (hands.length==0) {\n      this.orbitUsingPhysics();\n    } else {\n      this.pos.lerp(this.target, 0.05);\n\n      let velocity = p5.Vector.sub(this.pos, this.prevPos);\n      if (velocity.mag() > 0.01) {\n        velocity.normalize();\n        this.rotY = atan2(velocity.x, velocity.z);\n        this.rotX = asin(-velocity.y);\n      }\n    }\n  }\n\n  orbitUsingPhysics() {\n    // Gravitational attraction toward center\n    let force = p5.Vector.sub(this.center, this.pos);\n    this.acc = force.mult(this.intensity);\n\n    // Update motion\n    this.vel.add(this.acc);\n    this.pos.add(this.vel);\n\n    // Use velocity to face direction\n    if (this.vel.mag() > 0.01) {\n      let v = this.vel.copy().normalize();\n      this.rotY = atan2(v.x, v.z);\n      this.rotX = asin(-v.y);\n    }\n  }\n\n\n\n  display() {\n    push();\n\n    const gl = _renderer.GL || _renderer.drawingContext;\n    gl.disable(gl.DEPTH_TEST);\n\n    translate(this.pos.x, this.pos.y, this.pos.z);\n    rotateY(this.rotY);\n    rotateX(this.rotX + 90);\n    this.drawCreature();\n\n    gl.enable(gl.DEPTH_TEST);\n    pop();\n  }\n\n  drawCreature() {\n    for (let r = 0; r <= 1; r += 0.04) {\n      stroke(255, 0, r * 100);\n      beginShape(POINTS);\n      for (let theta = -360; theta <= 2700; theta += 2) {\n        let phi = (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n          Math.exp(-theta / (map(abs(sin(frameCount * 1 + PI)), 0, 1, 100, 10) * 180));\n        let petalCut = 1 - (1 / 2) *\n          pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n        let hangDown = map(cos(frameCount * 5 + 0.5), -1, 1, -3, 5) *\n          pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n        if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n          let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n          let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n          let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n          vertex(pX, pY, pZ);\n        }\n      }\n      endShape();\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "6814452d728b2d72fb64aa50",
+        "createdAt": "2025-05-02T04:26:50.489Z",
+        "updatedAt": "2025-05-02T04:26:50.489Z",
+        "id": "6814452d728b2d72fb64aa50"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"simplifySin.js\"></script>\n    <script src=\"handPose.js\"></script>\n     <script src=\"sketch.js\"></script>\n    \n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6814452d728b2d72fb64aa4e",
+        "createdAt": "2025-05-02T04:26:50.489Z",
+        "updatedAt": "2025-05-02T04:26:50.489Z",
+        "id": "6814452d728b2d72fb64aa4e"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6814452d728b2d72fb64aa51",
+        "createdAt": "2025-05-02T04:26:50.489Z",
+        "updatedAt": "2025-05-02T04:26:50.489Z",
+        "id": "6814452d728b2d72fb64aa51"
+      },
+      {
+        "name": "simplifySin.js",
+        "content": "let sinArray = [];\nlet cosArray = [];\nlet sinCosResolution = 360 * 2;\n\nfunction setupFastSinCos() {\n  for (let i = 0; i < sinCosResolution; i++) {\n    let deg = map(i, 0, sinCosResolution, 0, 360);\n    let rad = radians(deg);\n    sinArray.push(sin(rad));\n    cosArray.push(cos(rad));\n  }\n}\n\nfunction mSin(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return sinArray[index];\n}\n\nfunction mCos(rad) {\n  let angle = rad % TWO_PI;\n  if (angle < 0) angle += TWO_PI;\n  let index = floor(map(angle, 0, TWO_PI, 0, sinCosResolution));\n  return cosArray[index];\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6814452d728b2d72fb64aa4f",
+        "createdAt": "2025-05-02T04:26:50.489Z",
+        "updatedAt": "2025-05-02T04:26:50.489Z",
+        "id": "6814452d728b2d72fb64aa4f"
+      },
+      {
+        "name": "handPose.js",
+        "content": "//问题是有的时候video会把creature盖住\nlet video;\nlet handPose;\nlet hands = [];\nlet smoothedZ = 0;\nlet indexX, indexY;\nlet handsNotDetect=true\n\nfunction preload() {\n  handPose = ml5.handPose({ flipped: true });\n  myFont = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf');\n  //mainFont = loadFont(\"Titillium+Web.ttf\");\n}\n\nfunction setuphandPose() {\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  //video.position(120, windowHeight + 120);\n  handPose.detectStart(video, gotHands);\n  textFont(myFont);\n}\n\nfunction gotHands(results) {\n  hands = results;\n\n  if (hands.length > 0 && hands[0].confidence > 0.1) {\n    lastHandTime = millis(); // ⏱️ store the current timestamp\n  }\n}\n\n\nfunction drawhandPose() {\n  push();\n  translate(-width / 2, -height / 2); // Top-left corner\n  push();\n  translate(width, 0); // Move to the right edge\n  scale(-1, 1); // Flip horizontally\n  tint(0, 0, 255, 10);\n  image(video, 0, 0, width, height); // Draw flipped\n  noTint();\n  pop();\n  noStroke();\n  fill(0, 0, 0, 0.5);\n  rect(0, 0, windowWidth, windowHeight);\n  pop();\n  //pop()\n\n  ambientLight(100);\n  directionalLight(255, 255, 255, 0, 0, -1);\n\n  // Draw hand keypoints and a sphere at the right index fingertip (3D)\n  //let windowheight=windowWidth/640*480\n  for (let hand of hands) {\n    if (hand.confidence > 0.1) {\n      for (let i = 0; i < hand.keypoints.length; i++) {\n        let keypoint = hand.keypoints[i];\n\n        let x = map(\n          keypoint.x,\n          0,\n          video.width,\n          -windowWidth / 2,\n          windowWidth / 2\n        );\n        let y = map(\n          keypoint.y,\n          0,\n          video.height,\n          -windowHeight / 2,\n          windowHeight / 2\n        );\n        if (i == 8) {\n          indexX = map(\n            keypoint.x,\n            0,\n            video.width,\n            -windowWidth / 2,\n            windowWidth / 2\n          );\n          indexY = map(\n            keypoint.y,\n            0,\n            video.height,\n            -windowHeight / 2,\n            windowHeight / 2\n          );\n        }\n\n        push();\n        translate(-width / 2, -height / 2); // Text position in top-left of screen\n        fill(255);\n        textSize(32);\n        textAlign(LEFT, TOP);\n        \n        handsDetect=hands.length > 0 && hands[0].confidence > 0.1;\n        \n        if (handsDetect) {\n          text(\"Hands detected\", 20, 20);\n        } else {\n          //text(\"No hands\", 20, 20);\n        }\n        pop();\n        //       push();\n        //       translate(x, y, 0);\n        //       if (hand.handedness === \"Left\") {\n        //         fill(255, 100, 255);\n        //       } else {\n        //         fill(255, 255, 255);\n        //       }\n        //       noStroke();\n        //       ellipse(0, 0, 16);\n        //       pop();\n      }\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6814452d728b2d72fb64aa4d",
+        "createdAt": "2025-05-02T04:26:50.489Z",
+        "updatedAt": "2025-05-02T04:26:50.489Z",
+        "id": "6814452d728b2d72fb64aa4d"
+      }
+    ],
+    "createdAt": "2025-05-02T04:08:13.736Z",
+    "updatedAt": "2025-05-02T04:26:50.489Z",
+    "id": "e-zYs9HBL"
   },
   {
     "_id": "Xf24a1q3o",
@@ -5707,6 +6534,63 @@
     "id": "H5I41AGMj"
   },
   {
+    "_id": "mftaxyGIB",
+    "name": "flower3D_try1",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "680ab0bff348040a580b876b",
+          "680ab0bff348040a580b876a",
+          "680ab0bff348040a580b876c"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "680ab0bff348040a580b876d",
+        "createdAt": "2025-04-25T05:33:54.990Z",
+        "updatedAt": "2025-04-25T05:33:54.990Z",
+        "id": "680ab0bff348040a580b876d"
+      },
+      {
+        "name": "sketch.js",
+        "content": "function setup() {\n  createCanvas(700, 700, WEBGL);\n  colorMode(HSB);\n  angleMode(DEGREES);\n  stroke(205, 50, 100);\n  strokeWeight(4);\n}\n\nfunction draw() {\n  background(220, 50, 15);\n  orbitControl(); //use mouse to change the perspective\n\n  for (let phi = 0; phi <= 350; phi += 5) {\n    beginShape(POINTS);\n    for (let theta = 0; theta <= 180; theta += 5) {\n      let pX = 250 * sin(phi) * sin(theta);\n      let pY = -250 * cos(phi);\n      let pZ = 250 * sin(phi) * cos(theta);\n      vertex(pX, pY, pZ);\n    }\n    endShape();\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "680ab0bff348040a580b876a",
+        "createdAt": "2025-04-25T05:33:54.990Z",
+        "updatedAt": "2025-04-25T05:33:54.990Z",
+        "id": "680ab0bff348040a580b876a"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680ab0bff348040a580b876b",
+        "createdAt": "2025-04-25T05:33:54.990Z",
+        "updatedAt": "2025-04-25T05:33:54.990Z",
+        "id": "680ab0bff348040a580b876b"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680ab0bff348040a580b876c",
+        "createdAt": "2025-04-25T05:33:54.990Z",
+        "updatedAt": "2025-04-25T05:33:54.990Z",
+        "id": "680ab0bff348040a580b876c"
+      }
+    ],
+    "updatedAt": "2025-04-25T05:33:54.991Z",
+    "createdAt": "2025-04-25T05:33:54.991Z",
+    "id": "mftaxyGIB"
+  },
+  {
     "_id": "njqsfvwh5",
     "name": "for loop ball",
     "files": [
@@ -6259,6 +7143,120 @@
     "id": "1m4eEwic7"
   },
   {
+    "_id": "ZwGoeZlhF",
+    "name": "HandPosekeypointsTryz",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "680a9649a9373244398ea144",
+          "680a9649a9373244398ea145",
+          "680a9649a9373244398ea146"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "680a9649a9373244398ea143",
+        "createdAt": "2025-04-25T00:37:31.459Z",
+        "updatedAt": "2025-04-25T00:37:31.459Z",
+        "id": "680a9649a9373244398ea143"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let video, handPose, hands = [];\nlet opening, opening_, vDensity, vDensity_, flowerDegree;\nlet targetX = 0, targetY = 0, targetZ = 0;\nlet posX = 0, posY = 0, posZ = 0;\n\nfunction preload() {\n  handPose = ml5.handPose({ flipped: true });\n}\n\nfunction setup() {\n  createCanvas(700, 700, WEBGL);\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  handPose.detectStart(video, gotHands);\n\n  colorMode(HSB);\n  angleMode(DEGREES);\n  strokeWeight(4);\n\n  opening_ = createDiv();\n  opening = createSlider(1.5, 10, 2, 0.2);\n  \n  vDensity_ = createDiv();\n  vDensity = createSlider(2, 100, 8, 0.01);\n  \n  flowerDegree = createSlider(-15, 15, 1, 1);\n}\n\nfunction gotHands(results) {\n  hands = results;\n}\n\nfunction draw() {\n  background(0);\n  orbitControl(); // optional for 3D viewing\n  //rotateZ(90);\n\n  // Track index finger of right hand\n  for (let hand of hands) {\n    if (hand.handedness === \"Right\") {\n      let indexTip = hand.keypoints.find(k => k.name === \"index_finger_tip\");\n      if (indexTip) {\n        // Flip x to match canvas, center in WebGL\n        targetX = map(-indexTip.x + width, 0, width, -width / 2, width / 2);\n        targetY = map(indexTip.y, 0, height, -height / 2, height / 2);\n        targetZ = 0; // You can try mapping depth if you use depth estimation\n      }\n    }\n  }\n\n  // Smooth interpolation\n  posX = lerp(posX, targetX, 0.1);\n  posY = lerp(posY, targetY, 0.1);\n  posZ = lerp(posZ, targetZ, 0.1);\n\n  // Draw the generative creature at (posX, posY, posZ)\n  push();\n  translate(posX, posY, posZ);\n  drawCreature();\n  pop();\n}\n\nfunction drawCreature() {\n  for (let r = 0; r <= 1; r += 0.04) {\n    stroke(255, 0, r * 100 + 20);\n    beginShape(POINTS);\n    for (let theta = -2 * 180; theta <= 180 * 15; theta += 2) {\n      let phi = (180 / map(sin(frameCount * 5), -1, 1, 2, 10)) *\n        Math.exp(-theta / (map(abs(sin(frameCount * 2.5 + PI)), 0, 1, 100, 10) * 180));\n      let petalCut = 1 - (1 / 2) * pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 90), 2) - 1 / 4, 2);\n      let hangDown = map(sin(frameCount * 5 + PI), -1, 1, -3, 5) *\n        pow(r, 2) * pow(1.3 * r - 1, 2) * sin(phi);\n\n      if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {\n        let pX = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);\n        let pY = -260 * petalCut * (r * cos(phi) - hangDown * sin(phi));\n        let pZ = 260 * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);\n        vertex(pX, pY, pZ);\n      }\n    }\n    endShape();\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "680a9649a9373244398ea145",
+        "createdAt": "2025-04-25T00:37:31.459Z",
+        "updatedAt": "2025-04-25T00:37:31.459Z",
+        "id": "680a9649a9373244398ea145"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680a9649a9373244398ea144",
+        "createdAt": "2025-04-25T00:37:31.459Z",
+        "updatedAt": "2025-04-25T00:37:31.459Z",
+        "id": "680a9649a9373244398ea144"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680a9649a9373244398ea146",
+        "createdAt": "2025-04-25T00:37:31.459Z",
+        "updatedAt": "2025-04-25T00:37:31.459Z",
+        "id": "680a9649a9373244398ea146"
+      }
+    ],
+    "createdAt": "2025-04-24T19:51:37.386Z",
+    "updatedAt": "2025-04-25T00:37:31.459Z",
+    "id": "ZwGoeZlhF"
+  },
+  {
+    "_id": "cqd7AIHXm",
+    "name": "HandPoseTry3Dz",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "680aa0e8a9373244398ea148",
+          "680aa0e8a9373244398ea149",
+          "680aa0e8a9373244398ea14a"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "680aa0e8a9373244398ea147",
+        "createdAt": "2025-04-25T14:21:48.095Z",
+        "updatedAt": "2025-04-25T14:21:48.095Z",
+        "id": "680aa0e8a9373244398ea147"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let video;\nlet handPose;\nlet hands = [];\nlet smoothedZ = 0;\n\nfunction preload() {\n  handPose = ml5.handPose({ flipped: true }); \n}\n\nfunction setup() {\n  createCanvas(640, 480, WEBGL); \n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  handPose.detectStart(video, gotHands);\n}\n\nfunction gotHands(results) {\n  hands = results;\n}\n\nfunction draw() {\n  background(0);\n  \n\n  // Flip & display the video\n  push();\n  translate(-width / 2, -height / 2);\n  scale(-1, 1);\n  image(video, -video.width, 0); // Flipped display\n  pop();\n\n  ambientLight(100);\n  directionalLight(255, 255, 255, 0, 0, -1);\n\n  // Draw hand keypoints and a sphere at the right index fingertip (3D)\n  for (let hand of hands) {\n    if (hand.confidence > 0.1) {\n      for (let i = 0; i < hand.keypoints.length; i++) {\n        let keypoint = hand.keypoints[i];\n        let x = -keypoint.x + width / 2;\n        let y = keypoint.y - height / 2;\n\n        push();\n        translate(-x, y, 0); \n        if (hand.handedness === \"Left\") {\n          fill(255, 0, 255);\n        } else {\n          fill(255, 255, 0);\n        }\n        noStroke();\n        ellipse(0, 0, 16);\n        pop();\n      }\n    }\n      if (hand.handedness === \"Right\" && hand.keypoints3D) {\n  let pt = hand.keypoints3D[8];\n  // Smooth Z value over time\n  smoothedZ = lerp(smoothedZ, pt.z, 0.5); // adjust 0.1 to be smoother (lower = smoother)\n\n  // Scale and flip for canvas\n  let scaleFactor = 500;\n  let sx = -pt.x * scaleFactor;\n  let sy = -pt.y * scaleFactor;\n  let sz = -pt.z * scaleFactor;\n\n  // Map smoothed Z to sphere size\n  let sphereSize = map(smoothedZ, -0.01, -0.04, 10, 80);\n  sphereSize = constrain(sphereSize, 10, 80);\n  push();\n  translate(hand.keypoints[8].x, hand.keypoints[8].y, 0);\n  fill(0, 255, 255);\n  noStroke();\n  sphere(sphereSize)\n  pop();\n        //console.log(pt.z)\n  }\n}\n\n}\n\nfor (let hand of hands) {\n  if (hand.confidence > 0.1) {\n    for (let i = 0; i < hand.keypoints.length; i++) {\n      let keypoint = hand.keypoints[i];\n      \n      let x = map(keypoint.x, 0, video.width, -width / 2, width / 2);\n      let y = map(keypoint.y, 0, video.height, -height / 2, height / 2);\n\n      push();\n      translate(x, y, 0); \n      if (hand.handedness === \"Left\") {\n        fill(255, 0, 255);\n      } else {\n        fill(255, 255, 0);\n      }\n      noStroke();\n      ellipse(0, 0, 16);\n      pop();\n    }\n  }\n}\n\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "680aa0e8a9373244398ea149",
+        "createdAt": "2025-04-25T14:21:48.095Z",
+        "updatedAt": "2025-04-25T14:21:48.095Z",
+        "id": "680aa0e8a9373244398ea149"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680aa0e8a9373244398ea148",
+        "createdAt": "2025-04-25T14:21:48.095Z",
+        "updatedAt": "2025-04-25T14:21:48.095Z",
+        "id": "680aa0e8a9373244398ea148"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680aa0e8a9373244398ea14a",
+        "createdAt": "2025-04-25T14:21:48.095Z",
+        "updatedAt": "2025-04-25T14:21:48.095Z",
+        "id": "680aa0e8a9373244398ea14a"
+      }
+    ],
+    "createdAt": "2025-04-24T20:36:56.582Z",
+    "updatedAt": "2025-04-25T14:21:48.095Z",
+    "id": "cqd7AIHXm"
+  },
+  {
     "_id": "O26T4uYWN",
     "name": "help Rachel",
     "files": [
@@ -6605,6 +7603,51 @@
     "createdAt": "2024-09-02T16:09:47.152Z",
     "updatedAt": "2024-09-02T16:09:55.944Z",
     "id": "cHwG97m74"
+  },
+  {
+    "_id": "efIFtPBIS",
+    "name": "ImageModel_TM copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "68144e900b97bf82accc25a7",
+          "68144e900b97bf82accc25a8"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "68144e900b97bf82accc25a6",
+        "createdAt": "2025-05-02T05:23:35.615Z",
+        "updatedAt": "2025-05-02T05:23:35.615Z",
+        "id": "68144e900b97bf82accc25a6"
+      },
+      {
+        "name": "index.html",
+        "content": "<html>\n\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Webcam Image Classification using a pre-trained customized model and p5.js</title>\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js\"></script>\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js\"></script>\n  <script src=\"https://unpkg.com/ml5@latest/dist/ml5.min.js\" type=\"text/javascript\"></script>\n</head>\n\n<body>\n  <h1>Teachable Machine</h1>\n  <p>This is a demonstration of image classification using a model trained with Google's Teachable\n    Machine project. If you cover the camera, this model will classify the image as \"nighttime,\" otherwise will classify\n    anything else as \"daytime.\" </p>\n  <script src=\"sketch.js\"></script>\n</body>\n\n</html>",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68144e900b97bf82accc25a7",
+        "createdAt": "2025-05-02T05:23:35.615Z",
+        "updatedAt": "2025-05-02T05:23:35.615Z",
+        "id": "68144e900b97bf82accc25a7"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let classifier;\nlet video;\nlet label = \"\";\nlet confidence = 0;\n\n// Teachable Machine hosted model\nlet imageModelURL = 'https://teachablemachine.withgoogle.com/models/0I-DmTyTH/';\n\nfunction preload() {\n  classifier = ml5.imageClassifier(imageModelURL + 'model.json', () => {\n    console.log(\"Model loaded!\");\n  });\n}\n\nfunction setup() {\n  createCanvas(320, 260);\n  video = createCapture(VIDEO);\n  video.size(320, 240);\n  video.hide();\n\n  classifyVideo();\n}\n\nfunction draw() {\n  background(0);\n\n  // Flip video to mirror it visually\n  push();\n  translate(video.width, 0);\n  scale(-1, 1);\n  image(video, 0, 0);\n  pop();\n\n  // Show classification result\n  fill(255);\n  textSize(16);\n  textAlign(CENTER);\n  text(`${label} (${nf(confidence * 100, 2, 1)}%)`, width / 2, height - 10);\n}\n\nfunction classifyVideo() {\n  classifier.classify(video, gotResult);\n}\n\nfunction gotResult(error, results) {\n  if (error) {\n    console.error(\"Classification error:\", error);\n    return;\n  }\n\n  // Check if result array exists and has at least one result\n  if (results && results.length > 0) {\n    console.log(\"Results:\", results); // Helpful for debugging\n    label = results[0].label;\n    confidence = results[0].confidence;\n  } else {\n    label = \"No result\";\n    confidence = 0;\n  }\n\n  classifyVideo(); // keep looping\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "68144e900b97bf82accc25a8",
+        "createdAt": "2025-05-02T05:23:35.615Z",
+        "updatedAt": "2025-05-02T05:23:35.615Z",
+        "id": "68144e900b97bf82accc25a8"
+      }
+    ],
+    "createdAt": "2025-05-02T04:48:16.852Z",
+    "updatedAt": "2025-05-02T05:23:35.615Z",
+    "id": "efIFtPBIS"
   },
   {
     "_id": "-K0Bd_8mL",
@@ -7692,10 +8735,10 @@
           "64f003daea259afebd5a83f2"
         ],
         "fileType": "folder",
-        "_id": "64f003daea259afebd5a83f0",
-        "createdAt": "2023-09-11T11:30:32.324Z",
-        "updatedAt": "2023-09-11T11:30:32.324Z",
         "isSelectedFile": false,
+        "_id": "64f003daea259afebd5a83f0",
+        "createdAt": "2025-05-02T05:31:12.538Z",
+        "updatedAt": "2025-05-02T05:31:12.538Z",
         "id": "64f003daea259afebd5a83f0"
       },
       {
@@ -7703,10 +8746,10 @@
         "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script>\n    <script src=\"https://unpkg.com/ml5@latest/dist/ml5.min.js\" type=\"text/javascript\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n    <title>Webcam Image Classification using a pre-trained customized model and p5.js</title>\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
         "children": [],
         "fileType": "file",
-        "_id": "64f003daea259afebd5a83f1",
-        "createdAt": "2023-09-11T11:30:32.324Z",
-        "updatedAt": "2023-09-11T11:30:32.324Z",
         "isSelectedFile": false,
+        "_id": "64f003daea259afebd5a83f1",
+        "createdAt": "2025-05-02T05:31:12.538Z",
+        "updatedAt": "2025-05-02T05:31:12.538Z",
         "id": "64f003daea259afebd5a83f1"
       },
       {
@@ -7714,15 +8757,15 @@
         "content": "// put the shareable link from Teachable Machine here\nlet imageModelURL = 'https://teachablemachine.withgoogle.com/models/L2FvxOyqC/';\n\nlet classifier;\nlet video;\nlet flippedVideo;\nlet label = '';  // to store the classification\n\n// load the model first\nfunction preload() {\n  classifier = ml5.imageClassifier(imageModelURL + 'model.json');\n}\n\nfunction setup() {\n  createCanvas(640, 480);\n  // create the video\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  // Teachable Machine recorded the camera as if looking into a mirror\n  // (right and left swapped); because of this, we flip the camera image as well\n  flippedVideo = ml5.flipImage(video);\n  // start classifying\n  classifyVideo();\n}\n\nfunction draw() {\n  background(0);\n  // draw the video\n  image(flippedVideo, 0, 0);\n\n  // draw the label\n  fill(255);\n  textSize(26);\n  textAlign(CENTER);\n  text(label, width / 2, height - 10);\n}\n\n// get a prediction for the current video frame\nfunction classifyVideo() {\n  flippedVideo = ml5.flipImage(video);\n  classifier.classify(flippedVideo, gotResult);\n}\n\n// this function is executed whenever classification finishes\n// it's thus a \"callback function\"\nfunction gotResult(error, results) {\n  // the results are in an array ordered by confidence\n  // console.log(results[0]);\n  label = results[0].label+\" \"+results[0].confidence;//I finally learned to show the confidence!\n  // classifiy again!\n  classifyVideo();\n}\n",
         "children": [],
         "fileType": "file",
-        "_id": "64f003daea259afebd5a83f2",
         "isSelectedFile": true,
-        "createdAt": "2023-09-11T11:30:32.324Z",
-        "updatedAt": "2023-09-11T11:30:32.324Z",
+        "_id": "64f003daea259afebd5a83f2",
+        "createdAt": "2025-05-02T05:31:12.538Z",
+        "updatedAt": "2025-05-02T05:31:12.538Z",
         "id": "64f003daea259afebd5a83f2"
       }
     ],
     "createdAt": "2023-08-31T03:07:06.833Z",
-    "updatedAt": "2023-09-11T11:30:32.324Z",
+    "updatedAt": "2025-05-02T05:31:12.538Z",
     "id": "GFlEQ64Ya"
   },
   {
@@ -12377,21 +13420,21 @@
           "661d2f8bf62d8e211b5dffa9"
         ],
         "fileType": "folder",
-        "_id": "661d2f8bf62d8e211b5dffa6",
-        "createdAt": "2024-04-15T14:28:44.056Z",
-        "updatedAt": "2024-04-15T14:28:44.056Z",
         "isSelectedFile": false,
+        "_id": "661d2f8bf62d8e211b5dffa6",
+        "createdAt": "2025-04-25T01:36:33.703Z",
+        "updatedAt": "2025-04-25T01:36:33.703Z",
         "id": "661d2f8bf62d8e211b5dffa6"
       },
       {
         "name": "sketch.js",
-        "content": "let DEBUG_MODE = false;\n\nlet vehicles = [];\n\nfunction setup() {\n  createCanvas(800, 600);\n\n  for (let i = 0; i < 20; i++) {\n    vehicles.push(new Vehicle(random(width), random(height), 15));\n  }\n}\n\nfunction draw() {\n  background(50);\n\n  let target = createVector(mouseX, mouseY);\n  //for (let i = 0; i < vehicles.length; i++) {\n    let v = vehicles[i];\n    v.detect(vehicles);\n    v.update();\n    v.reappear();\n    v.display();\n    v.setBarriers()\n    v.seek(target)\n  //}\n\n  // display text\n  fill(255);\n  //text(\"Toggle the debug mode by clicking on the canvas.\", 10, 20);\n}\n\nfunction mousePressed() {\n  DEBUG_MODE = !DEBUG_MODE;\n}\n\n///// CLASS /////\n\nclass Vehicle {\n  constructor(x = 0, y = 0, size = 1) {\n    this.pos = createVector(x, y);\n    this.vel = p5.Vector.random2D().mult(4);\n    this.acc = createVector(0, 0);\n    this.size = size;\n    this.mass = 1;\n    //\n    this.angle = 0;\n    //\n    this.maxSpeed = 4;\n    this.maxSteerForce = 0.1;\n    // for detection\n    this.detectVector = createVector();\n    this.directionVector = createVector();\n    this.predictDistance = 30;\n    this.detectRadius = 50;\n    this.barrierRadius=15;\n    this.wanderAngle = random(TWO_PI);\n  }\n  detect(others) {\n    for (let other of others) {\n      if (this != other) {\n        this.detectVector = p5.Vector.mult(\n          this.vel.copy().normalize(),\n          this.predictDistance\n        );\n        let centerPos = p5.Vector.add(this.pos, this.detectVector);\n\n        let distance = centerPos.dist(other.pos);\n        if (distance < this.detectRadius) {\n          this.directionVector = p5.Vector.sub(other.pos, centerPos);\n          this.directionVector.setMag(this.detectRadius);\n          this.directionVector.mult(-1); // flip the vector to avoid\n\n          let directionPos = p5.Vector.add(centerPos, this.directionVector);\n          this.seek(directionPos);\n        }\n      }\n    }\n  }\n  seek(targetPos) {\n    let desiredVec = p5.Vector.sub(targetPos, this.pos);\n\n    let distance = desiredVec.mag();\n    desiredVec.normalize();\n    desiredVec.mult(this.maxSpeed);\n\n    let steerForce = p5.Vector.sub(desiredVec, this.vel);\n    steerForce.limit(this.maxSteerForce);\n\n    this.applyForce(steerForce);\n  }\n  setBarriers(){\n    for(let i=0;i<15;i++){\n      ellipse(200+i*20,200,this.barrierRadius,this.barrierRadius)\n      this.repelled(createVector(200+i*20,200))\n      ellipse(200,200+i*10,this.barrierRadius,this.barrierRadius)\n      this.repelled(createVector(200,200+i*10))\n      ellipse(200+i*20,350,this.barrierRadius,this.barrierRadius)\n      this.repelled(createVector(200+i*20,350))\n      ellipse(500,200+i*10,this.barrierRadius,this.barrierRadius)\n      this.repelled(createVector(500,200+i*10))\n    }\n  }\n  repelled(position){\n    let distance=this.pos.dist(position)\n    if(distance<this.detectRadius+this.barrierRadius){\n      let force=p5.Vector.sub(position,this.pos)\n      force.normalize().mult(-0.1)\n      this.applyForce(force)    \n    }\n  }\n  reappear() {\n    if (this.pos.x < 0) {\n      this.pos.x = width;\n    } else if (this.pos.x > width) {\n      this.pos.x = 0;\n    }\n    if (this.pos.y < 0) {\n      this.pos.y = height;\n    } else if (this.pos.y > height) {\n      this.pos.y = 0;\n    }\n  }\n  applyForce(f) {\n    if (this.mass > 0) {\n      let force = p5.Vector.div(f, this.mass);\n      this.acc.add(force);\n    }\n  }\n  update() {\n    this.vel.add(this.acc);\n    this.pos.add(this.vel);\n    this.acc.mult(0);\n    //\n    this.angle = this.vel.heading();\n  }\n  display() {\n    push();\n    translate(this.pos.x, this.pos.y);\n\n    push(); // push for rotation\n    rotate(this.angle);\n    // draw the vehicle\n    stroke(255);\n    fill(255, 150);\n    triangle(0, 0, -this.size, -this.size * 0.4, -this.size, this.size * 0.4);\n    pop(); // pop for rotation\n\n    if (DEBUG_MODE) {\n      // draw detecting graphics\n      noFill();\n      stroke(255, 0, 0);\n      line(0, 0, this.detectVector.x, this.detectVector.y);\n\n      translate(this.detectVector.x, this.detectVector.y);\n      ellipse(0, 0, this.detectRadius * 2, this.detectRadius * 2);\n\n      stroke(0, 255, 0);\n      line(0, 0, this.directionVector.x, this.directionVector.y);\n    }\n\n    pop();\n  }\n}\n",
+        "content": "let DEBUG_MODE = false;\n\nlet vehicles = [];\n\nfunction setup() {\n  createCanvas(800, 600);\n\n  for (let i = 0; i < 20; i++) {\n    vehicles.push(new Vehicle(random(width), random(height), 15));\n  }\n}\n\nfunction draw() {\n  background(50);\n\n  let target = createVector(mouseX, mouseY);\n  for (let i = 0; i < vehicles.length; i++) {\n    let v = vehicles[i];\n    v.detect(vehicles);\n    v.update();\n    v.reappear();\n    v.display();\n    v.setBarriers()\n    v.seek(target)\n  }\n\n  // display text\n  fill(255);\n  //text(\"Toggle the debug mode by clicking on the canvas.\", 10, 20);\n}\n\nfunction mousePressed() {\n  DEBUG_MODE = !DEBUG_MODE;\n}\n\n///// CLASS /////\n\nclass Vehicle {\n  constructor(x = 0, y = 0, size = 1) {\n    this.pos = createVector(x, y);\n    this.vel = p5.Vector.random2D().mult(4);\n    this.acc = createVector(0, 0);\n    this.size = size;\n    this.mass = 1;\n    //\n    this.angle = 0;\n    //\n    this.maxSpeed = 4;\n    this.maxSteerForce = 0.1;\n    // for detection\n    this.detectVector = createVector();\n    this.directionVector = createVector();\n    this.predictDistance = 30;\n    this.detectRadius = 50;\n    this.barrierRadius=15;\n    this.wanderAngle = random(TWO_PI);\n  }\n  detect(others) {\n    for (let other of others) {\n      if (this != other) {\n        this.detectVector = p5.Vector.mult(\n          this.vel.copy().normalize(),\n          this.predictDistance\n        );\n        let centerPos = p5.Vector.add(this.pos, this.detectVector);\n\n        let distance = centerPos.dist(other.pos);\n        if (distance < this.detectRadius) {\n          this.directionVector = p5.Vector.sub(other.pos, centerPos);\n          this.directionVector.setMag(this.detectRadius);\n          this.directionVector.mult(-1); // flip the vector to avoid\n\n          let directionPos = p5.Vector.add(centerPos, this.directionVector);\n          this.seek(directionPos);\n        }\n      }\n    }\n  }\n  seek(targetPos) {\n    let desiredVec = p5.Vector.sub(targetPos, this.pos);\n\n    let distance = desiredVec.mag();\n    desiredVec.normalize();\n    desiredVec.mult(this.maxSpeed);\n\n    let steerForce = p5.Vector.sub(desiredVec, this.vel);\n    steerForce.limit(this.maxSteerForce);\n\n    this.applyForce(steerForce);\n  }\n  setBarriers(){\n    for(let i=0;i<15;i++){\n      ellipse(200+i*20,200,this.barrierRadius,this.barrierRadius)\n      this.repelled(createVector(200+i*20,200))\n      ellipse(200,200+i*10,this.barrierRadius,this.barrierRadius)\n      this.repelled(createVector(200,200+i*10))\n      ellipse(200+i*20,350,this.barrierRadius,this.barrierRadius)\n      this.repelled(createVector(200+i*20,350))\n      ellipse(500,200+i*10,this.barrierRadius,this.barrierRadius)\n      this.repelled(createVector(500,200+i*10))\n    }\n  }\n  repelled(position){\n    let distance=this.pos.dist(position)\n    if(distance<this.detectRadius+this.barrierRadius){\n      let force=p5.Vector.sub(position,this.pos)\n      force.normalize().mult(-0.1)\n      this.applyForce(force)    \n    }\n  }\n  reappear() {\n    if (this.pos.x < 0) {\n      this.pos.x = width;\n    } else if (this.pos.x > width) {\n      this.pos.x = 0;\n    }\n    if (this.pos.y < 0) {\n      this.pos.y = height;\n    } else if (this.pos.y > height) {\n      this.pos.y = 0;\n    }\n  }\n  applyForce(f) {\n    if (this.mass > 0) {\n      let force = p5.Vector.div(f, this.mass);\n      this.acc.add(force);\n    }\n  }\n  update() {\n    this.vel.add(this.acc);\n    this.pos.add(this.vel);\n    this.acc.mult(0);\n    //\n    this.angle = this.vel.heading();\n  }\n  display() {\n    push();\n    translate(this.pos.x, this.pos.y);\n\n    push(); // push for rotation\n    rotate(this.angle);\n    // draw the vehicle\n    stroke(255);\n    fill(255, 150);\n    triangle(0, 0, -this.size, -this.size * 0.4, -this.size, this.size * 0.4);\n    pop(); // pop for rotation\n\n    if (DEBUG_MODE) {\n      // draw detecting graphics\n      noFill();\n      stroke(255, 0, 0);\n      line(0, 0, this.detectVector.x, this.detectVector.y);\n\n      translate(this.detectVector.x, this.detectVector.y);\n      ellipse(0, 0, this.detectRadius * 2, this.detectRadius * 2);\n\n      stroke(0, 255, 0);\n      line(0, 0, this.directionVector.x, this.directionVector.y);\n    }\n\n    pop();\n  }\n}\n",
         "children": [],
         "fileType": "file",
-        "_id": "661d2f8bf62d8e211b5dffa8",
         "isSelectedFile": true,
-        "createdAt": "2024-04-15T14:28:44.056Z",
-        "updatedAt": "2024-04-15T14:28:44.056Z",
+        "_id": "661d2f8bf62d8e211b5dffa8",
+        "createdAt": "2025-04-25T01:36:33.703Z",
+        "updatedAt": "2025-04-25T01:36:33.703Z",
         "id": "661d2f8bf62d8e211b5dffa8"
       },
       {
@@ -12399,10 +13442,10 @@
         "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
         "children": [],
         "fileType": "file",
-        "_id": "661d2f8bf62d8e211b5dffa7",
-        "createdAt": "2024-04-15T14:28:44.056Z",
-        "updatedAt": "2024-04-15T14:28:44.056Z",
         "isSelectedFile": false,
+        "_id": "661d2f8bf62d8e211b5dffa7",
+        "createdAt": "2025-04-25T01:36:33.703Z",
+        "updatedAt": "2025-04-25T01:36:33.703Z",
         "id": "661d2f8bf62d8e211b5dffa7"
       },
       {
@@ -12410,15 +13453,15 @@
         "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
         "children": [],
         "fileType": "file",
-        "_id": "661d2f8bf62d8e211b5dffa9",
-        "createdAt": "2024-04-15T14:28:44.056Z",
-        "updatedAt": "2024-04-15T14:28:44.056Z",
         "isSelectedFile": false,
+        "_id": "661d2f8bf62d8e211b5dffa9",
+        "createdAt": "2025-04-25T01:36:33.703Z",
+        "updatedAt": "2025-04-25T01:36:33.703Z",
         "id": "661d2f8bf62d8e211b5dffa9"
       }
     ],
     "createdAt": "2024-04-15T13:45:47.578Z",
-    "updatedAt": "2024-04-15T14:28:44.056Z",
+    "updatedAt": "2025-04-25T01:36:33.703Z",
     "id": "Bda0GPLoa"
   },
   {
@@ -12659,19 +13702,19 @@
         "fileType": "folder",
         "isSelectedFile": false,
         "_id": "68026f1ad05def50f48c9da8",
-        "createdAt": "2025-04-23T16:56:56.704Z",
-        "updatedAt": "2025-04-23T16:56:56.704Z",
+        "createdAt": "2025-04-26T05:37:29.838Z",
+        "updatedAt": "2025-04-26T05:37:29.838Z",
         "id": "68026f1ad05def50f48c9da8"
       },
       {
         "name": "sketch.js",
-        "content": "//inspiration and example code for the behavior of \"following\" all comes from Daniel Shiffman's code https://editor.p5js.org/codingtrain/sketches/CvGJFQPLa\n\nlet segments = [];\nconst segmentNumber = 12;\nconst segmentBaseSize = 40;\n\nfunction setup() {\n  createCanvas(800, 600);\n\n  for (let i = 0; i < segmentNumber; i++) {\n    segments.push(\n      new Segment(\n        width / 2 + i * segmentBaseSize * 0.8,\n        height / 2,\n        segmentBaseSize,\n        255,\n        i\n      )\n    );\n  }\n}\n\nfunction draw() {\n  background(0);\n\n  segments.forEach((seg, index) => {\n    seg.update(index);\n    seg.display();\n  });\n}\n\nclass Segment {\n  constructor(x, y, size, col, index) {\n    this.home = createVector(x, y);\n    this.position = createVector(x, y);\n    this.target = createVector(x, y);\n    this.size = size;\n    this.color = col;\n    this.index = index;\n    this.angle = 0;\n    this.energy = 0;\n  }\n\n  update(index) {\n    if (index === 0) {\n      this.target = createVector(mouseX, mouseY);\n    } else {\n      this.target = segments[index - 1].position.copy();\n    }\n\n    let offset;\n    offset = createVector(0, 0);\n\n    this.position.lerp(p5.Vector.add(this.target, offset), 0.15);\n\n    this.size =\n      segmentBaseSize * (0.8 + 0.4 * sin(frameCount * 0.1 + this.index));\n  }\n\n  display() {\n    push();\n    translate(this.position.x, this.position.y);\n    rotate(this.angle);\n\n    stroke(this.color);\n\n    ellipse(-this.size / 3, 0, this.size / 4);\n    ellipse(this.size / 3, 0, this.size / 4);\n\n    pop();\n  }\n}\n",
+        "content": "//inspiration and example code for the behavior of \"following\" all comes from Daniel Shiffman's code https://editor.p5js.org/codingtrain/sketches/CvGJFQPLa\n\nlet segments = [];\nconst segmentNumber = 20;\nconst segmentBaseSize = 40;\n\nfunction setup() {\n  createCanvas(800, 600);\n\n  for (let i = 0; i < segmentNumber; i++) {\n    segments.push(\n      new Segment(\n        width / 2 + i * segmentBaseSize * 0.8,\n        height / 2,\n        segmentBaseSize,\n        255,\n        i\n      )\n    );\n  }\n}\n\nfunction draw() {\n  background(0);\n\n  segments.forEach((seg, index) => {\n    seg.update(index);\n    seg.display();\n  });\n}\n\nclass Segment {\n  constructor(x, y, size, col, index) {\n    this.home = createVector(x, y);\n    this.position = createVector(x, y);\n    this.target = createVector(x, y);\n    this.size = size;\n    this.color = col;\n    this.index = index;\n    this.angle = 0;\n    this.energy = 0;\n    this.lerpSmooth=0\n  }\n\n  update(index) {\n    if (index === 0) {\n      this.target = createVector(mouseX, mouseY);\n      this.lerpSmooth=0.05\n    } else {\n      this.target = segments[index - 1].position.copy();\n      this.lerpSmooth=0.15\n    }\n\n    let offset;\n    offset = createVector(0, 0);\n\n    this.position.lerp(p5.Vector.add(this.target, offset), this.lerpSmooth);\n\n    this.size =\n      segmentBaseSize * (0.8 + 0.4 * sin(frameCount * 0.1 + this.index));\n  }\n\n  display() {\n    push();\n    translate(this.position.x, this.position.y);\n    rotate(this.angle);\n\n    stroke(this.color);\n\n    ellipse(-this.size / 3, 0, this.size / 4);\n    ellipse(this.size / 3, 0, this.size / 4);\n\n    pop();\n  }\n}\n",
         "children": [],
         "fileType": "file",
         "isSelectedFile": true,
         "_id": "68026f1ad05def50f48c9daa",
-        "createdAt": "2025-04-23T16:56:56.704Z",
-        "updatedAt": "2025-04-23T16:56:56.704Z",
+        "createdAt": "2025-04-26T05:37:29.838Z",
+        "updatedAt": "2025-04-26T05:37:29.838Z",
         "id": "68026f1ad05def50f48c9daa"
       },
       {
@@ -12681,8 +13724,8 @@
         "fileType": "file",
         "isSelectedFile": false,
         "_id": "68026f1ad05def50f48c9da9",
-        "createdAt": "2025-04-23T16:56:56.704Z",
-        "updatedAt": "2025-04-23T16:56:56.704Z",
+        "createdAt": "2025-04-26T05:37:29.838Z",
+        "updatedAt": "2025-04-26T05:37:29.838Z",
         "id": "68026f1ad05def50f48c9da9"
       },
       {
@@ -12692,13 +13735,13 @@
         "fileType": "file",
         "isSelectedFile": false,
         "_id": "68026f1ad05def50f48c9dab",
-        "createdAt": "2025-04-23T16:56:56.704Z",
-        "updatedAt": "2025-04-23T16:56:56.704Z",
+        "createdAt": "2025-04-26T05:37:29.838Z",
+        "updatedAt": "2025-04-26T05:37:29.838Z",
         "id": "68026f1ad05def50f48c9dab"
       }
     ],
     "createdAt": "2025-04-18T15:26:19.001Z",
-    "updatedAt": "2025-04-23T16:56:56.704Z",
+    "updatedAt": "2025-04-26T05:37:29.838Z",
     "id": "oGdsJfAID"
   },
   {
@@ -12838,6 +13881,51 @@
     "createdAt": "2023-09-25T07:31:49.957Z",
     "updatedAt": "2023-09-25T07:31:49.957Z",
     "id": "mhsFL8Ucm"
+  },
+  {
+    "_id": "AM9HvjHYK",
+    "name": "openHand_andclose",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "680fcda08cca087037b2ada5",
+          "680fcda08cca087037b2ada6"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "680fcda08cca087037b2ada4",
+        "createdAt": "2025-04-29T07:28:52.026Z",
+        "updatedAt": "2025-04-29T07:28:52.026Z",
+        "id": "680fcda08cca087037b2ada4"
+      },
+      {
+        "name": "index.html",
+        "content": "<!--\r\n  👋 Hello! This is an ml5.js example made and shared with ❤️.\r\n  Learn more about the ml5.js project: https://ml5js.org/\r\n  ml5.js license and Code of Conduct: https://github.com/ml5js/ml5-next-gen/blob/main/LICENSE.md\r\n\r\n  This example demonstrates hand tracking on live video through ml5.handPose.\r\n-->\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>ml5.js handPose Webcam Example</title>\r\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js\"></script>\r\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script>\r\n  </head>\r\n  <body>\r\n    <script src=\"sketch.js\"></script>\r\n  </body>\r\n</html>\r\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "680fcda08cca087037b2ada5",
+        "createdAt": "2025-04-29T07:28:52.026Z",
+        "updatedAt": "2025-04-29T07:28:52.026Z",
+        "id": "680fcda08cca087037b2ada5"
+      },
+      {
+        "name": "sketch.js",
+        "content": "/*\n * 👋 Hello! This is an ml5.js example made and shared with ❤️.\n * Learn more about the ml5.js project: https://ml5js.org/\n * ml5.js license and Code of Conduct: https://github.com/ml5js/ml5-next-gen/blob/main/LICENSE.md\n *\n * This example demonstrates hand tracking on live video through ml5.handPose.\n */\n\nlet handPose;\nlet video;\nlet hands = [];\n\nfunction preload() {\n  // Load the handPose model\n  handPose = ml5.handPose();\n}\n\nfunction setup() {\n  createCanvas(640, 480);\n  // Create the webcam video and hide it\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n  // start detecting hands from the webcam video\n  handPose.detectStart(video, gotHands);\n}\n\nfunction draw() {\n  // Draw the webcam video\n  image(video, 0, 0, width, height);\n  \n\n  // Draw all the tracked hand points\n  for (let i = 0; i < hands.length; i++) {\n    let hand = hands[i];\n    for (let j = 0; j < hand.keypoints.length; j++) {\n      let keypoint = hand.keypoints[j];\n      fill(0, 255, 0);\n      noStroke();\n      circle(keypoint.x, keypoint.y, 10);\n    }\n  }\n  if (hands.length > 0) {\n    let hand = hands[0];\n\n    let wrist = hand.keypoints[0];\n    let middleTip = hand.keypoints[12]; // Tip of the middle//tip指尖 mcp指头最下面一节\nlet middleMcp = hand.keypoints[9]; \n    let dtip = dist(wrist.x, wrist.y, middleTip.x, middleTip.y);\n    let dmcp = dist(wrist.x, wrist.y, middleMcp.x, middleMcp.y);\n\n    if (dtip>dmcp) {\n      fill(0, 255, 0);\n      textSize(32);\n      text('Open Hand ✋', 10, 50);\n      //text(d)\n    } else {\n      fill(255, 0, 0);\n      textSize(32);\n      text('Closed Fist ✊', 10, 50);\n    }\n  }\n  \n}\n\n// Callback function for when handPose outputs data\nfunction gotHands(results) {\n  // save the output to the hands variable\n  hands = results;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "680fcda08cca087037b2ada6",
+        "createdAt": "2025-04-29T07:28:52.026Z",
+        "updatedAt": "2025-04-29T07:28:52.026Z",
+        "id": "680fcda08cca087037b2ada6"
+      }
+    ],
+    "createdAt": "2025-04-28T18:49:04.200Z",
+    "updatedAt": "2025-04-29T07:28:52.026Z",
+    "id": "AM9HvjHYK"
   },
   {
     "_id": "hGi09yYMj",
@@ -15275,6 +16363,98 @@
     "createdAt": "2023-10-14T07:55:53.504Z",
     "updatedAt": "2023-10-14T11:38:51.998Z",
     "id": "NqH_iS97z"
+  },
+  {
+    "_id": "POW81eTe-",
+    "name": "Webcam Image Classification with Teachable Machine copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6813ce0195db5c2eb976e6b3",
+          "6813ce0195db5c2eb976e6b4",
+          "681453d5d0bcf4ff5a8e4cc0"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "6813ce0195db5c2eb976e6b2",
+        "createdAt": "2025-05-02T04:53:01.716Z",
+        "updatedAt": "2025-05-02T05:11:08.777Z",
+        "id": "6813ce0195db5c2eb976e6b2"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.min.js\"></script></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n    <title>Webcam Image Classification using a pre-trained customized model and p5.js</title>\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6813ce0195db5c2eb976e6b3",
+        "createdAt": "2025-05-02T04:53:01.716Z",
+        "updatedAt": "2025-05-02T04:53:01.716Z",
+        "id": "6813ce0195db5c2eb976e6b3"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// put the shareable link from Teachable Machine here\nlet imageModelURL = 'https://teachablemachine.withgoogle.com/models/0I-DmTyTH/';\n\nlet classifier;\nlet video;\nlet label1 = '';  // to store the classification\nlet label2 = '';\nlet label3 = '';\nlet confidence1 = '';\nlet confidence2 = '';\nlet confidence3 = '';\n\n// load the model first\nfunction preload() {\n  classifier = ml5.imageClassifier(imageModelURL + 'model.json');\n}\n\nfunction setup() {\n  createCanvas(640, 480);\n  // create the video\n  // Teachable Machine recorded the camera as if looking into a mirror\n  // (right and left swapped); because of this, we flip the camera image as well\n  video = createCapture(VIDEO, { flipped: true });\n  video.size(640, 480);\n  video.hide();\n\n  // start classifying\n  classifier.classifyStart(video, gotResult);\n}\n\nfunction draw() {\n  background(0);\n  // draw the video\n  image(video, 0, 0);\n\n  // draw the label\n  fill(255);\n  textSize(16);\n  textAlign(CENTER);\n  text(label1 + \" @ \" + confidence1, width / 2, height - 4);\n  text(label2 + \" @ \" + confidence2, width / 2, height - 4-8);\n  text(label3 + \" @ \" + confidence3, width / 2, height - 4-24);\n}\n\n// this function is executed whenever classification finishes\n// it's thus a \"callback function\"\nfunction gotResult(results) {\n  // the results are in an array ordered by confidence\n  label1 = results[0].label;\n  confidence1 = results[0].confidence;\n  label2 = results[1].label;\n  confidence1 = results[1].confidence;\n  label3 = results[2].label;\n  confidence1 = results[2].confidence;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "6813ce0195db5c2eb976e6b4",
+        "createdAt": "2025-05-02T04:53:01.716Z",
+        "updatedAt": "2025-05-02T04:53:01.716Z",
+        "id": "6813ce0195db5c2eb976e6b4"
+      },
+      {
+        "name": "my_model",
+        "content": "",
+        "children": [
+          "681453fc3d22d6485595bd5a",
+          "681453fd3d22d6485595bd64",
+          "681454083d22d6485595be6d"
+        ],
+        "fileType": "folder",
+        "_id": "681453d5d0bcf4ff5a8e4cc0",
+        "createdAt": "2025-05-02T05:10:45.838Z",
+        "updatedAt": "2025-05-02T05:11:36.233Z",
+        "id": "681453d5d0bcf4ff5a8e4cc0"
+      },
+      {
+        "name": "metadata.json",
+        "content": "{\"tfjsVersion\":\"1.7.4\",\"tmVersion\":\"2.4.10\",\"packageVersion\":\"0.8.4-alpha2\",\"packageName\":\"@teachablemachine/image\",\"timeStamp\":\"2025-05-02T04:42:48.583Z\",\"userMetadata\":{},\"modelName\":\"tm-my-image-model\",\"labels\":[\"follow\",\"touch\",\"turnAround\"],\"imageSize\":224}",
+        "children": [],
+        "fileType": "file",
+        "_id": "681453fc3d22d6485595bd5a",
+        "createdAt": "2025-05-02T05:11:24.786Z",
+        "updatedAt": "2025-05-02T05:11:24.786Z",
+        "id": "681453fc3d22d6485595bd5a"
+      },
+      {
+        "name": "model.json",
+        "content": "",
+        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/b07784ff-4f81-4db3-b0fa-7f99169e3b58.json",
+        "children": [],
+        "fileType": "file",
+        "_id": "681453fd3d22d6485595bd64",
+        "createdAt": "2025-05-02T05:11:25.523Z",
+        "updatedAt": "2025-05-02T05:11:25.523Z",
+        "id": "681453fd3d22d6485595bd64"
+      },
+      {
+        "name": "weights.bin",
+        "content": "",
+        "url": "https://assets.editor.p5js.org/63da37f3457f52001cf5f153/ecaca078-a324-4222-b076-09562b842b42.bin",
+        "children": [],
+        "fileType": "file",
+        "_id": "681454083d22d6485595be6d",
+        "createdAt": "2025-05-02T05:11:36.222Z",
+        "updatedAt": "2025-05-02T05:11:36.222Z",
+        "id": "681454083d22d6485595be6d"
+      }
+    ],
+    "createdAt": "2025-05-01T19:39:45.109Z",
+    "updatedAt": "2025-05-02T05:11:36.233Z",
+    "id": "POW81eTe-"
   },
   {
     "_id": "WEIzX8k_g",
